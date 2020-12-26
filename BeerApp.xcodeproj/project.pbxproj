@@ -11,10 +11,10 @@
 		63935CBA2597533B007D87DB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935CB92597533B007D87DB /* SceneDelegate.swift */; };
 		63935CBC2597533B007D87DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935CBB2597533B007D87DB /* ViewController.swift */; };
 		63935CBF2597533B007D87DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63935CBD2597533B007D87DB /* Main.storyboard */; };
-		63935CC12597533C007D87DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63935CC02597533C007D87DB /* Assets.xcassets */; };
 		63935CC42597533C007D87DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63935CC22597533C007D87DB /* LaunchScreen.storyboard */; };
 		63935CCF2597533C007D87DB /* BeerAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935CCE2597533C007D87DB /* BeerAppTests.swift */; };
 		63935CDA2597533C007D87DB /* BeerAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935CD92597533C007D87DB /* BeerAppUITests.swift */; };
+		63935D4B25975D77007D87DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63935D4A25975D77007D87DB /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +40,6 @@
 		63935CB92597533B007D87DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		63935CBB2597533B007D87DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		63935CBE2597533B007D87DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		63935CC02597533C007D87DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63935CC32597533C007D87DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63935CC52597533C007D87DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63935CCA2597533C007D87DB /* BeerAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeerAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +48,7 @@
 		63935CD52597533C007D87DB /* BeerAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeerAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63935CD92597533C007D87DB /* BeerAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerAppUITests.swift; sourceTree = "<group>"; };
 		63935CDB2597533C007D87DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63935D4A25975D77007D87DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../Documents/App/AppIcons/Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,11 +99,11 @@
 		63935CB62597533B007D87DB /* BeerApp */ = {
 			isa = PBXGroup;
 			children = (
+				63935D4A25975D77007D87DB /* Assets.xcassets */,
 				63935CB72597533B007D87DB /* AppDelegate.swift */,
 				63935CB92597533B007D87DB /* SceneDelegate.swift */,
 				63935CBB2597533B007D87DB /* ViewController.swift */,
 				63935CBD2597533B007D87DB /* Main.storyboard */,
-				63935CC02597533C007D87DB /* Assets.xcassets */,
 				63935CC22597533C007D87DB /* LaunchScreen.storyboard */,
 				63935CC52597533C007D87DB /* Info.plist */,
 			);
@@ -232,7 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63935CC42597533C007D87DB /* LaunchScreen.storyboard in Resources */,
-				63935CC12597533C007D87DB /* Assets.xcassets in Resources */,
+				63935D4B25975D77007D87DB /* Assets.xcassets in Resources */,
 				63935CBF2597533B007D87DB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +319,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = Universal;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -380,6 +381,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = Universal;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
