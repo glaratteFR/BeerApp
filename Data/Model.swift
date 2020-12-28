@@ -63,13 +63,111 @@ public class Model : NSObject, NSCoding{
     }//end init model
     
     
-    
-    public func encode(with coder: NSCoder) {
-        <#code#>
+    func importBeersFromBundle(_ file:String, folder:String)->Bool{
+        
+        guard
+            let lines = bundleReadAallLinesFromFile(file,infolder: folder, withExtension: "txt"),
+            !lines.isEmpty
+            else {
+            return false
+        }
+        let importedBeers = lines.comctMap{Beer($0, delimiter: "\t") }
+        
+        if !importedBeers.isEmpty{
+            
+            self.producers = importedBeers
+            self.producers.forEach{ self.producersNamed.updateValue($0, forKey: $0.nameProducer)}//posible error nameProducer
+            return true
+            
+        }else{
+            return false
+        }
+        
     }
     
-    public required init?(coder: NSCoder) {
-        <#code#>
+    func readProducersInfosFromDocuments(url: URL)->Bool{
+        var d:Data!
+        var x:Any?
+        do{
+            d = try Data(contentsOf: url)
+            
+        }catch{
+            print("the file \(url.path) could not be read because \(error.localizedDescription)")
+            return false
+        }
+        do{
+            x = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(d)
+            producers = x as! [Producer]
+            self.producers.forEach{self.producersNamed.updateValue($0, forKey: $0.nameProducer)}
+            
+        }catch{
+            
+            print("infor  in data could not be parsed because \(error.localizedDescription)")
+            return false
+
+        }
+        return true
+    }
+    
+    
+    public func writeProducersInfosToDocuments(_ file: String, folder:String)->Bool{
+        
+        
+        let documentsFolderURL = documentsURL().appendingPathComponent(folder)//maxus
+        let documentsFolderPath = documentsFolderURL.path
+        var urlsOfFile = documentsFolderURL.appendingPathComponent(file)
+        urlsOfFile.appendPath Extension("bin")
+        
+        //Folder Not existant
+        if !dfm.fileExists(atPath: documentsFolderPath){
+            do{
+                try dfm.createDirectory(at: documentsFolderURL, withIntermediateDirectories: true, attributes: nil)
+                
+            }catch{
+                print("could not create folder in Documents: \(error.localizedDescription)")
+                return false
+                
+            }
+            
+        }
+        
+        //escritura info de los producers
+        
+        var data:Data!
+        do{
+            
+            data = try NSKeyedArchiver.archivedData(withRootObject: producers, requiringSecureCoding: true)
+        }catch{
+            print("Could Not serialize producers: \(error.localizedDescription)")
+            return false
+        }
+        do{
+            try data.write(to: urlsOfFile)
+            
+        }catch{
+            print("could not write producers to binary file: \(error.localizedDescription)")
+            return false
+            
+        }
+        /*
+        debug posibility
+         */
+        return true
+    }
+    
+    
+    
+    
+    
+    
+    public func encode(with coder: NSCoder) {
+        coder.encode(producers, forKey: "producers")
+        coder.encode(allBeers, forKey: "allBeers")
+    }
+    
+    public required init?(coder decoder: NSCoder) {
+        self.producers = decoder.decodeObject(forKey: "producers") as! [Producer]
+        self.allBeers  = decoder.decodeObject(forKey: "allBeers") as! [Beer]
     }
     
     
