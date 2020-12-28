@@ -12,7 +12,7 @@ let pathToUnknownImage  = Bundle.main.url(forResource: "magier", withExtension: 
 let unknownImage = UIImage(contentsOfFile: pathToUnknownImage.path)
 
 
-public class Beer : NSObject, NSCodingn, NSSecureCoding{
+public class Beer : NSObject, NSCoding, NSSecureCoding{
     
     public static var supportsSecureCoding: Bool = true
     
@@ -70,7 +70,7 @@ public class Beer : NSObject, NSCodingn, NSSecureCoding{
         let tokens = record.components(separatedBy: del)
         
         guard
-            tokens.count == 10, //¿?
+            tokens.count == 10, // Number of elements to import from CSV
             let tempBeerName = tokens.first,
             !tempBeerName.isEmpty
         else {return nil}

@@ -41,9 +41,10 @@ public class Producer : NSObject, NSCoding, NSSecureCoding{
         guard
 
             let bits = splitIntoNameAndExtension(total: tempMark),//maxus
+            
             let pathToMark = Bundle.main.url(forResource: bits[0],withExtension: bits[1], subdirectory: "beerApp-photos"),
             dfm.fileExists(atPath: pathToMark.path),
-            let tempMarkImage = UIImage(contentsofFile: pathToMark.path)
+            let tempMarkImage = UIImage(contentsOfFile: pathToMark.path)
         else    { return nil }
 
         

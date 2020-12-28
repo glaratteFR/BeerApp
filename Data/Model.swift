@@ -24,7 +24,8 @@ public class Model : NSObject, NSCoding{
     
     public override init() {
         
-        let DOCS_URL = documentsUrl()//maxus
+        let DOCS_URL = documentsURL()// RGB Tools
+        
         let URL_OF_FOLDER_IN_DOCUMENTS =
             DOCS_URL.appendingPathComponent(NAME_OF_FOLDER_IN_DOCUMENTS)
         
@@ -37,8 +38,8 @@ public class Model : NSObject, NSCoding{
         var importProducers = false
         var importBeers = false
         
-        readBinProducers = readHousesInfosFromDocuments(url: URL_OF_PRODUCERS_BINARY_FILE)
-        
+        readBinProducers = readProducersInfosFromDocuments(url: URL_OF_PRODUCERS_BINARY_FILE)
+     
         /*
          Print for debug
          
@@ -64,18 +65,39 @@ public class Model : NSObject, NSCoding{
     
     
     func importBeersFromBundle(_ file:String, folder:String)->Bool{
-        
+       
         guard
-            let lines = bundleReadAallLinesFromFile(file,infolder: folder, withExtension: "txt"),
+            let lines = bundleReadAllLinesFromFile(file,inFolder: folder, withExtension: "txt"),
             !lines.isEmpty
             else {
             return false
         }
-        let importedBeers = lines.comctMap{Beer($0, delimiter: "\t") }
+        let importedBeers = lines.compactMap{Beer($0, "\t") }
         
         if !importedBeers.isEmpty{
             
-            self.producers = importedBeers
+            self.allBeers = importedBeers//siguiente mal¿
+            return true
+            
+        }else{
+            return false
+        }
+        
+    }
+    
+    func importProducersFromBundle(_ file:String, folder:String)->Bool{
+       
+        guard
+            let lines = bundleReadAllLinesFromFile(file,inFolder: folder, withExtension: "txt"),
+            !lines.isEmpty
+            else {
+            return false
+        }
+        let imortedProducers = lines.compactMap{Producer(record: $0, delimiter: "\t") }
+        
+        if !imortedProducers.isEmpty{
+            
+            self.producers = imortedProducers
             self.producers.forEach{ self.producersNamed.updateValue($0, forKey: $0.nameProducer)}//posible error nameProducer
             return true
             
@@ -116,7 +138,7 @@ public class Model : NSObject, NSCoding{
         let documentsFolderURL = documentsURL().appendingPathComponent(folder)//maxus
         let documentsFolderPath = documentsFolderURL.path
         var urlsOfFile = documentsFolderURL.appendingPathComponent(file)
-        urlsOfFile.appendPath Extension("bin")
+        urlsOfFile.appendPathExtension("bin")
         
         //Folder Not existant
         if !dfm.fileExists(atPath: documentsFolderPath){
