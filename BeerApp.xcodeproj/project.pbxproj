@@ -20,6 +20,9 @@
 		63935D73259880D8007D87DB /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D72259880D8007D87DB /* Beer.swift */; };
 		63935D782598959F007D87DB /* Producer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D772598959F007D87DB /* Producer.swift */; };
 		63935D7D2598A320007D87DB /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D7C2598A320007D87DB /* Model.swift */; };
+		63935D832599F42A007D87DB /* RGBiOSUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D822599F42A007D87DB /* RGBiOSUtilities.swift */; };
+		63935D882599F466007D87DB /* RGBiOSUtilitiesBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D872599F466007D87DB /* RGBiOSUtilitiesBundle.swift */; };
+		63935D8D2599F4A8007D87DB /* RGBiOSUtilitiesSandbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D8C2599F4A8007D87DB /* RGBiOSUtilitiesSandbox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		63935D72259880D8007D87DB /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
 		63935D772598959F007D87DB /* Producer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Producer.swift; sourceTree = "<group>"; };
 		63935D7C2598A320007D87DB /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		63935D822599F42A007D87DB /* RGBiOSUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBiOSUtilities.swift; sourceTree = "<group>"; };
+		63935D872599F466007D87DB /* RGBiOSUtilitiesBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBiOSUtilitiesBundle.swift; sourceTree = "<group>"; };
+		63935D8C2599F4A8007D87DB /* RGBiOSUtilitiesSandbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBiOSUtilitiesSandbox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +95,7 @@
 		63935CAB2597533B007D87DB = {
 			isa = PBXGroup;
 			children = (
+				63935D812599F3B4007D87DB /* RGB */,
 				63935D71259880BC007D87DB /* Data */,
 				63935D6325976CA3007D87DB /* Controllers */,
 				63935CB62597533B007D87DB /* BeerApp */,
@@ -157,6 +164,16 @@
 				63935D7C2598A320007D87DB /* Model.swift */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		63935D812599F3B4007D87DB /* RGB */ = {
+			isa = PBXGroup;
+			children = (
+				63935D822599F42A007D87DB /* RGBiOSUtilities.swift */,
+				63935D872599F466007D87DB /* RGBiOSUtilitiesBundle.swift */,
+				63935D8C2599F4A8007D87DB /* RGBiOSUtilitiesSandbox.swift */,
+			);
+			path = RGB;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,9 +309,12 @@
 			files = (
 				63935D7D2598A320007D87DB /* Model.swift in Sources */,
 				63935D6D25987F15007D87DB /* BeerViewController.swift in Sources */,
+				63935D832599F42A007D87DB /* RGBiOSUtilities.swift in Sources */,
 				63935CBC2597533B007D87DB /* ViewController.swift in Sources */,
+				63935D8D2599F4A8007D87DB /* RGBiOSUtilitiesSandbox.swift in Sources */,
 				63935D73259880D8007D87DB /* Beer.swift in Sources */,
 				63935D782598959F007D87DB /* Producer.swift in Sources */,
+				63935D882599F466007D87DB /* RGBiOSUtilitiesBundle.swift in Sources */,
 				63935CB82597533B007D87DB /* AppDelegate.swift in Sources */,
 				63935CBA2597533B007D87DB /* SceneDelegate.swift in Sources */,
 			);
