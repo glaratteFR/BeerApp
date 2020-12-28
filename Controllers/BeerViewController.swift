@@ -17,9 +17,8 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
     @IBOutlet weak var makerSelector: UIPickerView!
     */
     
-    //var model: Model? //Acceso a los datos
-    //var student:Student?
-    
+    var aModel: Model? //Acceso a los datos
+    var aBeer : Beer
     
     override func viewDidLoad() {
         super.viewDidLoad()

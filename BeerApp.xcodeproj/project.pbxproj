@@ -23,6 +23,7 @@
 		63935D832599F42A007D87DB /* RGBiOSUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D822599F42A007D87DB /* RGBiOSUtilities.swift */; };
 		63935D882599F466007D87DB /* RGBiOSUtilitiesBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D872599F466007D87DB /* RGBiOSUtilitiesBundle.swift */; };
 		63935D8D2599F4A8007D87DB /* RGBiOSUtilitiesSandbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D8C2599F4A8007D87DB /* RGBiOSUtilitiesSandbox.swift */; };
+		63935D922599FE6B007D87DB /* ProducerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D912599FE6B007D87DB /* ProducerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		63935D822599F42A007D87DB /* RGBiOSUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBiOSUtilities.swift; sourceTree = "<group>"; };
 		63935D872599F466007D87DB /* RGBiOSUtilitiesBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBiOSUtilitiesBundle.swift; sourceTree = "<group>"; };
 		63935D8C2599F4A8007D87DB /* RGBiOSUtilitiesSandbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBiOSUtilitiesSandbox.swift; sourceTree = "<group>"; };
+		63935D912599FE6B007D87DB /* ProducerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,7 +122,6 @@
 			children = (
 				63935CBD2597533B007D87DB /* Main.storyboard */,
 				63935D4A25975D77007D87DB /* Assets.xcassets */,
-				63935CB72597533B007D87DB /* AppDelegate.swift */,
 				63935CB92597533B007D87DB /* SceneDelegate.swift */,
 				63935CC22597533C007D87DB /* LaunchScreen.storyboard */,
 				63935CC52597533C007D87DB /* Info.plist */,
@@ -150,8 +151,10 @@
 		63935D6325976CA3007D87DB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				63935CB72597533B007D87DB /* AppDelegate.swift */,
 				63935CBB2597533B007D87DB /* ViewController.swift */,
 				63935D6C25987F15007D87DB /* BeerViewController.swift */,
+				63935D912599FE6B007D87DB /* ProducerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				63935D73259880D8007D87DB /* Beer.swift in Sources */,
 				63935D782598959F007D87DB /* Producer.swift in Sources */,
 				63935D882599F466007D87DB /* RGBiOSUtilitiesBundle.swift in Sources */,
+				63935D922599FE6B007D87DB /* ProducerViewController.swift in Sources */,
 				63935CB82597533B007D87DB /* AppDelegate.swift in Sources */,
 				63935CBA2597533B007D87DB /* SceneDelegate.swift in Sources */,
 			);
