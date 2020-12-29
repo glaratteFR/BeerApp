@@ -101,6 +101,7 @@
 		63935CAB2597533B007D87DB = {
 			isa = PBXGroup;
 			children = (
+				63935DA3259B60C6007D87DB /* Supporting Files */,
 				63935D812599F3B4007D87DB /* RGB */,
 				63935D71259880BC007D87DB /* Data */,
 				63935D6325976CA3007D87DB /* Controllers */,
@@ -183,6 +184,29 @@
 				63935D8C2599F4A8007D87DB /* RGBiOSUtilitiesSandbox.swift */,
 			);
 			path = RGB;
+			sourceTree = "<group>";
+		};
+		63935DA3259B60C6007D87DB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				63935DA5259B60F1007D87DB /* beerApp-data */,
+				63935DA4259B60D6007D87DB /* beerApp-fotos */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		63935DA4259B60D6007D87DB /* beerApp-fotos */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "beerApp-fotos";
+			sourceTree = "<group>";
+		};
+		63935DA5259B60F1007D87DB /* beerApp-data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "beerApp-data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -125,7 +125,7 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
             !tempPicture.isEmpty,
             let bits = splitIntoNameAndExtension(total: tempPicture),//maxus
             bits.count == 2,//¿?
-            let pathPicture = Bundle.main.url(forResource: bits[0], withExtension: bits[1],subdirectory: "beerApp-photos"),//subdirectorychange
+            let pathPicture = Bundle.main.url(forResource: bits[0], withExtension: bits[1],subdirectory: "beerApp-fotos"),//subdirectorychange
             FileManager.default.fileExists(atPath: pathPicture.path),
             let tempPictureImage = UIImage(contentsOfFile: pathPicture.path)
         else {return nil}

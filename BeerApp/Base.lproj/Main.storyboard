@@ -19,10 +19,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXa-zs-ouC">
                                 <rect key="frame" x="20" y="11" width="64" height="30"/>
                                 <state key="normal" title="Add Beer"/>
+                                <connections>
+                                    <action selector="addBeerAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f5j-ko-k5w"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4SX-Xm-UCQ">
                                 <rect key="frame" x="324" y="11" width="81" height="30"/>
                                 <state key="normal" title="Delete Beer"/>
+                                <connections>
+                                    <action selector="delBeerAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cbY-mh-BSw"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZvG-KD-PcW" customClass="I">
                                 <rect key="frame" x="0.0" y="49" width="414" height="687"/>
@@ -77,6 +83,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addBeerButt" destination="KXa-zs-ouC" id="xWp-16-5Zf"/>
+                        <outlet property="delBeerButt" destination="4SX-Xm-UCQ" id="WLh-np-Id1"/>
+                        <outlet property="tableView" destination="ZvG-KD-PcW" id="3Mh-OI-cQp"/>
                         <segue destination="DPV-TB-jrF" kind="show" identifier="segueToBeer" id="al6-Lo-4Ng"/>
                         <segue destination="mYT-ms-eo9" kind="show" identifier="segueToProducer" id="UAG-tJ-ex4"/>
                     </connections>
@@ -126,7 +135,6 @@
                             <constraint firstItem="4mD-es-xpF" firstAttribute="centerX" secondItem="xW0-Dm-jxw" secondAttribute="centerX" id="3Jr-2d-XKC"/>
                             <constraint firstItem="jk6-2L-hfS" firstAttribute="leading" secondItem="FFD-0z-oa3" secondAttribute="leading" constant="85" id="6mW-ej-Jvy"/>
                             <constraint firstItem="4mD-es-xpF" firstAttribute="leading" secondItem="FFD-0z-oa3" secondAttribute="leading" constant="68" id="DbV-IM-ov1"/>
-                            <constraint firstItem="FFD-0z-oa3" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9Uc-Cc-iI8" secondAttribute="trailing" symbolic="YES" id="JhR-9h-t5h"/>
                             <constraint firstItem="4mD-es-xpF" firstAttribute="centerX" secondItem="AvH-PK-U61" secondAttribute="centerX" id="LGe-dr-tEq"/>
                             <constraint firstItem="4mD-es-xpF" firstAttribute="top" secondItem="xW0-Dm-jxw" secondAttribute="bottom" constant="55" id="MMn-Rs-srZ"/>
                             <constraint firstItem="jk6-2L-hfS" firstAttribute="top" secondItem="FFD-0z-oa3" secondAttribute="top" constant="89" id="Sk4-pn-mZF"/>

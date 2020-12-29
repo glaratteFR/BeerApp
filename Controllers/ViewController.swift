@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
     
     
+    
+    
     @IBOutlet weak var addBeerButt: UIButton!
     @IBOutlet weak var delBeerButt: UIButton!
     @IBOutlet weak var tableView: UITableView!
