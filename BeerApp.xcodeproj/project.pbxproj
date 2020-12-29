@@ -24,6 +24,8 @@
 		63935D882599F466007D87DB /* RGBiOSUtilitiesBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D872599F466007D87DB /* RGBiOSUtilitiesBundle.swift */; };
 		63935D8D2599F4A8007D87DB /* RGBiOSUtilitiesSandbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D8C2599F4A8007D87DB /* RGBiOSUtilitiesSandbox.swift */; };
 		63935D922599FE6B007D87DB /* ProducerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D912599FE6B007D87DB /* ProducerViewController.swift */; };
+		63935D97259B5297007D87DB /* RowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D96259B5297007D87DB /* RowCell.swift */; };
+		63935D9C259B5381007D87DB /* TableSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D9B259B5381007D87DB /* TableSectionHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		63935D872599F466007D87DB /* RGBiOSUtilitiesBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBiOSUtilitiesBundle.swift; sourceTree = "<group>"; };
 		63935D8C2599F4A8007D87DB /* RGBiOSUtilitiesSandbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBiOSUtilitiesSandbox.swift; sourceTree = "<group>"; };
 		63935D912599FE6B007D87DB /* ProducerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerViewController.swift; sourceTree = "<group>"; };
+		63935D96259B5297007D87DB /* RowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowCell.swift; sourceTree = "<group>"; };
+		63935D9B259B5381007D87DB /* TableSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +159,8 @@
 				63935CBB2597533B007D87DB /* ViewController.swift */,
 				63935D6C25987F15007D87DB /* BeerViewController.swift */,
 				63935D912599FE6B007D87DB /* ProducerViewController.swift */,
+				63935D96259B5297007D87DB /* RowCell.swift */,
+				63935D9B259B5381007D87DB /* TableSectionHeader.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -311,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63935D7D2598A320007D87DB /* Model.swift in Sources */,
+				63935D9C259B5381007D87DB /* TableSectionHeader.swift in Sources */,
 				63935D6D25987F15007D87DB /* BeerViewController.swift in Sources */,
 				63935D832599F42A007D87DB /* RGBiOSUtilities.swift in Sources */,
 				63935CBC2597533B007D87DB /* ViewController.swift in Sources */,
@@ -318,6 +325,7 @@
 				63935D73259880D8007D87DB /* Beer.swift in Sources */,
 				63935D782598959F007D87DB /* Producer.swift in Sources */,
 				63935D882599F466007D87DB /* RGBiOSUtilitiesBundle.swift in Sources */,
+				63935D97259B5297007D87DB /* RowCell.swift in Sources */,
 				63935D922599FE6B007D87DB /* ProducerViewController.swift in Sources */,
 				63935CB82597533B007D87DB /* AppDelegate.swift in Sources */,
 				63935CBA2597533B007D87DB /* SceneDelegate.swift in Sources */,
