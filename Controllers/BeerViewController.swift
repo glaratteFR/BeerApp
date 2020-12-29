@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate{
+class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGestureRecognizerDelegate{
     
   
     
@@ -167,6 +167,7 @@ extension BeerViewController : UIPickerViewDataSource{
             else {
             return 0
         }
+        return numberRows
     }
     //??
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
