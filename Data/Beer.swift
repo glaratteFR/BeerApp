@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-let pathToUnknownImage  = Bundle.main.url(forResource: "magier", withExtension: "png")!//Magier place holder jorge?¿
+let pathToUnknownImage  = Bundle.main.url(forResource: "def", withExtension: "jpg")!//Magier place holder jorge?¿
 let unknownImage = UIImage(contentsOfFile: pathToUnknownImage.path)
 
 
