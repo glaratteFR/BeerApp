@@ -40,15 +40,15 @@ class ViewController: UIViewController {
          */
         
         let nib = UINib(nibName: TABLE_SECTION_HEADER, bundle: nil)
-        tableView.register(nib, forHeaderFooterViewResueIdentifier: TABLE_SECTION_HEADER)
-        
+   
+        tableView.register(nib, forHeaderFooterViewReuseIdentifier: TABLE_SECTION_HEADER)
 
     }//end viewDidLoad()
 
 
     @objc func appEnterBackGround(notification: NSNotification){
         if !model.writeProducersInfosToDocuments(model.NAME_OF_PRODUCERS_FILE_IN_DOCUMENTS, folder: model.NAME_OF_FOLDER_IN_DOCUMENTS){
-            notifyUser(self, alertTitle: "IO Error", alertMessage: "Error When Writting Producers", runOnOK: {_in})
+            notifyUser(self, alertTitle: "IO Error", alertMessage: "Error When Writting Producers", runOnOK: {_ in})
             
         }else{
             print("Producers Saved Correctly")
@@ -168,12 +168,11 @@ extension ViewController : UITableViewDataSource{
         
         //MAL CORREGIR
         if let pic = b?.pictureBeer{
-            cell.
-            
-        
+            cell.beerPic.image = pic
+
         }
         if let name = b?.nameBeer{
-            cell.
+            cell.beerLabel.text = name
         }
         return cell
         
@@ -183,15 +182,16 @@ extension ViewController : UITableViewDataSource{
         let producer = model.producers[section]
         let plainHeaderView = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: TABLE_SECTION_HEADER)
         plainHeaderView?.tag = section
-        let customHeaderView = plainHeaderView as! TableSectionHeader//???
+        let customHeaderView = plainHeaderView as! TableSectionHeader//??
         
-        customHeaderView.producernameLabel.text = producer.nameProducer//¿??
-        customHeaderView.logoProducer.image = producer.logoProducer//??
+        customHeaderView.producerNameLabel.text = producer.nameProducer//¿??
+        customHeaderView.producerImage.image = producer.logoProducer//??
         
         
         let tapRec = UITapGestureRecognizer(target: self,action: #selector(ViewController.jumpToProducerView(_:)))
         tapRec.numberOfTapsRequired = 1
-        customHeaderView.addGesturereconizer(tapRec)//=?¿??
+
+        customHeaderView.addGestureRecognizer(tapRec)//??
         
         return customHeaderView
     }
@@ -218,7 +218,7 @@ extension ViewController : UITableViewDataSource{
         case SEGUE_TO_BEER:
             let destController = segue.destination as! BeerViewController
             destController.aModel = model
-            destController.aBeer = sender as ? Beer
+            destController.aBeer = sender as? Beer
         default:
             break
         }

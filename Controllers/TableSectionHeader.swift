@@ -12,6 +12,6 @@ class TableSectionHeader: UITableViewHeaderFooterView{
     
     
 
-    @IBOutlet weak var ProducerNameLabel: UILabel!
+    @IBOutlet weak var producerNameLabel: UILabel!
     @IBOutlet weak var producerImage: UIImageView!
 }

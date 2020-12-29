@@ -157,9 +157,9 @@
 			children = (
 				63935CB72597533B007D87DB /* AppDelegate.swift */,
 				63935CBB2597533B007D87DB /* ViewController.swift */,
-				63935D6C25987F15007D87DB /* BeerViewController.swift */,
-				63935D912599FE6B007D87DB /* ProducerViewController.swift */,
 				63935D96259B5297007D87DB /* RowCell.swift */,
+				63935D912599FE6B007D87DB /* ProducerViewController.swift */,
+				63935D6C25987F15007D87DB /* BeerViewController.swift */,
 				63935D9B259B5381007D87DB /* TableSectionHeader.swift */,
 			);
 			path = Controllers;

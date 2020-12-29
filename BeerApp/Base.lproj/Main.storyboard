@@ -76,17 +76,21 @@
                             <constraint firstItem="4SX-Xm-UCQ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KXa-zs-ouC" secondAttribute="trailing" constant="8" symbolic="YES" id="xKh-se-xoO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="DPV-TB-jrF" kind="show" identifier="segueToBeer" id="al6-Lo-4Ng"/>
+                        <segue destination="mYT-ms-eo9" kind="show" identifier="segueToProducer" id="UAG-tJ-ex4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-45" y="121"/>
+            <point key="canvasLocation" x="-425" y="286"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="5YJ-a9-Mdg">
             <objects>
                 <viewController id="mYT-ms-eo9" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AvH-PK-U61">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Uc-Cc-iI8">
@@ -104,7 +108,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Num" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xW0-Dm-jxw">
-                                <rect key="frame" x="183" y="200" width="48" height="28"/>
+                                <rect key="frame" x="183" y="180" width="48" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -131,6 +135,7 @@
                             <constraint firstItem="jk6-2L-hfS" firstAttribute="centerX" secondItem="xW0-Dm-jxw" secondAttribute="centerX" id="yHW-Kg-vZP"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="GaI-Ny-700"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="okQ-Dn-N3A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -141,11 +146,11 @@
             <objects>
                 <viewController id="DPV-TB-jrF" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e07-Eg-jee">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGv-Wy-xt9">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1480"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQy-le-Aai">
                                         <rect key="frame" x="0.0" y="38" width="414" height="1462"/>
@@ -373,6 +378,7 @@
                             <constraint firstItem="bGv-Wy-xt9" firstAttribute="top" secondItem="PgI-ZS-bbW" secondAttribute="top" id="cg9-mP-YWZ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="NIB-ob-0z7"/>
                     <size key="freeformSize" width="414" height="1500"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9KP-dj-SRk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
