@@ -218,7 +218,7 @@ extension ViewController : UITableViewDataSource{
         case SEGUE_TO_BEER:
             let destController = segue.destination as! BeerViewController
             destController.aModel = model
-            destController.aBeer = sender as? Beer
+            destController.aBeer = sender as ? Beer
         default:
             break
         }
@@ -247,4 +247,5 @@ extension ViewController: UITableViewDelegate{
         return CGFloat.leastNormalMagnitude
     }
 }
+
 
