@@ -145,6 +145,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GaI-Ny-700"/>
+                    <connections>
+                        <outlet property="imageOfProducer" destination="4mD-es-xpF" id="xH4-rn-oV9"/>
+                        <outlet property="nameOfProducer" destination="jk6-2L-hfS" id="9Pd-Ro-sgl"/>
+                        <outlet property="numberOfBeers" destination="xW0-Dm-jxw" id="QnO-pf-6CG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="okQ-Dn-N3A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -354,11 +359,14 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="612-CC-qeE">
-                                        <rect key="frame" x="369" y="8" width="37" height="30"/>
+                                        <rect key="frame" x="369" y="28" width="37" height="30"/>
                                         <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="acceptAcceptAndReturn:" destination="DPV-TB-jrF" eventType="touchUpInside" id="qwS-dE-bnK"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEn-Zr-8Oe">
-                                        <rect key="frame" x="15" y="8" width="34" height="30"/>
+                                        <rect key="frame" x="15" y="28" width="34" height="30"/>
                                         <state key="normal" title="Back"/>
                                     </button>
                                 </subviews>
@@ -389,6 +397,19 @@
                     </view>
                     <navigationItem key="navigationItem" id="NIB-ob-0z7"/>
                     <size key="freeformSize" width="414" height="1500"/>
+                    <connections>
+                        <outlet property="beerImageFrame" destination="skq-IZ-7Xh" id="1ZV-05-v21"/>
+                        <outlet property="capText" destination="aRu-3t-t75" id="2e4-hc-w8P"/>
+                        <outlet property="expDText" destination="dn3-WM-0fb" id="Qcr-Cb-zAL"/>
+                        <outlet property="ibuText" destination="hHp-jd-kKk" id="R5P-0q-WJx"/>
+                        <outlet property="idText" destination="OEm-a0-e05" id="gHf-Vh-8HZ"/>
+                        <outlet property="nameText" destination="yfr-3c-ljL" id="3Rw-Lp-7Jh"/>
+                        <outlet property="nationalityText" destination="Yqf-x5-WwN" id="mkx-3e-WbA"/>
+                        <outlet property="producerSelector" destination="Ft2-Jh-GgD" id="ymQ-TR-uml"/>
+                        <outlet property="producerText" destination="GFe-oC-Rgx" id="8xa-Fl-gVF"/>
+                        <outlet property="rateText" destination="Nq9-4S-Fme" id="FVX-Um-LP3"/>
+                        <outlet property="volDText" destination="b7R-QZ-vEu" id="aM6-Jp-rMF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9KP-dj-SRk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
