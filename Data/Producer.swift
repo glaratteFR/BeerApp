@@ -47,6 +47,7 @@ public class Producer : NSObject, NSCoding, NSSecureCoding{
         let trimed = namePicProducerSpaced.replacingOccurrences(of: "\\s*",
                                                 with: "$1",
                                                 options: [.regularExpression])
+        print("#EMPEZAMOS CON IMAGEN")
         var tempMarkImage : UIImage?
         if
 
@@ -60,17 +61,19 @@ public class Producer : NSObject, NSCoding, NSSecureCoding{
             print("Assigned specific photo")}else    {
             print("#Problem with picture --> \(trimed.lowercased())")
             if
-                let pathToMark = Bundle.main.url(forResource:"defaultPic",withExtension: "png", subdirectory: "beerApp-fotos"),
+                let pathToMark = Bundle.main.url(forResource:"defaultPic",withExtension: "png"),
                 dfm.fileExists(atPath: pathToMark.path)
                 
-            {tempMarkImage = UIImage(contentsOfFile: pathToMark.path)}else{return nil}
+            {tempMarkImage = UIImage(contentsOfFile: pathToMark.path)}else{
+                print("                                             #PROBLEMA  ")
+                return nil}
             //return nil }
 
         }
-
+        print("#ACABAMOS CON IMAGEN")
         self.nameProducer = tempNameProducer
         self.logoProducer = tempMarkImage
-    
+        print("#nameProducer  --> \(self.nameProducer) ")
 
     }
     

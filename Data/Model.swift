@@ -170,6 +170,7 @@ public class Model : NSObject, NSCoding{
         print("#FILE  --> \(lines) ")
         let imortedProducers = lines!.compactMap{Producer(record: $0, delimiter: "\t") }//Pasa cada linea al constructor y puebla el nombre del producer y la foto
         print("#SALTO A IMPORT FROM CSV POST READ ALL LINES")
+        print("#IMPORTED PRODUCERS  --> \(imortedProducers) ")
         if !imortedProducers.isEmpty{
             
             self.producers = imortedProducers
