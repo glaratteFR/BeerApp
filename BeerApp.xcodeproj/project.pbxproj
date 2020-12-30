@@ -27,7 +27,9 @@
 		63935D97259B5297007D87DB /* RowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D96259B5297007D87DB /* RowCell.swift */; };
 		63935D9C259B5381007D87DB /* TableSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D9B259B5381007D87DB /* TableSectionHeader.swift */; };
 		63935DB2259B6A0D007D87DB /* def.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63935DB1259B6A0D007D87DB /* def.jpg */; };
-		63935DBC259B6BCE007D87DB /* defaultbeer.csv in Resources */ = {isa = PBXBuildFile; fileRef = 63935DBB259B6BCE007D87DB /* defaultbeer.csv */; };
+		63935DC4259CA934007D87DB /* jorge.txt in Resources */ = {isa = PBXBuildFile; fileRef = 63935DC3259CA934007D87DB /* jorge.txt */; };
+		63935DE9259CB3D5007D87DB /* defaultPic.png in Resources */ = {isa = PBXBuildFile; fileRef = 63935DE8259CB3D5007D87DB /* defaultPic.png */; };
+		63935E01259CB6B2007D87DB /* defaultbeer.csv in Resources */ = {isa = PBXBuildFile; fileRef = 63935E00259CB6B2007D87DB /* defaultbeer.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +76,9 @@
 		63935D96259B5297007D87DB /* RowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowCell.swift; sourceTree = "<group>"; };
 		63935D9B259B5381007D87DB /* TableSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionHeader.swift; sourceTree = "<group>"; };
 		63935DB1259B6A0D007D87DB /* def.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = def.jpg; sourceTree = "<group>"; };
-		63935DBB259B6BCE007D87DB /* defaultbeer.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = defaultbeer.csv; sourceTree = "<group>"; };
+		63935DC3259CA934007D87DB /* jorge.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = jorge.txt; sourceTree = "<group>"; };
+		63935DE8259CB3D5007D87DB /* defaultPic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultPic.png; sourceTree = "<group>"; };
+		63935E00259CB6B2007D87DB /* defaultbeer.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = defaultbeer.csv; path = "../../../../../../Documents/App/beerApp-data/defaultbeer.csv"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +177,7 @@
 		63935D71259880BC007D87DB /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				63935DC3259CA934007D87DB /* jorge.txt */,
 				63935D72259880D8007D87DB /* Beer.swift */,
 				63935D772598959F007D87DB /* Producer.swift */,
 				63935D7C2598A320007D87DB /* Model.swift */,
@@ -202,6 +207,7 @@
 		63935DA4259B60D6007D87DB /* beerApp-fotos */ = {
 			isa = PBXGroup;
 			children = (
+				63935DE8259CB3D5007D87DB /* defaultPic.png */,
 				63935DB1259B6A0D007D87DB /* def.jpg */,
 			);
 			path = "beerApp-fotos";
@@ -210,7 +216,7 @@
 		63935DA5259B60F1007D87DB /* beerApp-data */ = {
 			isa = PBXGroup;
 			children = (
-				63935DBB259B6BCE007D87DB /* defaultbeer.csv */,
+				63935E00259CB6B2007D87DB /* defaultbeer.csv */,
 			);
 			path = "beerApp-data";
 			sourceTree = "<group>";
@@ -319,10 +325,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				63935D6825976DAA007D87DB /* SectionHeader.xib in Resources */,
+				63935DC4259CA934007D87DB /* jorge.txt in Resources */,
+				63935DE9259CB3D5007D87DB /* defaultPic.png in Resources */,
 				63935CC42597533C007D87DB /* LaunchScreen.storyboard in Resources */,
+				63935E01259CB6B2007D87DB /* defaultbeer.csv in Resources */,
 				63935DB2259B6A0D007D87DB /* def.jpg in Resources */,
 				63935D4B25975D77007D87DB /* Assets.xcassets in Resources */,
-				63935DBC259B6BCE007D87DB /* defaultbeer.csv in Resources */,
 				63935CBF2597533B007D87DB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

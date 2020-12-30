@@ -13,8 +13,10 @@ public class Model : NSObject, NSCoding{
     let NAME_OF_FOLDER_IN_BUNDLE = "beerApp-data"
     let NAME_OF_BEER_FILE_IN_BUNDLE = "data-of-beers"
     let NAME_OF_PRODUCER_FILE_IN_BUNDLE = "data-of-producers"
-    let NAME_OF_FOLDER_IN_DOCUMENTS = "DataOfBeerApp"
-    let NAME_OF_PRODUCERS_FILE_IN_DOCUMENTS = "FileOfProducers"
+    
+    let NAME_OF_FOLDER_IN_DOCUMENTS = "Supporting Files"//supportingfiles? carpeta contenedorta //Supporting Files //DataOfBeerApp
+    let NAME_OF_PRODUCERS_FILE_IN_DOCUMENTS = "FileOfProducers"// archivo binario
+
     
     public var producers:[Producer]
     public var allBeers:[Beer]
@@ -34,23 +36,33 @@ public class Model : NSObject, NSCoding{
         producers = [Producer]()
         allBeers = [Beer]()
         super.init()
-        var readBinProducers = false
+        var readBinProducers = false//existen archivos de un arranque anterior?
         var importProducers = false
         var importBeers = false
         
-        readBinProducers = readProducersInfosFromDocuments(url: URL_OF_PRODUCERS_BINARY_FILE)
-     
+        
+        //COMIENZO DE LECTURA
+        
+        readBinProducers = readProducersInfosFromDocuments(url: URL_OF_PRODUCERS_BINARY_FILE) //Intento de lectura de archivo binario La app ya fue arrancada
+        //First boot readBinProducers = false
+        
+        
         /*
          Print for debug
          
          */
         
         
-        if !readBinProducers{
-            importProducers = importProducersFromBundle(NAME_OF_PRODUCER_FILE_IN_BUNDLE, folder: NAME_OF_FOLDER_IN_BUNDLE)//donde esta import from bundle
+        if !readBinProducers{//if first boot
+          
+            importProducers = importProducersFromCsv("defaultbeer", folder: NAME_OF_FOLDER_IN_DOCUMENTS)
+            //importProducers = importProducersFromCsv("defaultbeer", folder: NAME_OF_FOLDER_IN_BUNDLE)
+            
             
             producers.forEach{ producersNamed.updateValue($0, forKey: $0.nameProducer)}
-            importBeers = importBeersFromBundle(NAME_OF_PRODUCER_FILE_IN_BUNDLE, folder: NAME_OF_FOLDER_IN_BUNDLE)
+            importBeers = importBeersFromCsv(NAME_OF_PRODUCER_FILE_IN_BUNDLE, folder: NAME_OF_FOLDER_IN_BUNDLE)
+            print("#Read producers --> \(importProducers)")
+            print("#Read beers --> \(importBeers)")
             assert(importProducers && importBeers)
             producers.forEach{ $0.beersCollect = [Beer]()}
             allBeers.forEach{producersNamed[$0.producerBeer]?.beersCollect?.append($0)}
@@ -85,14 +97,38 @@ public class Model : NSObject, NSCoding{
         
     }
     
-    func importProducersFromBundle(_ file:String, folder:String)->Bool{
+    func importBeersFromCsv(_ file:String, folder:String)->Bool{
        
         guard
+            let lines = bundleReadAllLinesFromFile(file,inFolder: folder, withExtension: "csv"),
+            !lines.isEmpty
+            else {
+            return false
+        }
+        let importedBeers = lines.compactMap{Beer($0, "\t") }
+        
+        if !importedBeers.isEmpty{
+            
+            self.allBeers = importedBeers//siguiente mal¿
+            return true
+            
+        }else{
+            return false
+        }
+        
+    }
+    
+    func importProducersFromBundle(_ file:String, folder:String)->Bool{
+        
+       
+        guard
+            //Read file and parse by /n
             let lines = bundleReadAllLinesFromFile(file,inFolder: folder, withExtension: "txt"),
             !lines.isEmpty
             else {
             return false
         }
+        //parse by tab
         let imortedProducers = lines.compactMap{Producer(record: $0, delimiter: "\t") }
         
         if !imortedProducers.isEmpty{
@@ -106,6 +142,48 @@ public class Model : NSObject, NSCoding{
         }
         
     }
+    
+    
+    //Jorge
+    func importProducersFromCsv(_ file:String, folder:String)->Bool{
+       print("#SALTO A IMPORT FROM CSV")
+        /*let filePath = Bundle.main.path(forResource: "defaultbeer", ofType: "csv")
+        print("#BUNDLE  --> \(filePath) ")
+       let textContent = try! String(contentsOfFile: filePath!,
+                                  encoding: String.Encoding.utf8)
+       print("#text  --> \(textContent) ")*/
+        let path = Bundle.main.path(forResource: "defaultbeer", ofType: "csv")
+        let line = try! String(contentsOfFile: path!, encoding: String.Encoding.utf8)
+        guard
+            //Read file and parse by /n
+            //let lines = bundleReadAllLinesFromFile("defaultbeer",inFolder: "Supporting Files", withExtension: "csv"),
+            
+            
+            !line.isEmpty
+            else {
+            print("#Problem  --> \(file)  +  \(folder)")
+            return false
+        }
+        
+        //parse by tab
+        let lines :[String]? = line.components(separatedBy: "\n")
+        print("#FILE  --> \(lines) ")
+        let imortedProducers = lines!.compactMap{Producer(record: $0, delimiter: "\t") }//Pasa cada linea al constructor y puebla el nombre del producer y la foto
+        print("#SALTO A IMPORT FROM CSV POST READ ALL LINES")
+        if !imortedProducers.isEmpty{
+            
+            self.producers = imortedProducers
+            self.producers.forEach{ self.producersNamed.updateValue($0, forKey: $0.nameProducer)}//posible error nameProducer
+            return true
+            
+        }else{
+            return false
+        }
+        
+    }
+    
+    
+    
     
     func readProducersInfosFromDocuments(url: URL)->Bool{
         var d:Data!
