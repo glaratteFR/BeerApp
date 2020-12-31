@@ -64,7 +64,9 @@ public class Producer : NSObject, NSCoding, NSSecureCoding{
                 let pathToMark = Bundle.main.url(forResource:"defaultPic",withExtension: "png"),
                 dfm.fileExists(atPath: pathToMark.path)
                 
-            {tempMarkImage = UIImage(contentsOfFile: pathToMark.path)}else{
+            {tempMarkImage = UIImage(contentsOfFile: pathToMark.path)
+                
+            }else{
                 print("                                             #PROBLEMA  ")
                 return nil}
             //return nil }

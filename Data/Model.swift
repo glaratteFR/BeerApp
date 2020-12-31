@@ -42,10 +42,10 @@ public class Model : NSObject, NSCoding{
         
         
         //COMIENZO DE LECTURA
-        
+        print("INTENTO DE CARGA DE BINARIO")
         readBinProducers = readProducersInfosFromDocuments(url: URL_OF_PRODUCERS_BINARY_FILE) //Intento de lectura de archivo binario La app ya fue arrancada
         //First boot readBinProducers = false
-        
+        print(URL_OF_PRODUCERS_BINARY_FILE)
         
         /*
          Print for debug
@@ -69,9 +69,20 @@ public class Model : NSObject, NSCoding{
             
             
         }
+        var index = 0
+        self.producers.removeAll()
+        self.producersNamed.forEach{self.producers.append($0.value); index = index+1}
         
+        /*
+        print("********************")
+        print(producers.count)
+        print(producers[0].nameProducer)
+        print(producers[0].beersCollect?[].nameBeer)
+        */
         producers.forEach{$0.beersCollect?.sort(by: {($0.nameBeer) < ($1.nameBeer)})}
-        
+        print("********************")
+        print(producers.count)
+
         
     }//end init model
     
@@ -195,6 +206,7 @@ public class Model : NSObject, NSCoding{
     func readProducersInfosFromDocuments(url: URL)->Bool{
         var d:Data!
         var x:Any?
+        print("SALTO A READPRODUCERS INFO FROM DOC")
         do{
             d = try Data(contentsOf: url)
             
@@ -205,8 +217,10 @@ public class Model : NSObject, NSCoding{
         do{
             x = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(d)
             producers = x as! [Producer]
-            self.producers.forEach{self.producersNamed.updateValue($0, forKey: $0.nameProducer)}
-            
+
+            self.producers.forEach{self.producersNamed.updateValue($0, forKey: $0.nameProducer);print($0.nameProducer)}
+            print(producersNamed["Cervezas Segovia S.L."]?.beersCollect![1].nameBeer)
+            //****************************************************************************
         }catch{
             
             print("infor  in data could not be parsed because \(error.localizedDescription)")
@@ -219,15 +233,16 @@ public class Model : NSObject, NSCoding{
     
     public func writeProducersInfosToDocuments(_ file: String, folder:String)->Bool{
         
-        
+        print("#SALTO A WRITEPRODUCERSINFOTODOCUMENTS")
         let documentsFolderURL = documentsURL().appendingPathComponent(folder)//maxus
         let documentsFolderPath = documentsFolderURL.path
         var urlsOfFile = documentsFolderURL.appendingPathComponent(file)
         urlsOfFile.appendPathExtension("bin")
-        
+        print("Doc Path --> \(documentsFolderPath)")
         //Folder Not existant
         if !dfm.fileExists(atPath: documentsFolderPath){
             do{
+                print("No existe")
                 try dfm.createDirectory(at: documentsFolderURL, withIntermediateDirectories: true, attributes: nil)
                 
             }catch{
@@ -239,7 +254,7 @@ public class Model : NSObject, NSCoding{
         }
         
         //escritura info de los producers
-        
+        print("#SALTO A escritura producers")
         var data:Data!
         do{
             

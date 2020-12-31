@@ -33,15 +33,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.appEnterBackGround(notification:)), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.appEnterBackGround(notification:)), name: UIApplication.didEnterBackgroundNotification, object: nil)//When app goes background/ends saves data
         
-        self.editingStyle = UITableViewCell.EditingStyle.none
-        
+        self.editingStyle = UITableViewCell.EditingStyle.none//Look up style
+        print("%Editing style  None")
         /*
          Posibilidad debug
          */
         
-        let nib = UINib(nibName: TABLE_SECTION_HEADER, bundle: nil)
+        let nib = UINib(nibName: TABLE_SECTION_HEADER, bundle: nil)//?¿
    
         tableView.register(nib, forHeaderFooterViewReuseIdentifier: TABLE_SECTION_HEADER)
 
@@ -49,21 +49,24 @@ class ViewController: UIViewController {
 
 
     @objc func appEnterBackGround(notification: NSNotification){
+        print("%App passed to background")
         if !model.writeProducersInfosToDocuments(model.NAME_OF_PRODUCERS_FILE_IN_DOCUMENTS, folder: model.NAME_OF_FOLDER_IN_DOCUMENTS){
             notifyUser(self, alertTitle: "IO Error", alertMessage: "Error When Writting Producers", runOnOK: {_ in})
             
         }else{
-            print("Producers Saved Correctly")
+            print("%Producers Saved Correctly")
             
         }
          
     }
     
-    @IBAction func returnfromDetail(segue:UIStoryboardSegue)->Void{
+    @IBAction func returnfromDetail(segue:UIStoryboardSegue)->Void{//Method for returning from Segues
         model.producers.forEach{ b in b.beersCollect?.sort(by: {($0.nameBeer) < ($1.nameBeer)})}
         tableView.reloadData()
     }
     
+    
+    //Functions for buttons
     @IBAction func addBeerAct(_ sender: Any){
         print("             #Vamos a añadir una cerveza")
         if self.editingStyle == UITableViewCell.EditingStyle.none{
@@ -107,13 +110,15 @@ class ViewController: UIViewController {
         
     }
     
-    
+    //Return for a given moment the sate of table (editing, none...)
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle{
-        return self.editingStyle ?? .none
+        //return self.editingStyle ?? .none
+        return self.editingStyle!
         
 
     }
     
+    //The producer affected by deletion or addition
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
         let section = indexPath.section
         let row = indexPath.row
@@ -126,7 +131,7 @@ class ViewController: UIViewController {
             let b = Beer()
             b.producerBeer = producer.nameProducer
             
-            //add to porducer
+            //add to porducer list
             producer.beersCollect?.insert(b, at: row + 1)
             producer.beersCollect?.sort(by: {($0.nameBeer) < ($1.nameBeer)})
             
@@ -146,6 +151,7 @@ class ViewController: UIViewController {
 }//end view controller class
 
 
+
 extension ViewController : UITableViewDataSource{
     
     //section for ech producer
@@ -160,28 +166,31 @@ extension ViewController : UITableViewDataSource{
         return producer.beersCollect?.count ?? 0
     }
     
+    //Cell for eachRow
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       print("METODO TABLEVIEW DATA-SOURCE")
         let producerNum = indexPath.section
         let producer = model.producers[producerNum]
         
         let b = producer.beersCollect?[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ROW_CELL) as! RowCell
-        
+        cell.beerLabel.text = "HOOOOOLA"
         
         //MAL CORREGIR
         if let pic = b?.pictureBeer{
             cell.beerPic.image = pic
-
+            
         }
         if let name = b?.nameBeer{
-            cell.beerLabel.text = name
+            //cell.beerLabel.text = name
+            cell.beerLabel.text = "HOOOOOLA"
             print("%Label --> \(cell.beerLabel.text)")
         }
         return cell
         
     }
-    
+    //Give form of headers
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let producer = model.producers[section]
         let plainHeaderView = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: TABLE_SECTION_HEADER)
@@ -190,7 +199,7 @@ extension ViewController : UITableViewDataSource{
         
         customHeaderView.producerNameLabel.text = producer.nameProducer//¿??
         customHeaderView.producerImage.image = producer.logoProducer//??
-        
+        customHeaderView.producerNameLabel.text = "EEEEOOOOo"
         
         let tapRec = UITapGestureRecognizer(target: self,action: #selector(ViewController.jumpToProducerView(_:)))
         tapRec.numberOfTapsRequired = 1
@@ -208,7 +217,7 @@ extension ViewController : UITableViewDataSource{
                 else {
                 return
             }
-            performSegue(withIdentifier: "segueToProducersView", sender: model.producers[n])
+            performSegue(withIdentifier: SEGUE_TO_PRODUCER, sender: model.producers[n])
         }
         
     }
@@ -241,7 +250,7 @@ extension ViewController: UITableViewDelegate{
         
     }
     
-    func tableView(_ tableView: UITableView, _ indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44.0
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
