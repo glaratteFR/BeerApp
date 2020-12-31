@@ -98,18 +98,24 @@ public class Model : NSObject, NSCoding{
     }
     
     func importBeersFromCsv(_ file:String, folder:String)->Bool{
-       
+        print("#SALTO A IMPORT FROM CSV BEERS")
+        let path = Bundle.main.path(forResource: "defaultbeer", ofType: "csv")
+        let line = try! String(contentsOfFile: path!, encoding: String.Encoding.utf8)
         guard
-            let lines = bundleReadAllLinesFromFile(file,inFolder: folder, withExtension: "csv"),
-            !lines.isEmpty
+            //let lines = bundleReadAllLinesFromFile(file,inFolder: folder, withExtension: "csv"),
+            !line.isEmpty
             else {
+            print("#Problem  --> \(file)  +  \(folder)")
             return false
         }
-        let importedBeers = lines.compactMap{Beer($0, "\t") }
+        print("#BEERS LEIDAS")
+        let lines :[String]? = line.components(separatedBy: "\n")
+        let importedBeers = lines!.compactMap{Beer($0, "\t") }
         
         if !importedBeers.isEmpty{
-            
+            print("#BEERS CONSTRUIDAS")
             self.allBeers = importedBeers//siguiente mal¿
+            print("#IMPORTED BEERS  --> \(importedBeers) ")
             return true
             
         }else{

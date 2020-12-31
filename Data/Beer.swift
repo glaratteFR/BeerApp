@@ -68,15 +68,18 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
     
     init?(_ record: String, _ del: String) {
         let tokens = record.components(separatedBy: del)
-        
+        print("#SALTO A CLASE BEER")
         guard
-            tokens.count == 10, // Number of elements to import from CSV
+            tokens.count == 11, // Number of elements to import from CSV
             let tempBeerName = tokens.first,
             !tempBeerName.isEmpty
-        else {return nil}
+        else {            print("#Problem with tokens --> \(tokens.count)")
+            print("#Problem with  --> \(tokens[0])")
+            return nil}
         
         let tempTypeBeer = tokens[1]
         guard !tempTypeBeer.isEmpty else {
+
             return nil
         }
         
@@ -121,6 +124,8 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
         }
         
         let tempPicture = tokens[10]
+        
+        /*
         guard
             !tempPicture.isEmpty,
             let bits = splitIntoNameAndExtension(total: tempPicture),//maxus
@@ -128,7 +133,36 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
             let pathPicture = Bundle.main.url(forResource: bits[0], withExtension: bits[1],subdirectory: "beerApp-fotos"),//subdirectorychange
             FileManager.default.fileExists(atPath: pathPicture.path),
             let tempPictureImage = UIImage(contentsOfFile: pathPicture.path)
-        else {return nil}
+        else {print("#Problem with photo --> \(tokens[0])")
+            return nil}
+        
+        */
+        
+        let namePicProducerSpaced = tokens[2]
+        let trimed = namePicProducerSpaced.replacingOccurrences(of: "\\s*",
+                                                with: "$1",
+                                                options: [.regularExpression])
+        
+        var tempMarkImage : UIImage?
+        if
+
+            //let bits = splitIntoNameAndExtension(total: tempMark),//maxus
+        
+            //goes for pic
+            let pathToMark = Bundle.main.url(forResource: trimed.lowercased(),withExtension: "png", subdirectory: "beerApp-fotos")
+             
+        {   tempMarkImage = UIImage(contentsOfFile: pathToMark.path)
+            print("Assigned specific photo")}else    {
+            print("#Problem with picture --> \(trimed.lowercased())")
+            if
+                let pathToMark = Bundle.main.url(forResource:"def",withExtension: "jpg")
+                
+            {tempMarkImage = UIImage(contentsOfFile: pathToMark.path)}else{
+                print("                                             #PROBLEMA  ")
+                return nil}
+            //return nil }
+
+        }
         
         self.nameBeer = tempBeerName
         self.typeBeer = tempTypeBeer
@@ -140,7 +174,7 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
         self.IDBeer = tempIdBeer
         self.IBUBeer = tempIbuBeer
         self.volBeer = tempVolBeer
-        self.pictureBeer = tempPictureImage
+        self.pictureBeer = tempMarkImage
         
     }
     
