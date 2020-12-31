@@ -65,10 +65,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func addBeerAct(_ sender: Any){
-        
+        print("             #Vamos a añadir una cerveza")
         if self.editingStyle == UITableViewCell.EditingStyle.none{
-            
-            
+            print("             #Estilo de edit activado")
+            print("%Number of beers --> \(model.allBeers.count)")
                 self.editingStyle = .insert
                 addBeerButt.setTitle("Done", for: .normal)//¿?¿ Posible error
                 delBeerButt.isEnabled = false
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
                 self.editingStyle = UITableViewCell.EditingStyle.none
                 delBeerButt.isEnabled = true
                 addBeerButt.setTitle("Add Beer", for: .normal)//¿?¿ Posible error
-                tableView.setEditing(true, animated: true)
+                tableView.setEditing(false, animated: true)
                 
             }
         
@@ -101,7 +101,7 @@ class ViewController: UIViewController {
                 self.editingStyle = UITableViewCell.EditingStyle.none
                 addBeerButt.isEnabled = true
                 delBeerButt.setTitle("Remove Beer", for: .normal)//¿?¿ Posible error
-                tableView.setEditing(true, animated: true)
+                tableView.setEditing(false, animated: true)
                 
             }
         
@@ -150,6 +150,7 @@ extension ViewController : UITableViewDataSource{
     
     //section for ech producer
     func numSect(in tableView: UITableView) -> Int{
+        print("%Number of sections --> \(model.producers.count)")
         return model.producers.count
     }
     //number of beers for producer
@@ -175,6 +176,7 @@ extension ViewController : UITableViewDataSource{
         }
         if let name = b?.nameBeer{
             cell.beerLabel.text = name
+            print("%Label --> \(cell.beerLabel.text)")
         }
         return cell
         

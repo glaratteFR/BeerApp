@@ -30,11 +30,11 @@
                                     <action selector="delBeerAct:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cbY-mh-BSw"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZvG-KD-PcW" customClass="I">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZvG-KD-PcW">
                                 <rect key="frame" x="0.0" y="49" width="414" height="687"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="pCm-pI-20E">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SectionHeader" id="pCm-pI-20E">
                                         <rect key="frame" x="0.0" y="28" width="414" height="42.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pCm-pI-20E" id="Pi6-aj-zmf">
@@ -92,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-425" y="286"/>
+            <point key="canvasLocation" x="-829" y="-73"/>
         </scene>
         <!--Producer View Controller-->
         <scene sceneID="5YJ-a9-Mdg">
@@ -134,13 +134,16 @@
                         <constraints>
                             <constraint firstItem="4mD-es-xpF" firstAttribute="centerX" secondItem="xW0-Dm-jxw" secondAttribute="centerX" id="3Jr-2d-XKC"/>
                             <constraint firstItem="jk6-2L-hfS" firstAttribute="leading" secondItem="FFD-0z-oa3" secondAttribute="leading" constant="85" id="6mW-ej-Jvy"/>
+                            <constraint firstItem="FFD-0z-oa3" firstAttribute="trailing" secondItem="9Uc-Cc-iI8" secondAttribute="trailing" constant="352" id="CLO-fx-SLY"/>
                             <constraint firstItem="4mD-es-xpF" firstAttribute="leading" secondItem="FFD-0z-oa3" secondAttribute="leading" constant="68" id="DbV-IM-ov1"/>
                             <constraint firstItem="4mD-es-xpF" firstAttribute="centerX" secondItem="AvH-PK-U61" secondAttribute="centerX" id="LGe-dr-tEq"/>
                             <constraint firstItem="4mD-es-xpF" firstAttribute="top" secondItem="xW0-Dm-jxw" secondAttribute="bottom" constant="55" id="MMn-Rs-srZ"/>
                             <constraint firstItem="jk6-2L-hfS" firstAttribute="top" secondItem="FFD-0z-oa3" secondAttribute="top" constant="89" id="Sk4-pn-mZF"/>
-                            <constraint firstItem="9Uc-Cc-iI8" firstAttribute="top" secondItem="FFD-0z-oa3" secondAttribute="top" constant="20" id="eMp-7F-sle"/>
-                            <constraint firstItem="9Uc-Cc-iI8" firstAttribute="leading" secondItem="FFD-0z-oa3" secondAttribute="leading" constant="26" id="n6T-5z-EbZ"/>
+                            <constraint firstItem="9Uc-Cc-iI8" firstAttribute="leading" secondItem="FFD-0z-oa3" secondAttribute="leading" constant="26" id="Ytn-5i-WSC"/>
+                            <constraint firstItem="9Uc-Cc-iI8" firstAttribute="top" secondItem="FFD-0z-oa3" secondAttribute="top" constant="20" id="aUt-M3-NQd"/>
                             <constraint firstItem="FFD-0z-oa3" firstAttribute="bottom" secondItem="4mD-es-xpF" secondAttribute="bottom" constant="179" id="oXd-A8-cv9"/>
+                            <constraint firstItem="9Uc-Cc-iI8" firstAttribute="top" secondItem="FFD-0z-oa3" secondAttribute="top" constant="20" id="sXM-Bn-zxs"/>
+                            <constraint firstItem="9Uc-Cc-iI8" firstAttribute="leading" secondItem="FFD-0z-oa3" secondAttribute="leading" constant="26" id="wZJ-n7-7A6"/>
                             <constraint firstItem="jk6-2L-hfS" firstAttribute="centerX" secondItem="xW0-Dm-jxw" secondAttribute="centerX" id="yHW-Kg-vZP"/>
                         </constraints>
                     </view>
@@ -414,63 +417,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9KP-dj-SRk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="717" y="550"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="vml-YT-mLs">
-            <objects>
-                <viewController id="8Tu-vo-3KI" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oA2-FM-a3e">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0qv-YL-eR6">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ewe-i1-wHp">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1500"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k7L-90-lqV">
-                                                <rect key="frame" x="184" y="1322" width="46" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="Button"/>
-                                            </button>
-                                        </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="1500" id="Lph-rs-Jpp"/>
-                                        </constraints>
-                                    </view>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7X-9Q-QJd">
-                                        <rect key="frame" x="184" y="90" width="46" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Ewe-i1-wHp" secondAttribute="trailing" id="0os-rP-cyr"/>
-                                    <constraint firstItem="Ewe-i1-wHp" firstAttribute="leading" secondItem="0qv-YL-eR6" secondAttribute="leading" id="M8w-gM-hFr"/>
-                                    <constraint firstItem="Ewe-i1-wHp" firstAttribute="centerX" secondItem="0qv-YL-eR6" secondAttribute="centerX" id="Ngc-B4-SU6"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ewe-i1-wHp" secondAttribute="bottom" id="REf-fd-p47"/>
-                                    <constraint firstItem="Ewe-i1-wHp" firstAttribute="top" secondItem="pSI-KJ-7zM" secondAttribute="top" id="RM8-lx-UGt"/>
-                                </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="pSI-KJ-7zM"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="fCZ-xq-fWq"/>
-                            </scrollView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="nr3-iW-evT"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="0qv-YL-eR6" firstAttribute="leading" secondItem="oA2-FM-a3e" secondAttribute="leading" id="R7I-pz-ZV6"/>
-                            <constraint firstItem="0qv-YL-eR6" firstAttribute="top" secondItem="nr3-iW-evT" secondAttribute="top" id="bxu-Sb-RM4"/>
-                            <constraint firstItem="0qv-YL-eR6" firstAttribute="bottom" secondItem="nr3-iW-evT" secondAttribute="bottom" id="fQm-ec-RkR"/>
-                            <constraint firstAttribute="trailing" secondItem="0qv-YL-eR6" secondAttribute="trailing" id="qA3-vW-la1"/>
-                        </constraints>
-                    </view>
-                    <size key="freeformSize" width="414" height="1500"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KHM-6R-dzt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2471" y="297"/>
         </scene>
     </scenes>
     <resources>

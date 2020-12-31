@@ -138,22 +138,21 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
         
         */
         
-        let namePicProducerSpaced = tokens[2]
-        let trimed = namePicProducerSpaced.replacingOccurrences(of: "\\s*",
-                                                with: "$1",
-                                                options: [.regularExpression])
+
         
         var tempMarkImage : UIImage?
         if
 
             //let bits = splitIntoNameAndExtension(total: tempMark),//maxus
-        
+            let bits = splitIntoNameAndExtension(total: tempPicture),//maxus
+            bits.count == 2,//¿?
+           
             //goes for pic
-            let pathToMark = Bundle.main.url(forResource: trimed.lowercased(),withExtension: "png", subdirectory: "beerApp-fotos")
+            let pathToMark = Bundle.main.url(forResource: bits[0],withExtension: bits[1], subdirectory: "beerApp-fotos")
              
         {   tempMarkImage = UIImage(contentsOfFile: pathToMark.path)
             print("Assigned specific photo")}else    {
-            print("#Problem with picture --> \(trimed.lowercased())")
+           // print("#Problem with picture --> \(trimed.lowercased())")
             if
                 let pathToMark = Bundle.main.url(forResource:"def",withExtension: "jpg")
                 
