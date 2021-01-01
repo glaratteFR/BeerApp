@@ -29,7 +29,6 @@
 		63935DB2259B6A0D007D87DB /* def.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63935DB1259B6A0D007D87DB /* def.jpg */; };
 		63935DE9259CB3D5007D87DB /* defaultPic.png in Resources */ = {isa = PBXBuildFile; fileRef = 63935DE8259CB3D5007D87DB /* defaultPic.png */; };
 		63935E01259CB6B2007D87DB /* defaultbeer.csv in Resources */ = {isa = PBXBuildFile; fileRef = 63935E00259CB6B2007D87DB /* defaultbeer.csv */; };
-		63935E0C259EF01F007D87DB /*  MyCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63935E0B259EF01F007D87DB /*  MyCustomCell.xib */; };
 		63935E11259EF091007D87DB /* MyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935E10259EF091007D87DB /* MyCustomCell.swift */; };
 		63935E17259EFD78007D87DB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935E15259EFD78007D87DB /* TableViewCell.swift */; };
 		63935E18259EFD78007D87DB /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63935E16259EFD78007D87DB /* TableViewCell.xib */; };
@@ -81,7 +80,6 @@
 		63935DB1259B6A0D007D87DB /* def.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = def.jpg; sourceTree = "<group>"; };
 		63935DE8259CB3D5007D87DB /* defaultPic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultPic.png; sourceTree = "<group>"; };
 		63935E00259CB6B2007D87DB /* defaultbeer.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = defaultbeer.csv; path = "../../../../../../Documents/App/beerApp-data/defaultbeer.csv"; sourceTree = "<group>"; };
-		63935E0B259EF01F007D87DB /*  MyCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = " MyCustomCell.xib"; sourceTree = "<group>"; };
 		63935E10259EF091007D87DB /* MyCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomCell.swift; sourceTree = "<group>"; };
 		63935E15259EFD78007D87DB /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		63935E16259EFD78007D87DB /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 				63935CC22597533C007D87DB /* LaunchScreen.storyboard */,
 				63935CC52597533C007D87DB /* Info.plist */,
 				63935D6725976DAA007D87DB /* TableSectionHeader.xib */,
-				63935E0B259EF01F007D87DB /*  MyCustomCell.xib */,
 			);
 			path = BeerApp;
 			sourceTree = "<group>";
@@ -336,7 +333,6 @@
 				63935D6825976DAA007D87DB /* TableSectionHeader.xib in Resources */,
 				63935DE9259CB3D5007D87DB /* defaultPic.png in Resources */,
 				63935CC42597533C007D87DB /* LaunchScreen.storyboard in Resources */,
-				63935E0C259EF01F007D87DB /*  MyCustomCell.xib in Resources */,
 				63935E18259EFD78007D87DB /* TableViewCell.xib in Resources */,
 				63935E01259CB6B2007D87DB /* defaultbeer.csv in Resources */,
 				63935DB2259B6A0D007D87DB /* def.jpg in Resources */,

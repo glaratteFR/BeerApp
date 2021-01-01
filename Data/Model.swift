@@ -45,7 +45,7 @@ public class Model : NSObject, NSCoding{
         print("INTENTO DE CARGA DE BINARIO")
         readBinProducers = readProducersInfosFromDocuments(url: URL_OF_PRODUCERS_BINARY_FILE) //Intento de lectura de archivo binario La app ya fue arrancada
         //First boot readBinProducers = false
-        print(URL_OF_PRODUCERS_BINARY_FILE)
+        //print(URL_OF_PRODUCERS_BINARY_FILE)
         
         /*
          Print for debug
@@ -76,7 +76,7 @@ public class Model : NSObject, NSCoding{
         /*
         print("********************")
         print(producers.count)
-        print(producers[0].nameProducer)
+        print(producers[0].nameProducer)§ˇˇ§ˇˇ
         print(producers[0].beersCollect?[].nameBeer)
         */
         producers.forEach{$0.beersCollect?.sort(by: {($0.nameBeer) < ($1.nameBeer)})}

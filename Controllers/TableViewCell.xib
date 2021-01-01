@@ -16,25 +16,36 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acd-0o-tg2">
-                        <rect key="frame" x="37" y="12" width="267" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Acd-0o-tg2">
+                        <rect key="frame" x="85" y="12" width="229" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="229" id="6ew-hs-icZ"/>
+                            <constraint firstAttribute="height" constant="21" id="ubz-E9-xU1"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nkj-lj-Gor">
+                        <rect key="frame" x="10" y="2" width="40" height="40"/>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Acd-0o-tg2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="37" id="6C1-4b-TGD"/>
-                    <constraint firstAttribute="bottom" secondItem="Acd-0o-tg2" secondAttribute="bottom" constant="11" id="eAG-Xm-zhu"/>
-                    <constraint firstAttribute="trailing" secondItem="Acd-0o-tg2" secondAttribute="trailing" constant="16" id="vH1-yI-cMT"/>
-                    <constraint firstItem="Acd-0o-tg2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="y2V-y6-LLf"/>
+                    <constraint firstAttribute="bottom" secondItem="Acd-0o-tg2" secondAttribute="bottom" constant="11" id="MBW-gw-6fG"/>
+                    <constraint firstAttribute="trailing" secondItem="Acd-0o-tg2" secondAttribute="trailing" constant="6" id="SUq-iB-7vj"/>
+                    <constraint firstItem="Acd-0o-tg2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="bpR-U2-DUg"/>
+                    <constraint firstItem="nkj-lj-Gor" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="e72-AF-9la"/>
+                    <constraint firstItem="nkj-lj-Gor" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="jj2-nX-1dm"/>
+                    <constraint firstItem="Acd-0o-tg2" firstAttribute="leading" secondItem="nkj-lj-Gor" secondAttribute="trailing" constant="35" id="nga-uM-EKy"/>
+                    <constraint firstAttribute="bottom" secondItem="nkj-lj-Gor" secondAttribute="bottom" constant="2" id="yiC-pG-rmg"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="mainLabel" destination="Acd-0o-tg2" id="1gN-l4-LfH"/>
+                <outlet property="mainPhoto" destination="nkj-lj-Gor" id="igC-ml-pQu"/>
             </connections>
-            <point key="canvasLocation" x="131.8840579710145" y="61.607142857142854"/>
+            <point key="canvasLocation" x="28.985507246376812" y="47.544642857142854"/>
         </tableViewCell>
     </objects>
 </document>
