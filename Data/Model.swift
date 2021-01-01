@@ -72,7 +72,7 @@ public class Model : NSObject, NSCoding{
         var index = 0
         self.producers.removeAll()
         self.producersNamed.forEach{self.producers.append($0.value); index = index+1}
-        
+        allBeers.forEach{producersNamed[$0.producerBeer]?.beersCollect?.append($0)}
         /*
         print("********************")
         print(producers.count)
@@ -82,7 +82,7 @@ public class Model : NSObject, NSCoding{
         producers.forEach{$0.beersCollect?.sort(by: {($0.nameBeer) < ($1.nameBeer)})}
         print("********************")
         print(producers.count)
-
+     
         
     }//end init model
     
