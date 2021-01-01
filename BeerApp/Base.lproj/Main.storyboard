@@ -16,12 +16,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="jXJ-Ff-EK9">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hv3-fO-caq">
+                                    <rect key="frame" x="342" y="6" width="64" height="46"/>
+                                    <state key="normal" title="Add Beer"/>
+                                    <connections>
+                                        <action selector="addBeerAct:" destination="p1c-EU-amU" eventType="touchUpInside" id="r2U-3A-Io1"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oke-gM-ZUl">
+                                    <rect key="frame" x="8" y="6" width="91" height="46"/>
+                                    <state key="normal" title="Remove Beer"/>
+                                    <connections>
+                                        <action selector="delBeerAct:" destination="p1c-EU-amU" eventType="touchUpInside" id="nMi-S9-S4t"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="oke-gM-ZUl" firstAttribute="leading" secondItem="jXJ-Ff-EK9" secondAttribute="leading" constant="8" id="3k4-7Q-7SV"/>
+                                <constraint firstAttribute="trailing" secondItem="hv3-fO-caq" secondAttribute="trailing" constant="8" id="482-6p-76i"/>
+                                <constraint firstItem="oke-gM-ZUl" firstAttribute="top" secondItem="jXJ-Ff-EK9" secondAttribute="top" constant="6" id="CAN-C0-01u"/>
+                                <constraint firstItem="hv3-fO-caq" firstAttribute="top" secondItem="jXJ-Ff-EK9" secondAttribute="top" constant="6" id="TzX-bS-19J"/>
+                                <constraint firstAttribute="bottom" secondItem="oke-gM-ZUl" secondAttribute="bottom" constant="8" id="ckA-rW-Adw"/>
+                                <constraint firstItem="hv3-fO-caq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oke-gM-ZUl" secondAttribute="trailing" constant="8" symbolic="YES" id="iy5-QT-caj"/>
+                                <constraint firstAttribute="bottom" secondItem="hv3-fO-caq" secondAttribute="bottom" constant="8" id="ouD-NW-Du1"/>
+                            </constraints>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="uuN-OR-rW0">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="23" id="uuN-OR-rW0">
+                                <rect key="frame" x="0.0" y="88" width="414" height="23"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uuN-OR-rW0" id="v9M-qC-jGi">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="23"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -31,10 +61,14 @@
                             <outlet property="delegate" destination="p1c-EU-amU" id="rEH-aq-eRO"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="addBeerButt" destination="hv3-fO-caq" id="wyy-TA-X4N"/>
+                        <outlet property="delBeerButt" destination="oke-gM-ZUl" id="6kj-nc-OZ0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frG-bw-zA9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1038" y="327"/>
+            <point key="canvasLocation" x="-1604.3478260869567" y="293.47826086956525"/>
         </scene>
         <!--Producer View Controller-->
         <scene sceneID="5YJ-a9-Mdg">
@@ -304,14 +338,14 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="612-CC-qeE">
-                                        <rect key="frame" x="369" y="28" width="37" height="30"/>
+                                        <rect key="frame" x="369" y="8" width="37" height="30"/>
                                         <state key="normal" title="Done"/>
                                         <connections>
                                             <action selector="acceptAcceptAndReturn:" destination="DPV-TB-jrF" eventType="touchUpInside" id="qwS-dE-bnK"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEn-Zr-8Oe">
-                                        <rect key="frame" x="15" y="28" width="34" height="30"/>
+                                        <rect key="frame" x="15" y="8" width="34" height="30"/>
                                         <state key="normal" title="Back"/>
                                     </button>
                                 </subviews>
