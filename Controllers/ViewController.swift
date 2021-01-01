@@ -199,7 +199,30 @@ class ViewController: UITableViewController {
         
     }
     
+
+     func tableView(_ tableView: UITableView, heightForRowAt indexpath: Int) -> CGFloat {
+            return 100
+    }
+    func tableView(_ tableView: UITableView, _ indexPath: IndexPath){
+        print("ESTOY EN table view segue")
+           let producer = model.producers[indexPath.section]
+           let beer =  producer.beersCollect?[indexPath.row]
+           performSegue(withIdentifier: "segueToBeer", sender: beer)
+           
+       }
+    var selectedBeer: Beer?
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        let producer = model.producers[indexPath.section]
+        let beerLine =  producer.beersCollect?[indexPath.row]
+        selectedBeer = beerLine
+        performSegue(withIdentifier: "segueToBeer", sender: nil)
+        
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        
+        print("ESTOY EN PREPARE")
         switch segue.identifier! {
         case "segueToProducer":
             let destController = segue.destination as! ProducerViewController
@@ -208,22 +231,13 @@ class ViewController: UITableViewController {
         case "segueToBeer":
             let destController = segue.destination as! BeerViewController
             destController.aModel = model
-            destController.aBeer = sender as? Beer
+            destController.aBeer = selectedBeer
         default:
             break
         }
         
     }
     
-     func tableView(_ tableView: UITableView, heightForRowAt indexpath: Int) -> CGFloat {
-            return 100
-    }
-    func tableView(_ tableView: UITableView, _ indexPath: IndexPath){
-           let producer = model.producers[indexPath.section]
-           let beer =  producer.beersCollect?[indexPath.row]
-           performSegue(withIdentifier: "segueToBeer", sender: beer)
-           
-       }
        
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
            return 44.0

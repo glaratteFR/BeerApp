@@ -184,7 +184,7 @@ public class Model : NSObject, NSCoding{
         
         //parse by tab
         let lines :[String]? = line.components(separatedBy: "\n")
-        print("#FILE  --> \(lines) ")
+        print("#FILE  --> \(String(describing: lines)) ")
         let imortedProducers = lines!.compactMap{Producer(record: $0, delimiter: "\t") }//Pasa cada linea al constructor y puebla el nombre del producer y la foto
         print("#SALTO A IMPORT FROM CSV POST READ ALL LINES")
         print("#IMPORTED PRODUCERS  --> \(imortedProducers) ")
@@ -219,7 +219,7 @@ public class Model : NSObject, NSCoding{
             producers = x as! [Producer]
 
             self.producers.forEach{self.producersNamed.updateValue($0, forKey: $0.nameProducer);print($0.nameProducer)}
-            print(producersNamed["Cervezas Segovia S.L."]?.beersCollect![1].nameBeer)
+            print(producersNamed["Cervezas Segovia S.L."]?.beersCollect![1].nameBeer as Any)
             //****************************************************************************
         }catch{
             

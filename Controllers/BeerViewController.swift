@@ -70,7 +70,8 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
     }
     override func viewWillAppear(_ animated: Bool) {
         //Allows data to be modified
-        
+        print("ESTOY EN BEER")
+        print(self.name)
         nameText.text = self.name
         typeText.text = self.type
         producerText.text = self.producer
@@ -153,6 +154,8 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         
         
     }
+    
+
 
 }//end beerViewController
 
