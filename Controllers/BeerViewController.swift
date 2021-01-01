@@ -28,7 +28,10 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
 
     @IBOutlet weak var beerImageFrame: UIImageView!
     
-    
+    @IBAction func unwind( _ seg: UIStoryboardSegue) {
+        
+        
+    }
     var aModel: Model? //Acceso a los datos
     var aBeer : Beer?
     
@@ -73,7 +76,7 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         print("ESTOY EN BEER")
         print(self.name)
         nameText.text = self.name
-        typeText.text = self.type
+       // typeText.text = self.type
         producerText.text = self.producer
         nationalityText.text = self.nationality
         capText.text = self.cap
@@ -83,15 +86,17 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         ibuText.text = self.ibu
         volDText.text = self.volD
         beerImageFrame.image = self.beerImage
-
+/*
         let producerNumber = listMakersNames?.firstIndex(of: self.name!)//¿??
         producerSelector.selectRow(producerNumber!, inComponent: 0, animated: true)
-        
+    */
     }
     
     @IBAction func acceptAcceptAndReturn(_ sender: Any){
+        print("CLIKED ACCEPT AND RETURN")
         self.name = self.nameText.text
-        self.type = self.typeText.text
+//        self.type = self.typeText.text
+        
         self.producer = self.producerText.text
         self.nationality = self.nationalityText.text
         self.cap = self.capText.text
@@ -134,7 +139,7 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
             aModel?.producersNamed[self.producer!]?.beersCollect?.append(aBeer!)
             
         }
-        
+        print("UNWIND")
         performSegue(withIdentifier: "unwindSegueFromBeerView", sender: self)//posible error
         
         

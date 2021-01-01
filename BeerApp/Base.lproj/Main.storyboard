@@ -147,7 +147,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1480"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQy-le-Aai">
-                                        <rect key="frame" x="0.0" y="38" width="414" height="1462"/>
+                                        <rect key="frame" x="0.0" y="86" width="414" height="1414"/>
                                         <subviews>
                                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ft2-Jh-GgD">
                                                 <rect key="frame" x="28" y="26" width="358" height="113"/>
@@ -274,7 +274,7 @@
                                             <constraint firstItem="GFe-oC-Rgx" firstAttribute="trailing" secondItem="yfr-3c-ljL" secondAttribute="trailing" id="33V-y5-6Wd"/>
                                             <constraint firstAttribute="trailing" secondItem="b7R-QZ-vEu" secondAttribute="trailing" constant="37" id="386-EP-nUd"/>
                                             <constraint firstItem="Ft2-Jh-GgD" firstAttribute="top" secondItem="dQy-le-Aai" secondAttribute="top" constant="26" id="3BU-ff-PTw"/>
-                                            <constraint firstAttribute="bottom" secondItem="0a1-4I-kkH" secondAttribute="bottom" constant="695" id="4Ek-mO-kx1"/>
+                                            <constraint firstAttribute="bottom" secondItem="0a1-4I-kkH" secondAttribute="bottom" constant="647" id="4Ek-mO-kx1"/>
                                             <constraint firstItem="Nq9-4S-Fme" firstAttribute="top" secondItem="vGw-o9-uej" secondAttribute="bottom" constant="47" id="51a-NJ-d59"/>
                                             <constraint firstItem="dn3-WM-0fb" firstAttribute="leading" secondItem="dQy-le-Aai" secondAttribute="leading" constant="135" id="78u-da-C47"/>
                                             <constraint firstItem="0a1-4I-kkH" firstAttribute="centerY" secondItem="b7R-QZ-vEu" secondAttribute="centerY" id="7jN-yt-3Di"/>
@@ -315,12 +315,12 @@
                                             <constraint firstItem="pRo-Oi-tnv" firstAttribute="leading" secondItem="dQy-le-Aai" secondAttribute="leading" constant="28" id="XmA-ST-j1M"/>
                                             <constraint firstItem="WQD-xu-NPT" firstAttribute="leading" secondItem="dQy-le-Aai" secondAttribute="leading" constant="28" id="YHi-2l-PXw"/>
                                             <constraint firstItem="GFe-oC-Rgx" firstAttribute="centerY" secondItem="3fr-yL-e6W" secondAttribute="centerY" id="Z4L-Hn-a4W"/>
-                                            <constraint firstAttribute="bottom" secondItem="skq-IZ-7Xh" secondAttribute="bottom" constant="318" id="Zen-8n-19I"/>
+                                            <constraint firstAttribute="bottom" secondItem="skq-IZ-7Xh" secondAttribute="bottom" constant="270" id="Zen-8n-19I"/>
                                             <constraint firstItem="0a1-4I-kkH" firstAttribute="top" secondItem="Blf-B2-XKk" secondAttribute="bottom" constant="41" id="a79-Ye-fze"/>
                                             <constraint firstItem="skq-IZ-7Xh" firstAttribute="centerX" secondItem="Ft2-Jh-GgD" secondAttribute="centerX" id="aYQ-8U-lrW"/>
                                             <constraint firstItem="yk9-sJ-2eA" firstAttribute="top" secondItem="WQD-xu-NPT" secondAttribute="bottom" constant="54" id="aZE-Oi-0vv"/>
                                             <constraint firstAttribute="trailing" secondItem="Yqf-x5-WwN" secondAttribute="trailing" constant="37" id="b1E-k4-y8b"/>
-                                            <constraint firstAttribute="height" constant="1462" id="bbj-KZ-z5t"/>
+                                            <constraint firstAttribute="height" constant="1414" id="bbj-KZ-z5t"/>
                                             <constraint firstItem="hHp-jd-kKk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Blf-B2-XKk" secondAttribute="trailing" constant="8" symbolic="YES" id="bxe-Ah-l8c"/>
                                             <constraint firstItem="GFe-oC-Rgx" firstAttribute="top" secondItem="dQy-le-Aai" secondAttribute="top" constant="228" id="cPe-pq-mBD"/>
                                             <constraint firstAttribute="trailing" secondItem="aRu-3t-t75" secondAttribute="trailing" constant="37" id="dkC-xF-mom"/>
@@ -339,28 +339,27 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="612-CC-qeE">
-                                        <rect key="frame" x="369" y="8" width="37" height="30"/>
+                                        <rect key="frame" x="8" y="28" width="76" height="50"/>
                                         <state key="normal" title="Done"/>
                                         <connections>
                                             <action selector="acceptAcceptAndReturn:" destination="DPV-TB-jrF" eventType="touchUpInside" id="qwS-dE-bnK"/>
+                                            <segue destination="q0r-Ho-AX7" kind="unwind" identifier="unwindSegueFromBeerView" unwindAction="returnfromDetailWithSegue:" id="dQF-x3-AYC"/>
                                         </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEn-Zr-8Oe">
-                                        <rect key="frame" x="15" y="8" width="34" height="30"/>
-                                        <state key="normal" title="Back"/>
                                     </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="dQy-le-Aai" firstAttribute="centerX" secondItem="bGv-Wy-xt9" secondAttribute="centerX" id="1b3-04-3XK"/>
-                                    <constraint firstItem="gEn-Zr-8Oe" firstAttribute="leading" secondItem="0gZ-vL-OXF" secondAttribute="leading" constant="15" id="8Fs-DW-0aa"/>
-                                    <constraint firstItem="612-CC-qeE" firstAttribute="top" secondItem="0gZ-vL-OXF" secondAttribute="top" constant="8" id="C77-TB-0IB"/>
-                                    <constraint firstItem="0gZ-vL-OXF" firstAttribute="trailing" secondItem="612-CC-qeE" secondAttribute="trailing" constant="8" id="GVs-f7-oNX"/>
-                                    <constraint firstItem="gEn-Zr-8Oe" firstAttribute="top" secondItem="0gZ-vL-OXF" secondAttribute="top" constant="8" id="MY4-ki-42J"/>
-                                    <constraint firstItem="612-CC-qeE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gEn-Zr-8Oe" secondAttribute="trailing" constant="8" symbolic="YES" id="Xes-Ce-rF1"/>
-                                    <constraint firstItem="dQy-le-Aai" firstAttribute="top" secondItem="W0N-jC-PWY" secondAttribute="top" constant="38" id="d3K-VX-dH5"/>
+                                    <constraint firstItem="612-CC-qeE" firstAttribute="top" secondItem="0gZ-vL-OXF" secondAttribute="top" constant="8" id="Mpw-ms-ea4"/>
+                                    <constraint firstItem="0gZ-vL-OXF" firstAttribute="trailing" secondItem="612-CC-qeE" secondAttribute="trailing" constant="330" id="Nzh-6S-HOv"/>
+                                    <constraint firstItem="0gZ-vL-OXF" firstAttribute="trailing" secondItem="612-CC-qeE" secondAttribute="trailing" constant="330" id="QsU-1T-tVM"/>
+                                    <constraint firstItem="612-CC-qeE" firstAttribute="top" secondItem="0gZ-vL-OXF" secondAttribute="top" constant="8" id="cOE-4N-w7C"/>
+                                    <constraint firstItem="dQy-le-Aai" firstAttribute="top" secondItem="W0N-jC-PWY" secondAttribute="top" constant="86" id="d3K-VX-dH5"/>
                                     <constraint firstAttribute="bottom" secondItem="dQy-le-Aai" secondAttribute="bottom" id="rXt-La-Hcj"/>
                                     <constraint firstAttribute="trailing" secondItem="dQy-le-Aai" secondAttribute="trailing" id="sDZ-nl-6Xa"/>
                                     <constraint firstItem="dQy-le-Aai" firstAttribute="leading" secondItem="bGv-Wy-xt9" secondAttribute="leading" id="xkp-on-kF6"/>
+                                    <constraint firstItem="612-CC-qeE" firstAttribute="leading" secondItem="0gZ-vL-OXF" secondAttribute="leading" constant="8" id="y0P-cT-xVd"/>
+                                    <constraint firstItem="612-CC-qeE" firstAttribute="leading" secondItem="0gZ-vL-OXF" secondAttribute="leading" constant="8" id="ym3-Ba-pgf"/>
+                                    <constraint firstItem="dQy-le-Aai" firstAttribute="top" secondItem="612-CC-qeE" secondAttribute="bottom" constant="8" symbolic="YES" id="zNF-wK-9wX"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="W0N-jC-PWY"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="0gZ-vL-OXF"/>
@@ -392,8 +391,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9KP-dj-SRk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="q0r-Ho-AX7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="717" y="550"/>
+            <point key="canvasLocation" x="714.49275362318849" y="549.45652173913049"/>
         </scene>
     </scenes>
     <resources>
