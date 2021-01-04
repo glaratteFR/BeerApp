@@ -83,6 +83,8 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         print("ESTOY EN BEER")
         print(self.name)
         nameText.text = self.name
+        
+        
        // typeText.text = self.type
         //producerText.text = self.producer
         switch self.type
@@ -166,6 +168,7 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
             
         }
         print("UNWIND")
+        print(type)
         performSegue(withIdentifier: "unwindSegueFromBeerView", sender: self)//posible error
         
         
