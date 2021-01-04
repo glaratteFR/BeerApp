@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+var isDownloading: Bool = true
 public class Model : NSObject, NSCoding{
 
     let NAME_OF_FOLDER_IN_BUNDLE = "beerApp-data"
@@ -54,9 +54,18 @@ public class Model : NSObject, NSCoding{
         
         
         if !readBinProducers{//if first boot
-          
-            importProducers = importProducersFromCsv("defaultbeer", folder: NAME_OF_FOLDER_IN_DOCUMENTS)
-            //importProducers = importProducersFromCsv("defaultbeer", folder: NAME_OF_FOLDER_IN_BUNDLE)
+            print("TryToDownload")
+           
+           
+            
+     
+            
+        
+                print("Downloading...")
+                importBeersFromCsvOnline("defaultbeer.csv","BeerApp/Supporting_Files/beerApp-data/")
+               // sleep(3)
+           
+            importProducers = importProducersFromCsv("defaultbeer", folder: NAME_OF_FOLDER_IN_BUNDLE)
             
             
             producers.forEach{ producersNamed.updateValue($0, forKey: $0.nameProducer)}
@@ -86,7 +95,88 @@ public class Model : NSObject, NSCoding{
         
     }//end init model
     
-    
+    func importBeersFromCsvOnline(_ file:String, _ folder:String) -> Bool{
+
+        print("#HHHHHHHHHHHHHHRS")
+
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+
+        let path = documentDirectory[0].appendingPathComponent("save.csv")
+
+        print(FileManager.default.fileExists(atPath: path.path))
+
+        if !(FileManager.default.fileExists(atPath: path.path)) {
+
+            let urlStrings = "http://maxus.fis.usal.es/HOTHOUSE/daa/2020beer/defaultbeer.csv"
+
+        
+
+            /*var documentDirectory = Bundle.main.resourceURL
+
+            var path = documentDirectory?.appendingPathComponent("save.csv")
+
+            print(path)*/
+
+            print(path)
+            print("KKKKKKKKKKKKK")
+            if let fileUrl = URL(string: urlStrings){
+
+                URLSession.shared.downloadTask(with: fileUrl){
+
+                    (tempFileUrl,response,error) in
+                    print("GGGGGGGGGGGGG")
+                    if let fileTempFileUrl = tempFileUrl {
+
+                        do {
+
+                        
+
+                            
+
+                            try FileManager.default.moveItem(at: fileTempFileUrl, to: path)
+
+                            
+
+                            let text = try String(contentsOf: path, encoding: .utf8)
+
+                            print(text)
+                            
+                            
+                    }
+
+                        catch {
+
+                            print(error)
+
+                        }
+
+                    }
+
+                }.resume()
+                return false
+            }
+
+           
+            
+        } else {
+            
+            print("le fichier existe déjà")
+            
+            return false
+        }
+        
+       
+
+        return true
+    }
+
+
+
+
+
+
+           
+
     func importBeersFromBundle(_ file:String, folder:String)->Bool{
        
         guard
@@ -109,9 +199,18 @@ public class Model : NSObject, NSCoding{
     }
     
     func importBeersFromCsv(_ file:String, folder:String)->Bool{
+
         print("#SALTO A IMPORT FROM CSV BEERS")
-        let path = Bundle.main.path(forResource: "defaultbeer", ofType: "csv")
-        let line = try! String(contentsOfFile: path!, encoding: String.Encoding.utf8)
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+
+        let path = documentDirectory[0].appendingPathComponent("save.csv")
+        while  !(FileManager.default.fileExists(atPath: path.path)){
+            print("Waiting for file..")
+            sleep(UInt32(1))
+        }
+        //let path = Bundle.main.path(forResource: "defaultbeer", ofType: "csv")
+        
+        let line = try! String(contentsOf: path, encoding: String.Encoding.utf8)
         guard
             //let lines = bundleReadAllLinesFromFile(file,inFolder: folder, withExtension: "csv"),
             !line.isEmpty
@@ -120,7 +219,11 @@ public class Model : NSObject, NSCoding{
             return false
         }
         print("#BEERS LEIDAS")
-        let lines :[String]? = line.components(separatedBy: "\n")
+        var lines :[String]? = line.components(separatedBy: "\n")
+        if lines?.last == ""{
+            lines?.removeLast()
+            
+        }
         let importedBeers = lines!.compactMap{Beer($0, "\t") }
         
         if !importedBeers.isEmpty{
@@ -163,14 +266,27 @@ public class Model : NSObject, NSCoding{
     
     //Jorge
     func importProducersFromCsv(_ file:String, folder:String)->Bool{
-       print("#SALTO A IMPORT FROM CSV")
+       
         /*let filePath = Bundle.main.path(forResource: "defaultbeer", ofType: "csv")
         print("#BUNDLE  --> \(filePath) ")
        let textContent = try! String(contentsOfFile: filePath!,
                                   encoding: String.Encoding.utf8)
        print("#text  --> \(textContent) ")*/
-        let path = Bundle.main.path(forResource: "defaultbeer", ofType: "csv")
-        let line = try! String(contentsOfFile: path!, encoding: String.Encoding.utf8)
+       
+
+        print("#SALTO A IMPORT FROM PRODUCERS CSV")
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+
+        let path = documentDirectory[0].appendingPathComponent("save.csv")
+        while  !(FileManager.default.fileExists(atPath: path.path)){
+            print("Waiting for file..")
+            sleep(UInt32(1))
+        }
+        //let path = Bundle.main.path(forResource: "defaultbeer", ofType: "csv")
+        
+        let line = try! String(contentsOf: path, encoding: String.Encoding.utf8)
+       // let path = Bundle.main.path(forResource: "defaultbeer", ofType: "csv")
+       
         guard
             //Read file and parse by /n
             //let lines = bundleReadAllLinesFromFile("defaultbeer",inFolder: "Supporting Files", withExtension: "csv"),
@@ -183,8 +299,12 @@ public class Model : NSObject, NSCoding{
         }
         
         //parse by tab
-        let lines :[String]? = line.components(separatedBy: "\n")
+        var lines :[String]? = line.components(separatedBy: "\n")
         print("#FILE  --> \(String(describing: lines)) ")
+        if lines?.last == ""{
+            lines?.removeLast()
+            
+        }
         let imortedProducers = lines!.compactMap{Producer(record: $0, delimiter: "\t") }//Pasa cada linea al constructor y puebla el nombre del producer y la foto
         print("#SALTO A IMPORT FROM CSV POST READ ALL LINES")
         print("#IMPORTED PRODUCERS  --> \(imortedProducers) ")

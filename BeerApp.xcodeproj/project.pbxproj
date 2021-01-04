@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		635BEB6325A33A1900F09FF0 /* defaultbeer.csv in Resources */ = {isa = PBXBuildFile; fileRef = 635BEB6225A33A1900F09FF0 /* defaultbeer.csv */; };
 		635BEB6C25A340A400F09FF0 /* TableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 635BEB6A25A340A400F09FF0 /* TableViewHeader.swift */; };
 		635BEB6D25A340A400F09FF0 /* TableViewHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 635BEB6B25A340A400F09FF0 /* TableViewHeader.xib */; };
 		63935CB82597533B007D87DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935CB72597533B007D87DB /* AppDelegate.swift */; };
@@ -54,7 +53,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		635BEB6225A33A1900F09FF0 /* defaultbeer.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = defaultbeer.csv; path = "beerApp-data/defaultbeer.csv"; sourceTree = "<group>"; };
 		635BEB6A25A340A400F09FF0 /* TableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
 		635BEB6B25A340A400F09FF0 /* TableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewHeader.xib; sourceTree = "<group>"; };
 		63935CB42597533B007D87DB /* BeerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,7 +226,6 @@
 		63935DA5259B60F1007D87DB /* beerApp-data */ = {
 			isa = PBXGroup;
 			children = (
-				635BEB6225A33A1900F09FF0 /* defaultbeer.csv */,
 			);
 			path = "beerApp-data";
 			sourceTree = "<group>";
@@ -341,7 +338,6 @@
 				63935CC42597533C007D87DB /* LaunchScreen.storyboard in Resources */,
 				635BEB6D25A340A400F09FF0 /* TableViewHeader.xib in Resources */,
 				63935E18259EFD78007D87DB /* TableViewCell.xib in Resources */,
-				635BEB6325A33A1900F09FF0 /* defaultbeer.csv in Resources */,
 				63935DB2259B6A0D007D87DB /* def.jpg in Resources */,
 				63935D4B25975D77007D87DB /* Assets.xcassets in Resources */,
 				63935CBF2597533B007D87DB /* Main.storyboard in Resources */,
