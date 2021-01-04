@@ -22,6 +22,7 @@ class ViewController: UITableViewController {
        
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.appEnterBackGround(notification:)), name: UIApplication.didEnterBackgroundNotification, object: nil)//When app goes background/ends saves data
         
+        
         self.editingStyle = UITableViewCell.EditingStyle.none//Look up style
         print("%Editing style  None")
         tableView.reloadData()
@@ -120,6 +121,7 @@ class ViewController: UITableViewController {
             //add to general list
             tableView.insertRows(at: [indexPath], with: .fade)
             tableView.reloadSections(IndexSet(integer: section), with: .fade)
+            tableView.reloadData()
         case .delete:
             producer.beersCollect?.remove(at: row)
             tableView.deleteRows(at: [indexPath], with:.fade)
@@ -161,7 +163,23 @@ class ViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let producer = model.producers[section]
+        let headerView = Bundle.main.loadNibNamed("TableViewHeader", owner: self, options: nil)?.first as! TableViewHeader
+        headerView.ProducerLabel.text = producer.nameProducer
+   // customHeaderView.producerImage.image = producer.logoProducer
+
     
+        let tapRec = UITapGestureRecognizer(target: self,action: #selector(ViewController.jumpToProducerView(_:)))
+        tapRec.numberOfTapsRequired = 1
+
+            headerView.addGestureRecognizer(tapRec)//??
+        
+        return headerView
+    }
     /*
     //Give form of headers
         override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -242,9 +260,7 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
            return 44.0
        }
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-           return 48.0
-       }
+
     override func tableView(_ tableView: UITableView,  heightForFooterInSection section: Int) -> CGFloat {
            return CGFloat.leastNormalMagnitude
        }

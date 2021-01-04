@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGestureRecognizerDelegate{
+class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGestureRecognizerDelegate, UIPickerViewDelegate{
     
   
     
@@ -32,6 +32,7 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         
         
     }
+    
     var aModel: Model? //Acceso a los datos
     var aBeer : Beer?
     
@@ -55,7 +56,8 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        producerSelector.dataSource = self
+        producerSelector.delegate = self
         listMakersNames = aModel?.producers.map{$0.nameProducer}//populate list with names
         self.name = aBeer?.nameBeer
         self.type = aBeer?.typeBeer
@@ -181,19 +183,15 @@ extension BeerViewController : UIPickerViewDataSource{
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
-    func imagePickerController(_ picker: UIPickerView, _ row: Int, _ component: Int) -> String?{
+    func pickerView(_ picker: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
         return listMakersNames?[row] ?? "Unknown Producer"
     }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)  {
+       self.producer = listMakersNames?[row]
+   }
 }
 
 
-//¿?¿'
-extension BeerViewController : UIPickerViewDelegate{
-    func pickerView(_ pickerView: UIPickerView, _ row: Int, _ component: Int)  {
-        self.producer = listMakersNames?[row]
-    }
-
-}
 
 
 extension BeerViewController : UIImagePickerControllerDelegate{
