@@ -23,6 +23,29 @@ public class Model : NSObject, NSCoding{
     var producersNamed = [String:Producer]()
     private let dfm = FileManager.default
     
+    func sortWithKeys(_ dict:[String:Producer]) -> [String:Producer]{
+        let sorted = dict.sorted(by: {$0.key < $1.key })
+        var newDict: [String:Producer] = [:]
+        for sortedDict in sorted {
+            newDict[sortedDict.key]=sortedDict.value
+        }
+        return newDict
+    }
+    
+    func switchKey(_ myDict: Dictionary<String,Producer>,fromKey: String, toKey: String) -> Dictionary<String,Producer>{
+        print(toKey)
+        var dict = myDict
+        if var entry = dict.removeValue(forKey: fromKey)
+        {
+            dict[toKey] = entry
+        }
+        print(dict[toKey])
+        
+        
+        
+        return dict
+    }
+
     
     public override init() {
         
@@ -68,9 +91,15 @@ public class Model : NSObject, NSCoding{
            
             importProducers = importProducersFromCsv("defaultbeer", folder: NAME_OF_FOLDER_IN_BUNDLE)
             
+           
+            
             
             producers.forEach{ producersNamed.updateValue($0, forKey: $0.nameProducer)}
             importBeers = importBeersFromCsv(NAME_OF_PRODUCER_FILE_IN_BUNDLE, folder: NAME_OF_FOLDER_IN_BUNDLE)
+            
+            
+            
+            
             print("#Read producers --> \(importProducers)")
             print("#Read beers --> \(importBeers)")
             assert(importProducers && importBeers)
@@ -78,8 +107,103 @@ public class Model : NSObject, NSCoding{
             allBeers.forEach{producersNamed[$0.producerBeer]?.beersCollect?.append($0)}
             
             
+            
         }
         var index = 0
+        var uniqueValues = Set<String>()
+        var resultDict = [String: Producer]()
+        print(self.producersNamed.count)
+        resultDict = self.producersNamed
+        self.producers.removeAll()
+        
+     
+        resultDict = sortWithKeys(resultDict)
+        
+        var numberIterator = resultDict.makeIterator()
+        print(resultDict.count)
+        while let num = numberIterator.next(){
+            print(self.producersNamed.count)
+            print(self.producersNamed.endIndex)
+            print("DUPLICATION")
+            print(num.key)
+            if (num.key == numberIterator.next()?.key)
+            {
+                print("-------------DUPLICATE PRODUCER --------------")
+                let index = self.producersNamed.index(forKey: num.key)
+                self.producersNamed = switchKey(self.producersNamed,fromKey: num.key, toKey: num.key + "_02")
+            }
+        }
+        
+        var allBears:[Beer] = []
+
+        
+        self.producersNamed.forEach {(index,value) in
+            
+            allBears+=value.beersCollect!
+            
+        }
+        allBears = allBears.sorted(by: { $0.nameBeer > $1.nameBeer})
+        var indexBeer = 2
+        /*
+         nameBeer : String,
+              typeBeer : String,
+              producerBeer : String,
+              nationalityBeer : String,
+              capBeer : String,
+              expDateBeer : String,
+              rateBeer : String,
+              IDBeer : String,
+              IBUBeer : String,
+              volBeer : String,
+              pictureBeer : UIImage?
+         
+         */
+        
+        var oldNameBeer = allBears[0].nameBeer
+        
+        for (index, bear) in allBears.enumerated() {
+            var nextBear = allBears[index+1]
+            if bear.nameBeer == nextBear.nameBeer
+            {
+                if (bear.capBeer == nextBear.capBeer && bear.expDateBeer == nextBear.expDateBeer && bear.nationalityBeer == nextBear.nationalityBeer && bear.rateBeer == nextBear.rateBeer){
+                    let indexProd = self.producersNamed.index(forKey: bear.nameBeer)
+                    
+                     self.producersNamed[indexProd!].value.beersCollect?.filter{
+                        $0.nameBeer == bear.nameBeer
+                    }.first?.change(p_nameBeer:bear.nameBeer+"_"+String(index))
+                    if (oldNameBeer == bear.nameBeer)
+                    {
+                        indexBeer = indexBeer+1
+                        oldNameBeer = bear.nameBeer
+                        
+                    }else{
+                        indexBeer = 2
+                    }
+                    
+                    
+                    
+                }
+            }
+        }
+        
+        
+        
+        
+       /* resultDict.forEach { (key1,value) in
+            resultDict.removeValue(forKey: key1)
+            resultDict.forEach { (key2,value) in
+                if (key1 == key2)
+                {
+                    if (resultDict)
+                }
+                else{
+                    
+                }
+                
+            }
+        } */
+        
+        
         self.producers.removeAll()
         self.producersNamed.forEach{self.producers.append($0.value); index = index+1}
         allBeers.forEach{producersNamed[$0.producerBeer]?.beersCollect?.append($0)}

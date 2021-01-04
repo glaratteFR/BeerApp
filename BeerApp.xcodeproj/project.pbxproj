@@ -16,7 +16,6 @@
 		63935CC42597533C007D87DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63935CC22597533C007D87DB /* LaunchScreen.storyboard */; };
 		63935CCF2597533C007D87DB /* BeerAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935CCE2597533C007D87DB /* BeerAppTests.swift */; };
 		63935CDA2597533C007D87DB /* BeerAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935CD92597533C007D87DB /* BeerAppUITests.swift */; };
-		63935D4B25975D77007D87DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63935D4A25975D77007D87DB /* Assets.xcassets */; };
 		63935D6825976DAA007D87DB /* TableSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63935D6725976DAA007D87DB /* TableSectionHeader.xib */; };
 		63935D6D25987F15007D87DB /* BeerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D6C25987F15007D87DB /* BeerViewController.swift */; };
 		63935D73259880D8007D87DB /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D72259880D8007D87DB /* Beer.swift */; };
@@ -33,6 +32,7 @@
 		63935E11259EF091007D87DB /* MyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935E10259EF091007D87DB /* MyCustomCell.swift */; };
 		63935E17259EFD78007D87DB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935E15259EFD78007D87DB /* TableViewCell.swift */; };
 		63935E18259EFD78007D87DB /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63935E16259EFD78007D87DB /* TableViewCell.xib */; };
+		A343DE9A25A3B18C00D2B2A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A343DE9925A3B18C00D2B2A0 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +68,6 @@
 		63935CD52597533C007D87DB /* BeerAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeerAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63935CD92597533C007D87DB /* BeerAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerAppUITests.swift; sourceTree = "<group>"; };
 		63935CDB2597533C007D87DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63935D4A25975D77007D87DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../Documents/App/AppIcons/Assets.xcassets; sourceTree = "<group>"; };
 		63935D6725976DAA007D87DB /* TableSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableSectionHeader.xib; sourceTree = "<group>"; };
 		63935D6C25987F15007D87DB /* BeerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerViewController.swift; sourceTree = "<group>"; };
 		63935D72259880D8007D87DB /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
@@ -85,6 +84,7 @@
 		63935E10259EF091007D87DB /* MyCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomCell.swift; sourceTree = "<group>"; };
 		63935E15259EFD78007D87DB /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		63935E16259EFD78007D87DB /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		A343DE9925A3B18C00D2B2A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,8 +139,8 @@
 		63935CB62597533B007D87DB /* BeerApp */ = {
 			isa = PBXGroup;
 			children = (
+				A343DE9925A3B18C00D2B2A0 /* Assets.xcassets */,
 				63935CBD2597533B007D87DB /* Main.storyboard */,
-				63935D4A25975D77007D87DB /* Assets.xcassets */,
 				63935CB92597533B007D87DB /* SceneDelegate.swift */,
 				63935CC22597533C007D87DB /* LaunchScreen.storyboard */,
 				63935CC52597533C007D87DB /* Info.plist */,
@@ -339,7 +339,7 @@
 				635BEB6D25A340A400F09FF0 /* TableViewHeader.xib in Resources */,
 				63935E18259EFD78007D87DB /* TableViewCell.xib in Resources */,
 				63935DB2259B6A0D007D87DB /* def.jpg in Resources */,
-				63935D4B25975D77007D87DB /* Assets.xcassets in Resources */,
+				A343DE9A25A3B18C00D2B2A0 /* Assets.xcassets in Resources */,
 				63935CBF2597533B007D87DB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
