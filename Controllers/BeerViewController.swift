@@ -113,14 +113,30 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
     
     @IBAction func acceptAcceptAndReturn(_ sender: Any){
         print("CLIKED ACCEPT AND RETURN")
+        var allCorrect : Bool = true
+ 
         self.name = self.nameText.text
+        if !checkType(self.nameText.text!, "word")  {
+            self.nameText.textColor = .red
+            allCorrect = false
+        }
 //        self.type = self.typeText.text
         
         //self.producer = self.producerText.text
+        
         self.nationality = self.nationalityText.text
+        if !checkType(self.nationalityText.text!, "word")  {
+            self.nationalityText.textColor = .red
+            allCorrect = false
+        }
         self.cap = self.capText.text
         self.expD = self.expDText.text
+
         self.rate = self.rateText.text
+        if !checkType(self.rateText.text!, "word")  {
+            self.rateText.textColor = .red
+            allCorrect = false
+        }
         self.id = self.idText.text
         self.ibu = self.ibuText.text
         self.volD = self.volDText.text
@@ -167,9 +183,18 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
             aModel?.producersNamed[self.producer!]?.beersCollect?.append(aBeer!)
             
         }
-        print("UNWIND")
+       // print("UNWIND")
         print(type)
-        performSegue(withIdentifier: "unwindSegueFromBeerView", sender: self)//posible error
+       // performSegue(withIdentifier: "unwindSegueFromBeerView", sender: self)//posible error
+        
+        if(allCorrect){
+            
+            print("UNWIND")
+            print(allCorrect)
+            
+            performSegue(withIdentifier: "unwindSegueFromBeerView", sender: self)//posible error
+            
+        }
         
         
     }
@@ -230,6 +255,33 @@ extension BeerViewController : UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)  {
        self.producer = listMakersNames?[row]
    }
+    
+    
+    func checkType(_ introduced: String, _ expected: String) -> Bool {
+        
+        if introduced.isEmpty {
+            
+            
+                notifyUser(self, alertTitle: "Field is emty", alertMessage: "Sorry cant leave the field empty", runOnOK: {_ in})
+                    return false
+                
+        }
+        if expected == "word"{
+            let phone = introduced.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
+            if !phone.isEmpty  {
+                notifyUser(self, alertTitle: "Type of Input Incorrect", alertMessage: "\(introduced): Wasn't cant take numbers. Please correct it to save", runOnOK: {_ in})
+                    return false
+                }
+                return true
+            
+           
+            
+        }else{
+            //expected number
+            print("This is taken care of UI")
+            return true
+        }
+    }
 }
 
 

@@ -20,7 +20,7 @@ class ProducerViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var done: UIButton!
     //Producer to show
     var aProducer:Producer?
-   
+    
     
     let imgPicker = UIImagePickerController()
     var name: String?
@@ -43,10 +43,15 @@ class ProducerViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     @IBAction func acceptAcceptAndReturn(_ sender: Any){
+        var allCorrect : Bool = true
         print("CLIKED ACCEPT AND RETURN")
        
 
-        
+        if !checkType(self.nameOfProducer.text!, "word")  {
+            
+            self.nameOfProducer.textColor = .red
+            allCorrect = false
+        }
         self.name = self.nameOfProducer.text
         self.number = self.numberOfBeers.text
         self.producerImage = self.imageOfProducer.image
@@ -55,9 +60,15 @@ class ProducerViewController: UIViewController, UINavigationControllerDelegate, 
         aProducer?.logoProducer = self.producerImage
    
         
+        if(allCorrect){
+            
+            print("UNWIND")
+            print(allCorrect)
+            
+            performSegue(withIdentifier: "unwindSegueFromProducerView", sender: self)//posible error
+            
+        }
 
-        print("UNWIND")
-        performSegue(withIdentifier: "unwindSegueFromProducerView", sender: self)//posible error
         
         
     }
@@ -91,5 +102,31 @@ extension ProducerViewController : UIImagePickerControllerDelegate{
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func checkType(_ introduced: String, _ expected: String) -> Bool {
+        
+        if introduced.isEmpty {
+            
+            
+                notifyUser(self, alertTitle: "Field is emty", alertMessage: "Sorry cant leave the field empty", runOnOK: {_ in})
+                    return false
+                
+        }
+        if expected == "word"{
+            let phone = introduced.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
+            if !phone.isEmpty  {
+                notifyUser(self, alertTitle: "Type of Input Incorrect", alertMessage: "\(introduced): Wasn't cant take numbers. Please correct it to save", runOnOK: {_ in})
+                    return false
+                }
+                return true
+            
+           
+            
+        }else{
+            //expected number
+            print("This is taken care of UI")
+            return true
+        }
     }
 }
