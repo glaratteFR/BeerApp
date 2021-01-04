@@ -97,7 +97,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
-                                    <segue destination="hSc-TU-33X" kind="unwind" unwindAction="returnfromDetailWithSegue:" id="s62-Gg-rIs"/>
+                                    <action selector="acceptAcceptAndReturn:" destination="mYT-ms-eo9" eventType="touchUpInside" id="KND-EW-vqo"/>
+                                    <segue destination="hSc-TU-33X" kind="unwind" identifier="unwindSegueFromProducerView" unwindAction="returnfromDetailWithSegue:" id="s62-Gg-rIs"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jLe-Gn-Fem">
@@ -123,6 +124,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="GaI-Ny-700"/>
                     <connections>
+                        <outlet property="done" destination="9Uc-Cc-iI8" id="nzM-sy-48j"/>
                         <outlet property="imageOfProducer" destination="4mD-es-xpF" id="xH4-rn-oV9"/>
                         <outlet property="nameOfProducer" destination="jLe-Gn-Fem" id="quK-4e-VaF"/>
                         <outlet property="numberOfBeers" destination="xW0-Dm-jxw" id="QnO-pf-6CG"/>
@@ -144,6 +146,14 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGv-Wy-xt9">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="1480"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="612-CC-qeE">
+                                        <rect key="frame" x="8" y="8" width="111" height="30"/>
+                                        <state key="normal" title="Done"/>
+                                        <connections>
+                                            <action selector="acceptAcceptAndReturn:" destination="DPV-TB-jrF" eventType="touchUpInside" id="qwS-dE-bnK"/>
+                                            <segue destination="q0r-Ho-AX7" kind="unwind" identifier="unwindSegueFromBeerView" unwindAction="returnfromDetailWithSegue:" id="dQF-x3-AYC"/>
+                                        </connections>
+                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQy-le-Aai">
                                         <rect key="frame" x="0.0" y="86" width="414" height="1414"/>
                                         <subviews>
@@ -336,14 +346,6 @@
                                             <constraint firstItem="b7R-QZ-vEu" firstAttribute="top" secondItem="hHp-jd-kKk" secondAttribute="bottom" constant="28" id="wcj-2x-3LJ"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="612-CC-qeE">
-                                        <rect key="frame" x="8" y="8" width="111" height="30"/>
-                                        <state key="normal" title="Done"/>
-                                        <connections>
-                                            <action selector="acceptAcceptAndReturn:" destination="DPV-TB-jrF" eventType="touchUpInside" id="qwS-dE-bnK"/>
-                                            <segue destination="q0r-Ho-AX7" kind="unwind" identifier="unwindSegueFromBeerView" unwindAction="returnfromDetailWithSegue:" id="dQF-x3-AYC"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="dQy-le-Aai" firstAttribute="centerX" secondItem="bGv-Wy-xt9" secondAttribute="centerX" id="1b3-04-3XK"/>

@@ -17,11 +17,15 @@ class ProducerViewController: UIViewController, UINavigationControllerDelegate, 
     @IBOutlet weak var imageOfProducer: UIImageView!
     @IBOutlet weak var numberOfBeers: UILabel!
     
+    @IBOutlet weak var done: UIButton!
     //Producer to show
     var aProducer:Producer?
+   
     
     let imgPicker = UIImagePickerController()
-    
+    var name: String?
+    var producerImage: UIImage!
+    var number: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +41,26 @@ class ProducerViewController: UIViewController, UINavigationControllerDelegate, 
         self.imageOfProducer.addGestureRecognizer(tapGesture)
        
     }
+    
+    @IBAction func acceptAcceptAndReturn(_ sender: Any){
+        print("CLIKED ACCEPT AND RETURN")
+       
 
+        
+        self.name = self.nameOfProducer.text
+        self.number = self.numberOfBeers.text
+        self.producerImage = self.imageOfProducer.image
+        
+        aProducer?.nameProducer = self.name!
+        aProducer?.logoProducer = self.producerImage
+   
+        
+
+        print("UNWIND")
+        performSegue(withIdentifier: "unwindSegueFromProducerView", sender: self)//posible error
+        
+        
+    }
 
     
     @objc func tapGestureAction(gesture: UITapGestureRecognizer){
