@@ -1,4 +1,4 @@
-//
+
 //  Model.swift
 //  BeerApp
 //
@@ -63,6 +63,7 @@ public class Model : NSObject, NSCoding{
         
                 print("Downloading...")
                 importBeersFromCsvOnline("defaultbeer.csv","BeerApp/Supporting_Files/beerApp-data/")
+                importImgOnline("dfdffdd.csv","BeerApp/Supporting_Files/beerApp-data/")
                // sleep(3)
            
             importProducers = importProducersFromCsv("defaultbeer", folder: NAME_OF_FOLDER_IN_BUNDLE)
@@ -95,6 +96,43 @@ public class Model : NSObject, NSCoding{
         
     }//end init model
     
+    func importImgOnline(_ file:String, _ folder:String) -> Void {
+        print("#SALTO A IMPORT FROM CSV BEERS")
+        var documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        var path = documentDirectory[0].appendingPathComponent("img.png")
+        print(FileManager.default.fileExists(atPath: path.path))
+        if !(FileManager.default.fileExists(atPath: path.path)) {
+            let urlStrings = "http://maxus.fis.usal.es/HOTHOUSE/daa/2020beer/fotos/lagallolocajunio21.png"
+        
+            /*var documentDirectory = Bundle.main.resourceURL
+            var path = documentDirectory?.appendingPathComponent("save.csv")
+            print(path)*/
+            print(path)
+            if let fileUrl = URL(string: urlStrings){
+                URLSession.shared.downloadTask(with: fileUrl){
+                    (tempFileUrl,response,error) in
+                    if let fileTempFileUrl = tempFileUrl {
+                        do {
+                        
+                            
+                            try FileManager.default.moveItem(at: fileTempFileUrl, to: path)
+                            if (FileManager.default.fileExists(atPath: path.path)) {                            print("PICTURE EXIST !!!")
+                            }
+                            else
+                            {
+                                print("PICTURE not EXIST !!!")                            }
+                    }
+                        catch {
+                            print(error)
+                        }
+                    }
+                }.resume()
+            }
+            
+        } else {
+            print("PICTURE ALREADY EXIST !!!!!")
+        }
+    }
     func importBeersFromCsvOnline(_ file:String, _ folder:String) -> Bool{
 
         print("#HHHHHHHHHHHHHHRS")
@@ -415,3 +453,5 @@ public class Model : NSObject, NSCoding{
     
     
 }
+
+
