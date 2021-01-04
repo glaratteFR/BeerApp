@@ -16,8 +16,11 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
     @IBOutlet weak var producerSelector: UIPickerView!
     
     @IBOutlet weak var nameText: UITextField!
-    @IBOutlet weak var typeText: UITextField!
-    @IBOutlet weak var producerText: UITextField!
+    
+    
+    @IBOutlet weak var typeSegment: UISegmentedControl!
+    
+   // @IBOutlet weak var producerText: UITextField!
     @IBOutlet weak var nationalityText: UITextField!
     @IBOutlet weak var capText: UITextField!
     @IBOutlet weak var expDText: UITextField!
@@ -81,7 +84,17 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         print(self.name)
         nameText.text = self.name
        // typeText.text = self.type
-        producerText.text = self.producer
+        //producerText.text = self.producer
+        switch self.type
+        {
+            case "cane":
+                typeSegment.selectedSegmentIndex = 0
+            case "bottle":
+                typeSegment.selectedSegmentIndex = 1
+            default:
+                typeSegment.selectedSegmentIndex = 0
+        }
+        
         nationalityText.text = self.nationality
         capText.text = self.cap
         expDText.text = self.expD
@@ -101,7 +114,7 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         self.name = self.nameText.text
 //        self.type = self.typeText.text
         
-        self.producer = self.producerText.text
+        //self.producer = self.producerText.text
         self.nationality = self.nationalityText.text
         self.cap = self.capText.text
         self.expD = self.expDText.text
@@ -109,6 +122,15 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         self.id = self.idText.text
         self.ibu = self.ibuText.text
         self.volD = self.volDText.text
+        switch self.typeSegment.selectedSegmentIndex {
+        case 0:
+            self.type = "can"
+        case 1:
+            self.type = "bottle"
+        default:
+            break;
+        }
+        
         //image
         
         //get producer name from picker
