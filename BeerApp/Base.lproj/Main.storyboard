@@ -80,22 +80,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maker" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jk6-2L-hfS">
-                                <rect key="frame" x="85" y="170" width="244" height="48"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="244" id="rPt-NL-9XR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Num" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xW0-Dm-jxw">
                                 <rect key="frame" x="183" y="274" width="48" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4mD-es-xpF">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4mD-es-xpF">
                                 <rect key="frame" x="68" y="376" width="278" height="274"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="4mD-es-xpF" secondAttribute="height" multiplier="139:137" id="48Y-kV-t2E"/>
@@ -109,18 +100,23 @@
                                     <segue destination="hSc-TU-33X" kind="unwind" unwindAction="returnfromDetailWithSegue:" id="s62-Gg-rIs"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jLe-Gn-Fem">
+                                <rect key="frame" x="68" y="162" width="278" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FFD-0z-oa3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="xW0-Dm-jxw" firstAttribute="top" secondItem="jk6-2L-hfS" secondAttribute="bottom" constant="56" id="4xs-Hq-X0A"/>
                             <constraint firstItem="4mD-es-xpF" firstAttribute="leading" secondItem="FFD-0z-oa3" secondAttribute="leading" constant="68" id="Alp-Lh-oht"/>
-                            <constraint firstItem="4mD-es-xpF" firstAttribute="centerX" secondItem="jk6-2L-hfS" secondAttribute="centerX" id="FAC-7m-I0a"/>
+                            <constraint firstItem="xW0-Dm-jxw" firstAttribute="top" secondItem="jLe-Gn-Fem" secondAttribute="bottom" constant="78" id="Daq-2e-dOD"/>
                             <constraint firstItem="4mD-es-xpF" firstAttribute="top" secondItem="xW0-Dm-jxw" secondAttribute="bottom" constant="74" id="GTD-LJ-7Hd"/>
-                            <constraint firstItem="xW0-Dm-jxw" firstAttribute="top" secondItem="jk6-2L-hfS" secondAttribute="bottom" constant="56" id="NRp-gW-xa3"/>
+                            <constraint firstItem="jLe-Gn-Fem" firstAttribute="leading" secondItem="FFD-0z-oa3" secondAttribute="leading" constant="68" id="Nlf-HB-GUe"/>
                             <constraint firstItem="9Uc-Cc-iI8" firstAttribute="leading" secondItem="FFD-0z-oa3" secondAttribute="leading" constant="20" id="bjT-mS-Awu"/>
                             <constraint firstItem="FFD-0z-oa3" firstAttribute="bottom" secondItem="4mD-es-xpF" secondAttribute="bottom" constant="66" id="ezs-41-AKd"/>
                             <constraint firstItem="9Uc-Cc-iI8" firstAttribute="top" secondItem="FFD-0z-oa3" secondAttribute="top" constant="37" id="pL7-jO-W5c"/>
+                            <constraint firstItem="FFD-0z-oa3" firstAttribute="trailing" secondItem="jLe-Gn-Fem" secondAttribute="trailing" constant="68" id="rnM-Pq-WkU"/>
                             <constraint firstItem="4mD-es-xpF" firstAttribute="centerX" secondItem="xW0-Dm-jxw" secondAttribute="centerX" id="uG7-iI-ukm"/>
                             <constraint firstItem="4mD-es-xpF" firstAttribute="centerX" secondItem="AvH-PK-U61" secondAttribute="centerX" id="zpp-J1-EC7"/>
                         </constraints>
@@ -128,7 +124,7 @@
                     <navigationItem key="navigationItem" id="GaI-Ny-700"/>
                     <connections>
                         <outlet property="imageOfProducer" destination="4mD-es-xpF" id="xH4-rn-oV9"/>
-                        <outlet property="nameOfProducer" destination="jk6-2L-hfS" id="9Pd-Ro-sgl"/>
+                        <outlet property="nameOfProducer" destination="jLe-Gn-Fem" id="quK-4e-VaF"/>
                         <outlet property="numberOfBeers" destination="xW0-Dm-jxw" id="QnO-pf-6CG"/>
                     </connections>
                 </viewController>
@@ -259,7 +255,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="skq-IZ-7Xh">
+                                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="skq-IZ-7Xh">
                                                 <rect key="frame" x="68" y="847.66666666666663" width="278" height="296.33333333333337"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="296.33333333333337" id="6AW-R4-X7D"/>

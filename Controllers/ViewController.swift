@@ -62,6 +62,7 @@ class ViewController: UITableViewController {
            }else if self.editingStyle == .insert{
                    
                    self.editingStyle = UITableViewCell.EditingStyle.none
+           
                    delBeerButt.isEnabled = true
                    addBeerButt.setTitle("Add Beer", for: .normal)//¿?¿ Posible error
                    tableView.setEditing(false, animated: true)

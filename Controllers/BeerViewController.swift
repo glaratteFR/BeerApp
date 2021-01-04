@@ -70,6 +70,8 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         self.ibu = aBeer?.IBUBeer
         self.volD = aBeer?.volBeer
         self.beerImage = aBeer?.pictureBeer
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction))
+        self.beerImageFrame.addGestureRecognizer(tapGesture)
         
  
     }
@@ -147,6 +149,7 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         
     }
     //camera if posible
+    /*
     @IBAction func tapGestureAction(gesture: UITapGestureRecognizer){
         
         if !UIImagePickerController.isSourceTypeAvailable(.camera){
@@ -160,9 +163,22 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         present(imgPicker, animated: true, completion: nil)
         
         
-    }
+    }*/
     
-
+    @objc func tapGestureAction(gesture: UITapGestureRecognizer){
+        print("             hello")
+        if !UIImagePickerController.isSourceTypeAvailable(.camera){
+        notifyUser(self, alertTitle: "The camera is unavailable", alertMessage: "The camera cant be run in the simulator", runOnOK: {_ in})
+            return
+        }
+        imgPicker.allowsEditing = false
+        imgPicker.sourceType = UIImagePickerController.SourceType.camera
+        imgPicker.cameraCaptureMode = .photo
+        imgPicker.delegate = self
+        present(imgPicker, animated: true, completion: nil)
+        
+        
+    }
 
 }//end beerViewController
 
