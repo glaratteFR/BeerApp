@@ -143,6 +143,7 @@ public class Model : NSObject, NSCoding{
             
         }
         allBears = allBears.sorted(by: { $0.nameBeer > $1.nameBeer})
+        print(allBears.count)
         var indexBeer = 2
         /*
          nameBeer : String,
@@ -160,28 +161,33 @@ public class Model : NSObject, NSCoding{
          */
         
         var oldNameBeer = allBears[0].nameBeer
+        print("aaaaaaaaaaaaaaaaaa")
+        print(allBears.count)
         
         for (index, bear) in allBears.enumerated() {
-            var nextBear = allBears[index+1]
-            if bear.nameBeer == nextBear.nameBeer
-            {
-                if (bear.capBeer == nextBear.capBeer && bear.expDateBeer == nextBear.expDateBeer && bear.nationalityBeer == nextBear.nationalityBeer && bear.rateBeer == nextBear.rateBeer){
-                    let indexProd = self.producersNamed.index(forKey: bear.nameBeer)
-                    
-                     self.producersNamed[indexProd!].value.beersCollect?.filter{
-                        $0.nameBeer == bear.nameBeer
-                    }.first?.change(p_nameBeer:bear.nameBeer+"_"+String(index))
-                    if (oldNameBeer == bear.nameBeer)
-                    {
-                        indexBeer = indexBeer+1
-                        oldNameBeer = bear.nameBeer
+            if !(index==allBears.count-1){
+                let nextBear = allBears[index+1]
+                if bear.nameBeer == nextBear.nameBeer
+                {
+                    if (bear.capBeer == nextBear.capBeer && bear.expDateBeer == nextBear.expDateBeer && bear.nationalityBeer == nextBear.nationalityBeer && bear.rateBeer == nextBear.rateBeer){
+                        print("the same beer exist !!!!")
+                        let indexProd = self.producersNamed.index(forKey: bear.nameBeer)
                         
-                    }else{
-                        indexBeer = 2
+                         self.producersNamed[indexProd!].value.beersCollect?.filter{
+                            $0.nameBeer == bear.nameBeer
+                        }.first?.change(p_nameBeer:bear.nameBeer+"_"+String(index))
+                        if (oldNameBeer == bear.nameBeer)
+                        {
+                            indexBeer = indexBeer+1
+                            oldNameBeer = bear.nameBeer
+                            
+                        }else{
+                            indexBeer = 2
+                        }
+                        
+                        
+                        
                     }
-                    
-                    
-                    
                 }
             }
         }
