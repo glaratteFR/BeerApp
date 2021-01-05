@@ -23,7 +23,30 @@ public class Model : NSObject, NSCoding{
     var producersNamed = [String:Producer]()
     private let dfm = FileManager.default
     
-    	
+    func sortWithKeys(_ dict:[String:Producer]) -> [String:Producer]{
+        let sorted = dict.sorted(by: {$0.key < $1.key })
+        var newDict: [String:Producer] = [:]
+        for sortedDict in sorted {
+            newDict[sortedDict.key]=sortedDict.value
+        }
+        return newDict
+    }
+    
+    func switchKey(_ myDict: Dictionary<String,Producer>,fromKey: String, toKey: String) -> Dictionary<String,Producer>{
+        print(toKey)
+        var dict = myDict
+        if var entry = dict.removeValue(forKey: fromKey)
+        {
+            dict[toKey] = entry
+        }
+        print(dict[toKey])
+        
+        
+        
+        return dict
+    }
+
+    
     public override init() {
         
         let DOCS_URL = documentsURL()// RGB Tools
@@ -45,44 +68,136 @@ public class Model : NSObject, NSCoding{
         print("INTENTO DE CARGA DE BINARIO")
         readBinProducers = readProducersInfosFromDocuments(url: URL_OF_PRODUCERS_BINARY_FILE) //Intento de lectura de archivo binario La app ya fue arrancada
         //First boot readBinProducers = false
-        //print(URL_OF_PRODUCERS_BINARY_FILE)
-        
-        /*
-         Print for debug
-         
-         */
         
         
         if !readBinProducers{//if first boot
             print("TryToDownload")
-           
-           
-            
-     
-            
-        
+    
                 print("Downloading...")
                 importBeersFromCsvOnline("defaultbeer.csv","BeerApp/Supporting_Files/beerApp-data/")
                 importImgOnline("dfdffdd.csv","BeerApp/Supporting_Files/beerApp-data/")
-               // sleep(3)
            
             importProducers = importProducersFromCsv("defaultbeer", folder: NAME_OF_FOLDER_IN_BUNDLE)
+            
+           
             
             
             producers.forEach{ producersNamed.updateValue($0, forKey: $0.nameProducer)}
             importBeers = importBeersFromCsv(NAME_OF_PRODUCER_FILE_IN_BUNDLE, folder: NAME_OF_FOLDER_IN_BUNDLE)
+            
+            
+            
+            
             print("#Read producers --> \(importProducers)")
             print("#Read beers --> \(importBeers)")
             assert(importProducers && importBeers)
+            
             producers.forEach{ $0.beersCollect = [Beer]()}
             allBeers.forEach{producersNamed[$0.producerBeer]?.beersCollect?.append($0)}
-            
-            
+            print("#######################################################")
+            print("MODEL")
+            print(producersNamed)
+            print(producersNamed.forEach{$0.value.beersCollect?.forEach{print("                        BEERS IN producersNAmed --> \($0.nameBeer)")}})
+           // print(producersNamed.first?.value.beersCollect?[].nameBeer)
+            print(producersNamed.first?.value.beersCollect?.count)
+            print("#######################################################")
+
         }
         var index = 0
+
+        //=================================================================================
+       /*
+        var uniqueValues = Set<String>()
+        var resultDict = [String: Producer]()
+        print(self.producersNamed.count)
+        resultDict = self.producersNamed
+        self.producers.removeAll()
+        var allBears:[Beer] = []
+
+        
+        self.producersNamed.forEach {(index,value) in
+            
+            allBears+=value.beersCollect!
+            
+        }
+         allBears = allBears.sorted(by: { $0.nameBeer < $1.nameBeer})
+        var indexBeer = 2
+        var oldNameBeer = allBears[0].nameBeer
+        print("aaaaaaaaaaaaaaaaaa")
+        allBears.forEach{ print($0.nameBeer)}
+        print(allBears.count)
+        
+        for (index, bear) in allBears.enumerated() {
+            if !(index==allBears.count-1){
+                
+                
+                var nameBeerCurrent = String(bear.nameBeer)
+                print("ssssssssssssss")
+                print(allBears[index].nameBeer)
+                var nameBeerNext = allBears[index+1].nameBeer
+                print(allBears[index+1].nameBeer)
+                nameBeerCurrent = allBears[index].nameBeer
+                print(nameBeerNext==nameBeerCurrent)
+                if (nameBeerNext.elementsEqual(nameBeerCurrent))
+                {
+                    print("okkkkkk")
+                    if (allBears[index].capBeer == allBears[index+1].capBeer && allBears[index].expDateBeer == allBears[index+1].expDateBeer && allBears[index].nationalityBeer == allBears[index+1].nationalityBeer && allBears[index].rateBeer == allBears[index+1].rateBeer){
+                        print("the same beer exist !!!!")
+                        let indexProd = self.producersNamed.index(forKey: allBears[index].nameBeer)
+                        
+                         self.producersNamed[indexProd!].value.beersCollect?.filter{
+                            $0.nameBeer == allBears[index].nameBeer
+                        }.first?.change(p_nameBeer:allBears[index].nameBeer+"_"+String(index))
+                        
+                        print("------------------")
+                        
+                        print(self.producersNamed[indexProd!].value.beersCollect?.filter{
+                            $0.nameBeer == allBears[index].nameBeer
+                        }.first?.nameBeer)
+
+                        if (oldNameBeer == allBears[index].nameBeer)
+                        {
+                            indexBeer = indexBeer+1
+                            oldNameBeer = allBears[index].nameBeer
+                            
+                        }else{
+                            indexBeer = 2
+                        }
+                        
+                        
+                        
+                    }
+                }
+            }
+        }
+        
+     
+        resultDict = sortWithKeys(resultDict)
+        
+        var numberIterator = resultDict.makeIterator()
+        print(resultDict.count)
+        while let num = numberIterator.next(){
+            print(self.producersNamed.count)
+            print(self.producersNamed.endIndex)
+            print("DUPLICATION")
+            print(num.key)
+            if (num.key == numberIterator.next()?.key)
+            {
+                print("-------------DUPLICATE PRODUCER --------------")
+                let index = self.producersNamed.index(forKey: num.key)
+                self.producersNamed = switchKey(self.producersNamed,fromKey: num.key, toKey: num.key + "_02")
+            }
+        }
+        
+   //=================================================================================
+       */
+        /*
+        //ERROR DUPICAMIENTO
         self.producers.removeAll()
         self.producersNamed.forEach{self.producers.append($0.value); index = index+1}
         allBeers.forEach{producersNamed[$0.producerBeer]?.beersCollect?.append($0)}
+        
+        */
         /*
         print("********************")
         print(producers.count)
@@ -90,9 +205,15 @@ public class Model : NSObject, NSCoding{
         print(producers[0].beersCollect?[].nameBeer)
         */
         producers.forEach{$0.beersCollect?.sort(by: {($0.nameBeer) < ($1.nameBeer)})}
-        print("********************")
+        print("****************************************************************")
+
+        print(producersNamed)
+        print(producersNamed.forEach{$0.value.beersCollect?.forEach{print("                        BEERS IN producersNAmed --> \($0.nameBeer)")}})
+       
+        print(producersNamed.first?.value.beersCollect?.count)
+  
         print(producers.count)
-     
+        print("****************************************************************")
         
     }//end init model
     
@@ -336,6 +457,7 @@ public class Model : NSObject, NSCoding{
             return false
         }
         
+    
         //parse by tab
         var lines :[String]? = line.components(separatedBy: "\n")
         print("#FILE  --> \(String(describing: lines)) ")
@@ -377,7 +499,7 @@ public class Model : NSObject, NSCoding{
             producers = x as! [Producer]
 
             self.producers.forEach{self.producersNamed.updateValue($0, forKey: $0.nameProducer);print($0.nameProducer)}
-            print(producersNamed["Cervezas Segovia S.L."]?.beersCollect![1].nameBeer as Any)
+           // print(producersNamed["Cervezas Segovia S.L."]?.beersCollect![1].nameBeer as Any)
             //****************************************************************************
         }catch{
             
@@ -385,6 +507,16 @@ public class Model : NSObject, NSCoding{
             return false
 
         }
+      
+        print("≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠")
+
+        print(producersNamed)
+        print(producersNamed.forEach{$0.value.beersCollect?.forEach{print("                        BEERS IN producersNAmed --> \($0.nameBeer)")}})
+       
+        print(producersNamed.first?.value.beersCollect?.count)
+  
+        print(producers.count)
+        print("≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠")
         return true
     }
     
@@ -392,6 +524,16 @@ public class Model : NSObject, NSCoding{
     public func writeProducersInfosToDocuments(_ file: String, folder:String)->Bool{
         
         print("#SALTO A WRITEPRODUCERSINFOTODOCUMENTS")
+        print("≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠")
+
+        print(producersNamed)
+        print(producersNamed.forEach{$0.value.beersCollect?.forEach{print("                        BEERS IN producersNAmed --> \($0.nameBeer)")}})
+       
+        print(producersNamed.first?.value.beersCollect?.count)
+  
+        print(producers.count)
+        print("≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠")
+
         let documentsFolderURL = documentsURL().appendingPathComponent(folder)//maxus
         let documentsFolderPath = documentsFolderURL.path
         var urlsOfFile = documentsFolderURL.appendingPathComponent(file)
@@ -446,6 +588,7 @@ public class Model : NSObject, NSCoding{
     }
     
     public required init?(coder decoder: NSCoder) {
+        //maybe instead of porducers is producersNamed
         self.producers = decoder.decodeObject(forKey: "producers") as! [Producer]
         self.allBeers  = decoder.decodeObject(forKey: "allBeers") as! [Beer]
     }
