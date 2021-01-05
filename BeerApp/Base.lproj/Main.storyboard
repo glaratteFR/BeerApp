@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="p1c-EU-amU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="epM-zR-cqj">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
@@ -70,7 +70,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frG-bw-zA9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1588" y="113"/>
+            <point key="canvasLocation" x="-1548" y="118"/>
         </scene>
         <!--Producer View Controller-->
         <scene sceneID="5YJ-a9-Mdg">
@@ -378,6 +378,91 @@
                 <exit id="q0r-Ho-AX7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="714.49275362318849" y="549.45652173913049"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Vjx-q7-ivN">
+            <objects>
+                <tableViewController id="epM-zR-cqj" customClass="ViewController" customModule="BeerApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Snz-IY-BLd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="GQy-zD-lpd">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="159"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBo-B8-yRi">
+                                    <rect key="frame" x="342" y="6" width="64" height="64"/>
+                                    <state key="normal" title="Add Beer"/>
+                                    <connections>
+                                        <action selector="addBeerAct:" destination="epM-zR-cqj" eventType="touchUpInside" id="rny-pP-hNX"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvs-Ng-e8X">
+                                    <rect key="frame" x="8" y="6" width="91" height="64"/>
+                                    <state key="normal" title="Remove Beer"/>
+                                    <connections>
+                                        <action selector="delBeerAct:" destination="epM-zR-cqj" eventType="touchUpInside" id="GLp-gX-tvk"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7R7-zO-2Gf">
+                                    <rect key="frame" x="8" y="121" width="122" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="jhu-89-IGG"/>
+                                    </constraints>
+                                    <state key="normal" title="Remove Producer"/>
+                                    <connections>
+                                        <action selector="delBeerAct:" destination="epM-zR-cqj" eventType="touchUpInside" id="xsQ-TL-LW1"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Na-Vh-hdZ">
+                                    <rect key="frame" x="311" y="108" width="95" height="55"/>
+                                    <state key="normal" title="Add Producer"/>
+                                    <connections>
+                                        <action selector="addBeerAct:" destination="epM-zR-cqj" eventType="touchUpInside" id="Bsg-hA-92O"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="tBo-B8-yRi" secondAttribute="trailing" constant="8" id="2sM-j6-vpF"/>
+                                <constraint firstItem="rvs-Ng-e8X" firstAttribute="top" secondItem="GQy-zD-lpd" secondAttribute="top" constant="6" id="CB5-Ny-Wzt"/>
+                                <constraint firstItem="rvs-Ng-e8X" firstAttribute="leading" secondItem="GQy-zD-lpd" secondAttribute="leading" constant="8" id="KXP-RT-jFo"/>
+                                <constraint firstAttribute="bottom" secondItem="8Na-Vh-hdZ" secondAttribute="bottom" constant="-4" id="U54-0i-btF"/>
+                                <constraint firstItem="tBo-B8-yRi" firstAttribute="top" secondItem="GQy-zD-lpd" secondAttribute="top" constant="6" id="ZGh-iK-f8N"/>
+                                <constraint firstItem="rvs-Ng-e8X" firstAttribute="baseline" secondItem="tBo-B8-yRi" secondAttribute="baseline" id="gBn-Ux-A7j"/>
+                                <constraint firstItem="tBo-B8-yRi" firstAttribute="top" secondItem="GQy-zD-lpd" secondAttribute="top" constant="6" id="kqt-sh-Oxd"/>
+                                <constraint firstItem="7R7-zO-2Gf" firstAttribute="leading" secondItem="GQy-zD-lpd" secondAttribute="leading" constant="8" id="rfE-Cd-cWw"/>
+                                <constraint firstAttribute="bottom" secondItem="7R7-zO-2Gf" secondAttribute="bottom" constant="8" id="sNJ-dh-wUg"/>
+                                <constraint firstAttribute="trailing" secondItem="tBo-B8-yRi" secondAttribute="trailing" constant="8" id="uWL-2E-wcJ"/>
+                                <constraint firstItem="8Na-Vh-hdZ" firstAttribute="top" secondItem="tBo-B8-yRi" secondAttribute="bottom" constant="38" id="udd-W7-F3f"/>
+                                <constraint firstItem="7R7-zO-2Gf" firstAttribute="top" secondItem="rvs-Ng-e8X" secondAttribute="bottom" constant="51" id="wc2-kp-rzL"/>
+                                <constraint firstAttribute="trailing" secondItem="8Na-Vh-hdZ" secondAttribute="trailing" constant="8" id="zQO-YB-dIO"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" rowHeight="23" id="drT-r5-EYL">
+                                <rect key="frame" x="0.0" y="187" width="414" height="23"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="drT-r5-EYL" id="bH2-AT-MJ2">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="23"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="epM-zR-cqj" id="okA-mz-LEA"/>
+                            <outlet property="delegate" destination="epM-zR-cqj" id="Ghx-aH-Yio"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="addBeerButt" destination="tBo-B8-yRi" id="zBa-nn-o6Y"/>
+                        <outlet property="delBeerButt" destination="rvs-Ng-e8X" id="8LZ-Hk-ccR"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nfO-Of-daQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1365.217391304348" y="1061.413043478261"/>
         </scene>
     </scenes>
     <resources>
