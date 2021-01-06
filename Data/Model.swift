@@ -104,13 +104,13 @@ public class Model : NSObject, NSCoding{
 
         }
         var index = 0
-
+        self.producers.removeAll()
         //=================================================================================
        /*
         var uniqueValues = Set<String>()
-        var resultDict = [String: Producer]()
-        print(self.producersNamed.count)
-        resultDict = self.producersNamed
+        var resultDict =  [Producer]()
+        print(self.producers.count)
+        resultDict = self.producers
         self.producers.removeAll()
         var allBears:[Beer] = []
 
@@ -188,9 +188,8 @@ public class Model : NSObject, NSCoding{
                 self.producersNamed = switchKey(self.producersNamed,fromKey: num.key, toKey: num.key + "_02")
             }
         }
-        
+        */
    //=================================================================================
-       */
         /*
         //ERROR DUPICAMIENTO
         self.producers.removeAll()
