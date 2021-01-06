@@ -34,12 +34,22 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
         self.producerBeer = "Unkonwn"
         self.nationalityBeer = "Unkonwn"
         self.capBeer = "Unkonwn"
-        self.expDateBeer = "Unkonwn"
+        self.expDateBeer = "January 1"
         self.rateBeer = "Unkonwn"
         self.IDBeer = "Unkonwn"
         self.IBUBeer = "Unkonwn"
         self.volBeer = "Unkonwn"
         self.pictureBeer = unknownImage
+        var noBlancName = self.nameBeer.replacingOccurrences(of: "\\s*",
+                                                with: "$1",
+                                                options: [.regularExpression])
+        
+        let noBlancDate = self.expDateBeer.replacingOccurrences(of: "\\s*",
+                                                      with: "$1",
+                                                      options: [.regularExpression])
+        var nameOfImage = "\(noBlancName)\(noBlancDate)"
+        nameOfImage = nameOfImage.lowercased()
+        self.IDBeer = nameOfImage
     }
     
     init(nameBeer : String,
