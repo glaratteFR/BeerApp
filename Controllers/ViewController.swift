@@ -391,7 +391,7 @@ func duplicateBeers(_ producers:[Producer], _ viewController:UIViewController) -
                                  
                                  */
 
-                                
+                                var commit = "ffff"
                                 duplica = true
                                     break
                                 }
