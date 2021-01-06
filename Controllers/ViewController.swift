@@ -19,7 +19,7 @@ class ViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+ 
         print("6666666666666")
         print("-----------------------------")
         print(model.producersNamed)
@@ -84,6 +84,7 @@ class ViewController: UITableViewController {
        //Functions for buttons
        @IBAction func addBeerAct(_ sender: Any){
            print("             #Vamos a añadir una cerveza")
+
         //model.producersNamed["Cervezas Segovia S.L"]!.beersCollect?.forEach{print("                        BEERS IN NAMED --> \($0.nameBeer)")}
         model.producersNamed.forEach{print("                        BEERS IN NAMED --> \($0.value.beersCollect!.forEach{print("                        BEERS IN NAMED --> \($0.nameBeer)")})")}
         
@@ -108,7 +109,7 @@ class ViewController: UITableViewController {
        }
        
        @IBAction func delBeerAct(_ sender: Any){
-           
+
            if self.editingStyle == UITableViewCell.EditingStyle.none{
                
                
@@ -181,6 +182,7 @@ class ViewController: UITableViewController {
         let producer = model.producers[producerNumber]
         
         return producer.beersCollect?.count ?? 0
+      
     }
     
    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -205,10 +207,12 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 40
+        return UITableView.automaticDimension
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let producer = model.producers[section]
+        print("                                                         I REALKSDASJDLKJSAJDLSAJLDK JALKDJALSKJDLSJDDLSADJ JORGE")
+        print(model.producers)
         let headerView = Bundle.main.loadNibNamed("TableViewHeader", owner: self, options: nil)?.first as! TableViewHeader
         headerView.ProducerLabel.text = producer.nameProducer
    // customHeaderView.producerImage.image = producer.logoProducer

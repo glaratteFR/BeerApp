@@ -72,7 +72,18 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         self.id = aBeer?.IDBeer
         self.ibu = aBeer?.IBUBeer
         self.volD = aBeer?.volBeer
-        self.beerImage = aBeer?.pictureBeer
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let nameOfPicture = "\(self.id!).png"
+        let path = documentDirectory[0].appendingPathComponent(nameOfPicture)
+        if (FileManager.default.fileExists(atPath: path.path)) {
+            self.beerImage = UIImage(contentsOfFile: path.path)
+        }else{
+            print("La foto no existe... Ponemos default")
+            print(path.path)
+            self.beerImage = aBeer?.pictureBeer
+            
+        }
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction))
         self.beerImageFrame.addGestureRecognizer(tapGesture)
         

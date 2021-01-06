@@ -22,6 +22,10 @@ public class Producer : NSObject, NSCoding, NSSecureCoding{
         self.logoProducer = logoProducer
     }
     
+    public override init() {
+        self.nameProducer="none"
+        self.logoProducer = nil
+    }
 
     
 

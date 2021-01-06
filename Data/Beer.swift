@@ -228,4 +228,3 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
     
     
 }//End Beer Class
-
