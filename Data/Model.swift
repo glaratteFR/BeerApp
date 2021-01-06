@@ -104,6 +104,90 @@ public class Model : NSObject, NSCoding{
 
         }
         var index = 0
+        var uniqueValues = Set<String>()
+        var resultDict = [String: Producer]()
+        print(self.producersNamed.count)
+        resultDict = self.producersNamed
+        self.producers.removeAll()
+        var allBears:[Beer] = []
+
+        
+        self.producersNamed.forEach {(index,value) in
+            
+            allBears+=value.beersCollect!
+            
+        }
+         allBears = allBears.sorted(by: { $0.nameBeer < $1.nameBeer})
+        var indexBeer = 2
+        var oldNameBeer = allBears[0].nameBeer
+        print("aaaaaaaaaaaaaaaaaa")
+        allBears.forEach{ print($0.nameBeer)}
+        print(allBears.count)
+        
+        for (index, bear) in allBears.enumerated() {
+            if !(index==allBears.count-1){
+                
+                
+                var nameBeerCurrent = String(bear.nameBeer)
+                print("ssssssssssssss")
+                print(allBears[index].nameBeer)
+                var nameBeerNext = allBears[index+1].nameBeer
+                print(allBears[index+1].nameBeer)
+                nameBeerCurrent = allBears[index].nameBeer
+                print(nameBeerNext==nameBeerCurrent)
+                if (nameBeerNext.elementsEqual(nameBeerCurrent))
+                {
+                    print("okkkkkk")
+                    if (allBears[index].capBeer == allBears[index+1].capBeer && allBears[index].expDateBeer == allBears[index+1].expDateBeer && allBears[index].nationalityBeer == allBears[index+1].nationalityBeer && allBears[index].rateBeer == allBears[index+1].rateBeer){
+                        print("the same beer exist !!!!")
+                        let indexProd = self.producersNamed.index(forKey: allBears[index].nameBeer)
+                        
+                         self.producersNamed[indexProd!].value.beersCollect?.filter{
+                            $0.nameBeer == allBears[index].nameBeer
+                        }.first?.change(p_nameBeer:allBears[index].nameBeer+"_"+String(index))
+                        
+                        print("------------------")
+                        
+                        print(self.producersNamed[indexProd!].value.beersCollect?.filter{
+                            $0.nameBeer == allBears[index].nameBeer
+                        }.first?.nameBeer)
+
+                        if (oldNameBeer == allBears[index].nameBeer)
+                        {
+                            indexBeer = indexBeer+1
+                            oldNameBeer = allBears[index].nameBeer
+                            
+                        }else{
+                            indexBeer = 2
+                        }
+                        
+                        
+                        
+                    }
+                }
+            }
+        }
+        
+     
+        resultDict = sortWithKeys(resultDict)
+        
+        var numberIterator = resultDict.makeIterator()
+        print(resultDict.count)
+        while let num = numberIterator.next(){
+            print(self.producersNamed.count)
+            print(self.producersNamed.endIndex)
+            print("DUPLICATION")
+            print(num.key)
+            if (num.key == numberIterator.next()?.key)
+            {
+                print("-------------DUPLICATE PRODUCER --------------")
+                let index = self.producersNamed.index(forKey: num.key)
+                self.producersNamed = switchKey(self.producersNamed,fromKey: num.key, toKey: num.key + "_02")
+            }
+        }
+        
+        
+        
         self.producers.removeAll()
         //=================================================================================
        /*

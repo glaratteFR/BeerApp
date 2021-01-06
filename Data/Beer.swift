@@ -16,6 +16,11 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
     
     public static var supportsSecureCoding: Bool = true
     
+    public func change(p_nameBeer:String)
+    {
+        self.nameBeer=p_nameBeer
+    }
+    
     var nameBeer : String
     var typeBeer : String
     var producerBeer : String
@@ -169,6 +174,8 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
 
         }
         
+        
+        
         self.nameBeer = tempBeerName
         self.typeBeer = tempTypeBeer
         self.producerBeer = tempProducerBeer
@@ -206,6 +213,8 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
         coder.encode(duplicate, forKey: "duplicate")
         
     }
+ 
+    
     
     public required init?(coder aDecoder: NSCoder) {
         
