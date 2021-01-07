@@ -16,7 +16,7 @@ class ViewController: UITableViewController {
     
     var model = Model()
     var editingStyle:UITableViewCell.EditingStyle?
-    
+    public var indexBeer = 2
     override func viewDidLoad() {
         super.viewDidLoad()
  
@@ -43,7 +43,10 @@ class ViewController: UITableViewController {
         print("-----------------------------")
         print(model.producersNamed.forEach{print($0)})
         model.producers[0].beersCollect?.forEach{print("                        BEERS IN PRODUCERS --> \($0.nameBeer)")}
-       
+        
+        
+        
+
        
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.appEnterBackGround(notification:)), name: UIApplication.didEnterBackgroundNotification, object: nil)//When app goes background/ends saves data
         
@@ -76,8 +79,10 @@ class ViewController: UITableViewController {
     
     @IBAction func returnfromDetail(segue:UIStoryboardSegue)->Void{//Method for returning from Segues
            //model.producers.forEach{ b in b.beersCollect?.sort(by: {($0.nameBeer) < ($1.nameBeer)})}
-            model.producers.forEach{ b in b.beersCollect?.sort(by: {($0.nameBeer) < ($1.nameBeer)})}
-           tableView.reloadData()
+        model.producers.forEach{ b in b.beersCollect?.sort(by: {($0.nameBeer) < ($1.nameBeer)})}
+        model.producers = duplicateBeers(model.producers, self)
+        model.producers = duplicateProducers(model.producers,self)
+        tableView.reloadData()
        }
        
        
@@ -320,96 +325,149 @@ class ViewController: UITableViewController {
        }
 }
 
-  /*
- 
- 
- 
- 
- 
- //=================================================================================
 
- var uniqueValues = Set<String>()
- var resultDict = [String: Producer]()
- print(self.producersNamed.count)
- resultDict = self.producersNamed
- self.producers.removeAll()
- var allBears:[Beer] = []
+func duplicateBeers(_ producers:[Producer], _ viewController:UIViewController) -> [Producer]
+    {
 
- 
- self.producersNamed.forEach {(index,value) in
+    var uniqueValues = Set<String>()
+     var resultDict = [String: Producer]()
+     var allBears:[Beer] = []
+
      
-     allBears+=value.beersCollect!
+     producers.forEach {(value) in
+         
+         allBears+=value.beersCollect!
+         
+     }
+      allBears = allBears.sorted(by: { $0.nameBeer < $1.nameBeer})
+     var oldNameBeer = allBears[0].nameBeer
+     print("aaaaaaaaaaaaaaaaaa")
+     allBears.forEach{ print($0.nameBeer)}
+     print(allBears.count)
      
- }
-  allBears = allBears.sorted(by: { $0.nameBeer < $1.nameBeer})
- var indexBeer = 2
- var oldNameBeer = allBears[0].nameBeer
- print("aaaaaaaaaaaaaaaaaa")
- allBears.forEach{ print($0.nameBeer)}
- print(allBears.count)
- 
- for (index, bear) in allBears.enumerated() {
-     if !(index==allBears.count-1){
-         
-         
-         var nameBeerCurrent = String(bear.nameBeer)
-         print("ssssssssssssss")
-         print(allBears[index].nameBeer)
-         var nameBeerNext = allBears[index+1].nameBeer
-         print(allBears[index+1].nameBeer)
-         nameBeerCurrent = allBears[index].nameBeer
-         print(nameBeerNext==nameBeerCurrent)
-         if (nameBeerNext.elementsEqual(nameBeerCurrent))
-         {
-             print("okkkkkk")
-             if (allBears[index].capBeer == allBears[index+1].capBeer && allBears[index].expDateBeer == allBears[index+1].expDateBeer && allBears[index].nationalityBeer == allBears[index+1].nationalityBeer && allBears[index].rateBeer == allBears[index+1].rateBeer){
-                 print("the same beer exist !!!!")
-                 let indexProd = self.producersNamed.index(forKey: allBears[index].nameBeer)
-                 
-                  self.producersNamed[indexProd!].value.beersCollect?.filter{
-                     $0.nameBeer == allBears[index].nameBeer
-                 }.first?.change(p_nameBeer:allBears[index].nameBeer+"_"+String(index))
-                 
-                 print("------------------")
-                 
-                 print(self.producersNamed[indexProd!].value.beersCollect?.filter{
-                     $0.nameBeer == allBears[index].nameBeer
-                 }.first?.nameBeer)
+     for (index, bear) in allBears.enumerated() {
+         if !(index==allBears.count-1){
+             
+             
+             var nameBeerCurrent = String(bear.nameBeer)
 
-                 if (oldNameBeer == allBears[index].nameBeer)
-                 {
-                     indexBeer = indexBeer+1
-                     oldNameBeer = allBears[index].nameBeer
-                     
-                 }else{
-                     indexBeer = 2
+             var nameBeerNext = allBears[index+1].nameBeer
+             print(allBears[index+1].nameBeer)
+             nameBeerCurrent = allBears[index].nameBeer
+             print(nameBeerNext==nameBeerCurrent)
+             if (nameBeerNext.elementsEqual(nameBeerCurrent))
+             {
+                 print("okkkkkk")
+                 if (allBears[index].capBeer == allBears[index+1].capBeer && allBears[index].expDateBeer == allBears[index+1].expDateBeer && allBears[index].nationalityBeer == allBears[index+1].nationalityBeer && allBears[index].rateBeer == allBears[index+1].rateBeer){
+                     print("the same beer exist !!!!")
+                    var nameProducer = allBears[index].producerBeer
+                    var nameBearDupli = allBears[index].nameBeer
+                    var duplica = false
+                    var countDuplu = 0
+                    
+                    let producers:[Producer] = producers.filter{$0.nameProducer == allBears[index].producerBeer}
+                        
+                    for (indexProducer, producer) in producers.enumerated() {
+                        let bears:[Beer] = producer.beersCollect!.filter{$0.nameBeer == allBears[index].nameBeer}
+                        countDuplu += bears.count
+                        if (countDuplu == 2)
+                        {
+                            let indexsBeer = producer.beersCollect?.enumerated().filter({$0.element.nameBeer == allBears[index].nameBeer}).map({$0.offset})
+                            producers[indexProducer].beersCollect?[indexsBeer![0]].duplicate += 1
+                        
+                            producers[indexProducer].beersCollect![indexsBeer![0]].nameBeer = allBears[index].nameBeer + "_" + String(producers[indexProducer].beersCollect![(indexsBeer?[0])!].duplicate)
+                            if (allBears.enumerated().filter({$0.element.nameBeer == producers[indexProducer].beersCollect![indexsBeer![0]].nameBeer }).map({$0.offset}).count == 2)
+                            {
+                                producers[indexProducer].beersCollect?[indexsBeer![0]].duplicate += 1
+                            
+                                producers[indexProducer].beersCollect![indexsBeer![0]].nameBeer = allBears[index].nameBeer + "_" + String(producers[indexProducer].beersCollect![(indexsBeer?[0])!].duplicate)
+                                
+                            }
+                            
+                            if (producers[indexProducer].beersCollect?[indexsBeer![0]].duplicate == 3)
+                                {
+                                    
+                                    print("REMOVEEEEEE")
+                                    producers[indexProducer].beersCollect?.remove(at: indexsBeer![0])
+                                    print("REMOVEEEEEE")
+                                viewController.dismiss(animated: false, completion: nil)
+                                notifyUser(viewController, alertTitle: "Repetition Alert", alertMessage: "Cant have more of three copiees of the same beer", runOnOK: {_ in})
+                                
+                                
+                                
+                            }
+                        
+                            
+                        }
+                        
+                        producers[indexProducer].beersCollect = producers[indexProducer].beersCollect!.sorted(by: { $0.nameBeer < $1.nameBeer})
+                        
+                        
+                    }
+         
+                    
                  }
-                 
-                 
-                 
-             }
-         }
-     }
- }
- 
+                        /*
+                                 producers = producers.sorted(by: { $0.nameProducer < $1.nameProducer})
+                                 
+                                 */
 
- resultDict = sortWithKeys(resultDict)
- 
- var numberIterator = resultDict.makeIterator()
- print(resultDict.count)
- while let num = numberIterator.next(){
-     print(self.producersNamed.count)
-     print(self.producersNamed.endIndex)
-     print("DUPLICATION")
-     print(num.key)
-     if (num.key == numberIterator.next()?.key)
-     {
-         print("-------------DUPLICATE PRODUCER --------------")
-         let index = self.producersNamed.index(forKey: num.key)
-         self.producersNamed = switchKey(self.producersNamed,fromKey: num.key, toKey: num.key + "_02")
+                        
+                     
+
+                    }
+             }
+
+                    
+        
+        
      }
- }
- 
-//=================================================================================
-*/
- 
+    let producersSort = producers.sorted(by: { $0.nameProducer < $1.nameProducer})
+    return producersSort
+}
+
+
+
+func duplicateProducers(_ producers:[Producer], _ viewController:UIViewController) -> [Producer]
+    {
+
+
+        var producers = producers.sorted(by: { $0.nameProducer < $1.nameProducer})
+
+     
+     for (index, producer) in producers.enumerated() {
+         if !(index==producers.count-1){
+            producers = producers.filter{$0.nameProducer == producer.nameProducer}
+            if (producers.count == 2)
+            {
+                producers[index].duplicate += 1
+                producers[index].nameProducer = producer.nameProducer + "_" + String(producer.duplicate)
+                
+            }
+            if producers.filter{$0.nameProducer == producers[index].nameProducer}.count == 2
+            {
+                producers[index].duplicate += 1
+                producers[index].nameProducer = producer.nameProducer + "_" + String(producer.duplicate)
+                
+            }
+            if (producers[index].duplicate == 3)
+                {
+                    
+                    print("REMOVEEEEEE")
+                    producers.remove(at: index)
+                    print("REMOVEEEEEE")
+                viewController.dismiss(animated: false, completion: nil)
+                notifyUser(viewController, alertTitle: "Repetition Alert", alertMessage: "Cant have more of three copiees of the same producer", runOnOK: {_ in})
+                
+                
+                
+            }
+         }
+        
+        
+     }
+        producers = producers.sorted(by: { $0.nameProducer < $1.nameProducer})
+        
+        return producers
+    }
+

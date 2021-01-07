@@ -14,12 +14,14 @@ public class Producer : NSObject, NSCoding, NSSecureCoding{
     
     
     var nameProducer : String
+    var duplicate : Int
     var logoProducer : UIImage?
     var beersCollect : [Beer]?
     
     init(nameProducer:String, logoProducer:UIImage? = nil) {
         self.nameProducer = nameProducer
         self.logoProducer = logoProducer
+        self.duplicate = 1
     }
     
     public override init() {
@@ -79,6 +81,7 @@ public class Producer : NSObject, NSCoding, NSSecureCoding{
         print("#ACABAMOS CON IMAGEN")
         self.nameProducer = tempNameProducer
         self.logoProducer = tempMarkImage
+        self.duplicate = 0
         print("#nameProducer  --> \(self.nameProducer) ")
 
     }
@@ -122,12 +125,14 @@ public class Producer : NSObject, NSCoding, NSSecureCoding{
         coder.encode(nameProducer, forKey: "nameProducer")
         coder.encode(logoProducer, forKey: "logoProducer")
         coder.encode(beersCollect, forKey: "beersCollect")
+        coder.encode(duplicate, forKey: "duplicate")
     }
     
     public required init?(coder decoder: NSCoder) {
         self.nameProducer = decoder.decodeObject(forKey: "nameProducer") as! String
         self.logoProducer = decoder.decodeObject(forKey: "logoProducer") as! UIImage?
         self.beersCollect = decoder.decodeObject(forKey: "beersCollect") as! [Beer]?
+        self.duplicate = decoder.decodeObject(forKey: "duplicate") as! Int
     }
     
     
