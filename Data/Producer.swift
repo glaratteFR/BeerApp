@@ -22,12 +22,14 @@ public class Producer : NSObject, NSCoding, NSSecureCoding{
         self.nameProducer = nameProducer
         self.logoProducer = logoProducer
         self.duplicate = 1
+        self.beersCollect = [Beer]()
     }
     
     public override init() {
         self.nameProducer="none"
         self.duplicate = 1
         self.logoProducer = nil
+        self.beersCollect = [Beer]()
     }
 
     
@@ -36,7 +38,7 @@ public class Producer : NSObject, NSCoding, NSSecureCoding{
 
         let tokens = record.components(separatedBy: del)//separar linia por delimitador
         let dfm = FileManager.default
-        
+        self.beersCollect = [Beer]()
         print("#tempNameProducer  --> \(tokens) ")
         let  tempNameProducer = tokens[2]//get name producer
         guard

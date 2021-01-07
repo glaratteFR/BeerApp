@@ -112,9 +112,11 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
                 typeSegment.selectedSegmentIndex = 0
         }
         
+        
+        
         let producerNumber = (listMakersNames?.firstIndex(of: self.producer!))!
         producerSelector.selectRow(producerNumber, inComponent: 0, animated: true)
-        
+
         nationalityText.text = self.nationality
         capText.text = self.cap
         expDText.text = self.expD
@@ -194,18 +196,42 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         if self.producer != aBeer?.producerBeer{
             print("Moving to new producer")
             //remove from original producer
+            print(aModel?.producersNamed.count)
+            print(aModel?.producersNamed.forEach{print($0.value.nameProducer)})
+            print("----------------------------")
+            print(aModel?.producersNamed.forEach{$0.value.beersCollect?.forEach{print($0.nameBeer)}})
+            
             
             let ogProducer = aModel?.producersNamed[(aBeer?.producerBeer)!]
+            print("OGproducer \(ogProducer?.nameProducer)")
             let indexBeerList = ogProducer?.beersCollect?.firstIndex(of: aBeer!)
             ogProducer?.beersCollect?.remove(at: indexBeerList!)
             
             aBeer?.producerBeer = self.producer!
             //add to the new producer list
-            aBeer?.producerBeer = self.name!
+           // aBeer?.producerBeer = self.name!
+            
+           // aModel?.producersNamed[self.producer!]?.beersCollect?.append(aBeer!)
+          
+            
+            
+            
+            
             aModel?.producersNamed[self.producer!]?.beersCollect?.append(aBeer!)
+            
+            
+            
+            
+            print(aModel?.producersNamed[self.producer!]?.nameProducer)
+            print(aBeer?.nameBeer)
            print("===========")
             
-            print(aModel?.producersNamed)
+           // print(aModel?.producersNamed)
+            
+            print("66521545454548488484848484884848")
+            print(aModel?.producersNamed[self.producer!]?.nameProducer)
+            print(aModel?.producersNamed[self.producer!]?.beersCollect?.count)
+            aModel?.producersNamed["Ana producer"]?.beersCollect?.forEach{print($0.nameBeer)}
             aModel!.producers.removeAll()
             aModel!.producers = aModel!.producersNamed.map { (name, producer) in
                 return producer
@@ -365,6 +391,7 @@ extension BeerViewController : UIImagePickerControllerDelegate{
         dismiss(animated: true, completion: nil)
     }
 }
+
 
 
 

@@ -36,14 +36,6 @@ class ViewController: UITableViewController {
         print("Initial sort")
         print(model.producers.forEach{print($0.nameProducer)})
 
-        print(model.producers)
-        print(model.producers[0].beersCollect?.count)
-       print(model.producers[0].beersCollect?[0].nameBeer)
-        print(model.producers[0].beersCollect?[1].nameBeer)
-        print(model.producers[0].beersCollect?[2].nameBeer)
-        print(model.producers[1].nameProducer)
-        print(model.producers[1].beersCollect?.count)
-        
         
  
         print("-----------------------------")
