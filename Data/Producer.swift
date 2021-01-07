@@ -26,6 +26,7 @@ public class Producer : NSObject, NSCoding, NSSecureCoding{
     
     public override init() {
         self.nameProducer="none"
+        self.duplicate = 1
         self.logoProducer = nil
     }
 
