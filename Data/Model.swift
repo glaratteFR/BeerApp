@@ -127,7 +127,7 @@ public class Model : NSObject, NSCoding{
         */
         print("9999")
         let p = Producer()
-        p.nameProducer = "Greg producer"
+        p.nameProducer = "Anna producer"
         producersNamed[p.nameProducer] = p
         producersNamed.forEach{$0.value.beersCollect?.sort(by:  {($0.nameBeer) > ($1.nameBeer)})}
        

@@ -112,6 +112,9 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
                 typeSegment.selectedSegmentIndex = 0
         }
         
+        let producerNumber = (listMakersNames?.firstIndex(of: self.producer!))!
+        producerSelector.selectRow(producerNumber, inComponent: 0, animated: true)
+        
         nationalityText.text = self.nationality
         capText.text = self.cap
         expDText.text = self.expD
