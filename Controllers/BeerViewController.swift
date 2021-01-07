@@ -20,12 +20,15 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
     
     @IBOutlet weak var typeSegment: UISegmentedControl!
     
-   // @IBOutlet weak var producerText: UITextField!
+   
+    // @IBOutlet weak var producerText: UITextField!
     @IBOutlet weak var nationalityText: UITextField!
     @IBOutlet weak var capText: UITextField!
     @IBOutlet weak var expDText: UITextField!
     @IBOutlet weak var rateText: UITextField!
-    @IBOutlet weak var idText: UITextField!
+    //idText
+ 
+    @IBOutlet weak var idText: UILabel!
     @IBOutlet weak var ibuText: UITextField!
     @IBOutlet weak var volDText: UITextField!
 
@@ -72,7 +75,19 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         self.id = aBeer?.IDBeer
         self.ibu = aBeer?.IBUBeer
         self.volD = aBeer?.volBeer
-        self.beerImage = aBeer?.pictureBeer
+        let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let nameOfPicture = "\(self.id!).png"
+        let path = documentDirectory[0].appendingPathComponent(nameOfPicture)
+        
+        if (FileManager.default.fileExists(atPath: path.path)) {
+            self.beerImage = UIImage(contentsOfFile: path.path)
+        }else{
+            print("La foto no existe... Ponemos default")
+            print(path.path)
+            self.beerImage = aBeer?.pictureBeer
+            
+        }
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapGestureAction))
         self.beerImageFrame.addGestureRecognizer(tapGesture)
         
@@ -154,12 +169,15 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         //get producer name from picker
         self.producer = aModel?.producers[producerSelector.selectedRow(inComponent: 0)].nameProducer
         
-        aBeer?.nameBeer = self.name!
+        
+        
+        
+        
         aBeer?.typeBeer = self.type!
         aBeer?.producerBeer = self.producer!
         aBeer?.nationalityBeer = self.nationality!
         aBeer?.capBeer = self.cap!
-        aBeer?.expDateBeer = self.expD!
+        
         aBeer?.rateBeer = self.rate!
         aBeer?.IDBeer = self.id!
         aBeer?.IBUBeer = self.ibu!
@@ -186,7 +204,38 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
        // print("UNWIND")
         print(type)
        // performSegue(withIdentifier: "unwindSegueFromBeerView", sender: self)//posible error
-        
+        //recal ID if necesary
+        if (self.name != aBeer?.nameBeer) || (self.expD != aBeer?.expDateBeer) {
+            aBeer?.nameBeer = self.name!
+            aBeer?.expDateBeer = self.expD!
+            var noBlancName = aBeer?.nameBeer.replacingOccurrences(of: "\\s*",
+                                                    with: "$1",
+                                                    options: [.regularExpression])
+            
+            let noBlancDate = aBeer?.expDateBeer.replacingOccurrences(of: "\\s*",
+                                                          with: "$1",
+                                                          options: [.regularExpression])
+            var nameOfImage = "\(noBlancName!)\(noBlancDate!)"
+            let oldId = aBeer?.IDBeer
+            aBeer?.IDBeer = nameOfImage
+            let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            let currentId = aBeer?.IDBeer
+            let nameOfPicture = "\(currentId!).png"
+            let oldNameOfPicture = "\(oldId!).png"
+            let path = documentDirectory[0].appendingPathComponent(nameOfPicture)
+            let oldPath = documentDirectory[0].appendingPathComponent(oldNameOfPicture)
+            do{
+            try FileManager.default.moveItem(at: oldPath, to: path)
+                print("Rename success to: \(path.path)")
+                
+            }catch {
+                print("ERROR in Rename  to: \(path.path) from \(oldPath.path)")
+                
+            }
+        }else  {
+            print("It wasnt necesary to reCalc the iD")
+        }
+
         if(allCorrect){
             
             print("UNWIND")
