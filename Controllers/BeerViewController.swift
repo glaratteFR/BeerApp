@@ -201,13 +201,14 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
             aBeer?.producerBeer = self.name!
             aModel?.producersNamed[self.producer!]?.beersCollect?.append(aBeer!)
            print("===========")
+            
             print(aModel?.producersNamed)
             aModel!.producers.removeAll()
             aModel!.producers = aModel!.producersNamed.map { (name, producer) in
                 return producer
             }
-            print("************")
-            print( aModel!.producers)
+            print("=============///////////==========")
+            print(aModel!.producers.forEach{$0.beersCollect?.forEach{print($0.nameBeer)}})
 
             
         }
@@ -275,7 +276,7 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
     }*/
     
     @objc func tapGestureAction(gesture: UITapGestureRecognizer){
-        print("             hello")
+  
         if !UIImagePickerController.isSourceTypeAvailable(.camera){
         notifyUser(self, alertTitle: "The camera is unavailable", alertMessage: "The camera cant be run in the simulator", runOnOK: {_ in})
             return

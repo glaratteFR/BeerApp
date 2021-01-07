@@ -86,8 +86,8 @@ class ViewController: UITableViewController {
     @IBAction func returnfromDetail(segue:UIStoryboardSegue)->Void{//Method for returning from Segues
            //model.producers.forEach{ b in b.beersCollect?.sort(by: {($0.nameBeer) < ($1.nameBeer)})}
         model.producers.forEach{ b in b.beersCollect?.sort(by: {($0.nameBeer) < ($1.nameBeer)})}
-       // model.producers = duplicateBeers(model.producers, self)
-      //  model.producers = duplicateProducers(model.producers,self)
+        model.producers = duplicateBeers(model.producers, self)
+        model.producers = duplicateProducers(model.producers,self)
         model.producers.sort{$0.nameProducer < $1.nameProducer}
         print("WE ARE BACK")
         print(model.producers.forEach{print($0.nameProducer)})
@@ -251,6 +251,7 @@ class ViewController: UITableViewController {
 
         let headerView = Bundle.main.loadNibNamed("TableViewHeader", owner: self, options: nil)?.first as! TableViewHeader
         headerView.ProducerLabel.text = producer.nameProducer
+        headerView.tag = section
    // customHeaderView.producerImage.image = producer.logoProducer
 
     
@@ -357,24 +358,25 @@ class ViewController: UITableViewController {
 }
 
 
+
+
+
 func duplicateBeers(_ producers:[Producer], _ viewController:UIViewController) -> [Producer]
     {
 
     var uniqueValues = Set<String>()
      var resultDict = [String: Producer]()
      var allBears:[Beer] = []
-
-     
+    
      producers.forEach {(value) in
+        if value.beersCollect != nil{
+            allBears+=value.beersCollect!
+            
+        }
          
-         allBears+=value.beersCollect!
          
      }
       allBears = allBears.sorted(by: { $0.nameBeer < $1.nameBeer})
-     var oldNameBeer = allBears[0].nameBeer
-     print("aaaaaaaaaaaaaaaaaa")
-     allBears.forEach{ print($0.nameBeer)}
-     print(allBears.count)
      
      for (index, bear) in allBears.enumerated() {
          if !(index==allBears.count-1){
@@ -396,17 +398,31 @@ func duplicateBeers(_ producers:[Producer], _ viewController:UIViewController) -
                     var duplica = false
                     var countDuplu = 0
                     
-                    let producers:[Producer] = producers.filter{$0.nameProducer == allBears[index].producerBeer}
+                    let producersE:[Producer] = producers.filter{$0.nameProducer == allBears[index].producerBeer}
                         
-                    for (indexProducer, producer) in producers.enumerated() {
+                    for (indexProducer, producer) in producersE.enumerated() {
+                        if producer.beersCollect != nil
+                        {
+                            
+
                         let bears:[Beer] = producer.beersCollect!.filter{$0.nameBeer == allBears[index].nameBeer}
+                        print("efgddgdfgdftyertertdfg")
+                        print(bears.count)
                         countDuplu += bears.count
+                        print(countDuplu)
                         if (countDuplu == 2)
                         {
+                            
                             let indexsBeer = producer.beersCollect?.enumerated().filter({$0.element.nameBeer == allBears[index].nameBeer}).map({$0.offset})
+                            
                             producers[indexProducer].beersCollect?[indexsBeer![0]].duplicate += 1
                         
-                            producers[indexProducer].beersCollect![indexsBeer![0]].nameBeer = allBears[index].nameBeer + "_" + String(producers[indexProducer].beersCollect![(indexsBeer?[0])!].duplicate)
+                            producers[indexProducer].beersCollect![indexsBeer![0]].nameBeer = producers[indexProducer].beersCollect![indexsBeer![0]].nameBeer + "_" + String(producers[indexProducer].beersCollect![(indexsBeer?[0])!].duplicate)
+                            print(producers[indexProducer].beersCollect![indexsBeer![0]].nameBeer)
+                            print(producers[indexProducer].beersCollect![indexsBeer![0]].duplicate)
+                            
+                            
+                            
                             if (allBears.enumerated().filter({$0.element.nameBeer == producers[indexProducer].beersCollect![indexsBeer![0]].nameBeer }).map({$0.offset}).count == 2)
                             {
                                 producers[indexProducer].beersCollect?[indexsBeer![0]].duplicate += 1
@@ -427,15 +443,16 @@ func duplicateBeers(_ producers:[Producer], _ viewController:UIViewController) -
                                 
                                 
                             }
-                        
-                            
                         }
+                            break
+                            
+                        
                         
                         producers[indexProducer].beersCollect = producers[indexProducer].beersCollect!.sorted(by: { $0.nameBeer < $1.nameBeer})
                         
                         
                     }
-         
+                    }
                     
                  }
                         /*
@@ -468,30 +485,36 @@ func duplicateProducers(_ producers:[Producer], _ viewController:UIViewControlle
      
      for (index, producer) in producers.enumerated() {
          if !(index==producers.count-1){
-            producers = producers.filter{$0.nameProducer == producer.nameProducer}
-            if (producers.count == 2)
+            let producersDuplic = producers.filter{$0.nameProducer == producer.nameProducer}
+            
+            if (producersDuplic.count > 0)
             {
-                producers[index].duplicate += 1
-                producers[index].nameProducer = producer.nameProducer + "_" + String(producer.duplicate)
-                
-            }
-            if producers.filter{$0.nameProducer == producers[index].nameProducer}.count == 2
-            {
-                producers[index].duplicate += 1
-                producers[index].nameProducer = producer.nameProducer + "_" + String(producer.duplicate)
-                
-            }
-            if (producers[index].duplicate == 3)
+                print("PRODUCERRRRRRRRRRRR")
+                print(producers)
+                if (producersDuplic.count == 2)
                 {
+                    producers[index].duplicate += 1
+                    producers[index].nameProducer = producer.nameProducer + "_" + String(producer.duplicate)
                     
-                    print("REMOVEEEEEE")
-                    producers.remove(at: index)
-                    print("REMOVEEEEEE")
-                viewController.dismiss(animated: false, completion: nil)
-                notifyUser(viewController, alertTitle: "Repetition Alert", alertMessage: "Cant have more of three copiees of the same producer", runOnOK: {_ in})
-                
-                
-                
+                }
+               if producers.filter{$0.nameProducer == producers[index].nameProducer}.count == 2
+                {
+                    producers[index].duplicate += 1
+                    producers[index].nameProducer = producer.nameProducer + "_" + String(producer.duplicate)
+                    
+                }
+                if (producers[index].duplicate == 3)
+                    {
+                        
+                        print("REMOVEEEEEE")
+                        producers.remove(at: index)
+                        print("REMOVEEEEEE")
+                    viewController.dismiss(animated: false, completion: nil)
+                    notifyUser(viewController, alertTitle: "Repetition Alert", alertMessage: "Cant have more of three copiees of the same producer", runOnOK: {_ in})
+                    
+                    
+                    
+                }
             }
          }
         
