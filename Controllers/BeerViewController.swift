@@ -168,13 +168,14 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         
         //get producer name from picker
         self.producer = aModel?.producers[producerSelector.selectedRow(inComponent: 0)].nameProducer
-        
+        print("**********------**************-")
+        print(producer)
         
         
         
         
         aBeer?.typeBeer = self.type!
-        aBeer?.producerBeer = self.producer!
+        
         aBeer?.nationalityBeer = self.nationality!
         aBeer?.capBeer = self.cap!
         
@@ -188,17 +189,26 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         //aBeer?.picture
         
         if self.producer != aBeer?.producerBeer{
-            
+            print("Moving to new producer")
             //remove from original producer
             
             let ogProducer = aModel?.producersNamed[(aBeer?.producerBeer)!]
             let indexBeerList = ogProducer?.beersCollect?.firstIndex(of: aBeer!)
             ogProducer?.beersCollect?.remove(at: indexBeerList!)
             
-            
+            aBeer?.producerBeer = self.producer!
             //add to the new producer list
             aBeer?.producerBeer = self.name!
             aModel?.producersNamed[self.producer!]?.beersCollect?.append(aBeer!)
+           print("===========")
+            print(aModel?.producersNamed)
+            aModel!.producers.removeAll()
+            aModel!.producers = aModel!.producersNamed.map { (name, producer) in
+                return producer
+            }
+            print("************")
+            print( aModel!.producers)
+
             
         }
        // print("UNWIND")

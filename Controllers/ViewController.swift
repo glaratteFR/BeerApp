@@ -19,9 +19,8 @@ class ViewController: UITableViewController {
     public var indexBeer = 2
     override func viewDidLoad() {
         super.viewDidLoad()
- 
-        print("6666666666666")
-        print("-----------------------------")
+
+        print("--------------8888888-------")
         print(model.producersNamed)
         print(model.producersNamed.forEach{$0.value.beersCollect?.forEach{print("                        BEERS IN producersNAmed --> \($0.nameBeer)")}})
        
@@ -33,10 +32,17 @@ class ViewController: UITableViewController {
         model.producers = model.producersNamed.map { (name, producer) in
             return producer
         }
+        model.producers.sort{$0.nameProducer < $1.nameProducer}
+        print("Initial sort")
+        print(model.producers.forEach{print($0.nameProducer)})
+
+        print(model.producers)
         print(model.producers[0].beersCollect?.count)
        print(model.producers[0].beersCollect?[0].nameBeer)
         print(model.producers[0].beersCollect?[1].nameBeer)
         print(model.producers[0].beersCollect?[2].nameBeer)
+        print(model.producers[1].nameProducer)
+        print(model.producers[1].beersCollect?.count)
         
         
  
@@ -54,7 +60,7 @@ class ViewController: UITableViewController {
         self.editingStyle = UITableViewCell.EditingStyle.none//Look up style
         print("%Editing style  None")
         
-        
+        print("")
         tableView.reloadData()
         
         
@@ -80,8 +86,13 @@ class ViewController: UITableViewController {
     @IBAction func returnfromDetail(segue:UIStoryboardSegue)->Void{//Method for returning from Segues
            //model.producers.forEach{ b in b.beersCollect?.sort(by: {($0.nameBeer) < ($1.nameBeer)})}
         model.producers.forEach{ b in b.beersCollect?.sort(by: {($0.nameBeer) < ($1.nameBeer)})}
-        model.producers = duplicateBeers(model.producers, self)
-        model.producers = duplicateProducers(model.producers,self)
+       // model.producers = duplicateBeers(model.producers, self)
+      //  model.producers = duplicateProducers(model.producers,self)
+        model.producers.sort{$0.nameProducer < $1.nameProducer}
+        print("WE ARE BACK")
+        print(model.producers.forEach{print($0.nameProducer)})
+        
+       
         tableView.reloadData()
        }
        
@@ -91,7 +102,7 @@ class ViewController: UITableViewController {
            print("             #Vamos a añadir una cerveza")
 
         //model.producersNamed["Cervezas Segovia S.L"]!.beersCollect?.forEach{print("                        BEERS IN NAMED --> \($0.nameBeer)")}
-        model.producersNamed.forEach{print("                        BEERS IN NAMED --> \($0.value.beersCollect!.forEach{print("                        BEERS IN NAMED --> \($0.nameBeer)")})")}
+      /*  model.producersNamed.forEach{print("                        BEERS IN NAMED --> \($0.value.beersCollect!.forEach{print("                        BEERS IN NAMED --> \($0.nameBeer)")})")}*/
         
            if self.editingStyle == UITableViewCell.EditingStyle.none{
                print("             #Estilo de edit activado")
@@ -114,7 +125,17 @@ class ViewController: UITableViewController {
        }
        
        @IBAction func delBeerAct(_ sender: Any){
-
+        let p = Producer()
+        p.nameProducer = "Jorge el cervezas"
+        print("Salto a creación de header")
+        
+  
+    
+        model.producers.append(p)
+        tableView.headerView(forSection: model.producers.count - 1)
+        tableView.reloadData()
+        
+        
            if self.editingStyle == UITableViewCell.EditingStyle.none{
                
                
@@ -142,6 +163,10 @@ class ViewController: UITableViewController {
 
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        print("                 IM in the new function")
+        return "Helo from new function header"
+    }
     
     //The producer affected by deletion or addition
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){
@@ -175,7 +200,7 @@ class ViewController: UITableViewController {
     }
     
     //
-    func numSect(in tableView: UITableView) -> Int{
+    override func numberOfSections(in tableView: UITableView) -> Int{
         print("%Number of sections --> \(model.producers.count)")
        return model.producers.count
       
@@ -192,8 +217,7 @@ class ViewController: UITableViewController {
     
    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let producerNum = indexPath.section
-       // let producerName = model.producers[producerNum].nameProducer
-        //let producer = model.producersNamed[producerName]
+
         let producer = model.producers[producerNum]
         let b = producer.beersCollect?[indexPath.row]
         
@@ -215,9 +239,16 @@ class ViewController: UITableViewController {
         return 44
     }
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let producer = model.producers[section]
-        print("                                                         I REALKSDASJDLKJSAJDLSAJLDK JALKDJALSKJDLSJDDLSADJ JORGE")
         print(model.producers)
+        
+        
+        let producer = model.producers[section]
+        print("                                                        We are creating a new header")
+       
+        print("#################")
+        print(section)
+        print("#################")
+
         let headerView = Bundle.main.loadNibNamed("TableViewHeader", owner: self, options: nil)?.first as! TableViewHeader
         headerView.ProducerLabel.text = producer.nameProducer
    // customHeaderView.producerImage.image = producer.logoProducer

@@ -24,7 +24,7 @@ public class Model : NSObject, NSCoding{
     private let dfm = FileManager.default
     
     func sortWithKeys(_ dict:[String:Producer]) -> [String:Producer]{
-        let sorted = dict.sorted(by: {$0.key < $1.key })
+        let sorted = dict.sorted(by: {$0.key > $1.key })
         var newDict: [String:Producer] = [:]
         for sortedDict in sorted {
             newDict[sortedDict.key]=sortedDict.value
@@ -94,9 +94,12 @@ public class Model : NSObject, NSCoding{
      
             allBeers.forEach{importImgOnline($0);print("DOwnloading for \($0.nameBeer)")}
             producers.forEach{ $0.beersCollect = [Beer]()}
-            allBeers.forEach{producersNamed[$0.producerBeer]?.beersCollect?.append($0)}
+            allBeers.forEach{producersNamed[$0.producerBeer]?.beersCollect?.append($0)}// we asig each beer to its porducer
             print("#######################################################")
             print("MODEL")
+            
+
+            
             print(producersNamed)
             print(producersNamed.forEach{$0.value.beersCollect?.forEach{print("                        BEERS IN producersNAmed --> \($0.nameBeer)")}})
            // print(producersNamed.first?.value.beersCollect?[].nameBeer)
@@ -104,177 +107,11 @@ public class Model : NSObject, NSCoding{
             print("#######################################################")
 
         }
-        var index = 0
-        var uniqueValues = Set<String>()
-        var resultDict = [String: Producer]()
-        print(self.producersNamed.count)
-        resultDict = self.producersNamed
-        self.producers.removeAll()
-        var allBears:[Beer] = []
-
-        
-        self.producersNamed.forEach {(index,value) in
-            
-            allBears+=value.beersCollect!
-            
-        }
-         allBears = allBears.sorted(by: { $0.nameBeer < $1.nameBeer})
-        var indexBeer = 2
-        var oldNameBeer = allBears[0].nameBeer
-        print("aaaaaaaaaaaaaaaaaa")
-        allBears.forEach{ print($0.nameBeer)}
-        print(allBears.count)
-        
-        for (index, bear) in allBears.enumerated() {
-            if !(index==allBears.count-1){
-                
-                
-                var nameBeerCurrent = String(bear.nameBeer)
-                print("ssssssssssssss")
-                print(allBears[index].nameBeer)
-                var nameBeerNext = allBears[index+1].nameBeer
-                print(allBears[index+1].nameBeer)
-                nameBeerCurrent = allBears[index].nameBeer
-                print(nameBeerNext==nameBeerCurrent)
-                if (nameBeerNext.elementsEqual(nameBeerCurrent))
-                {
-                    print("okkkkkk")
-                    if (allBears[index].capBeer == allBears[index+1].capBeer && allBears[index].expDateBeer == allBears[index+1].expDateBeer && allBears[index].nationalityBeer == allBears[index+1].nationalityBeer && allBears[index].rateBeer == allBears[index+1].rateBeer){
-                        print("the same beer exist !!!!")
-                        let indexProd = self.producersNamed.index(forKey: allBears[index].nameBeer)
-                        
-                         self.producersNamed[indexProd!].value.beersCollect?.filter{
-                            $0.nameBeer == allBears[index].nameBeer
-                        }.first?.change(p_nameBeer:allBears[index].nameBeer+"_"+String(index))
-                        
-                        print("------------------")
-                        
-                        print(self.producersNamed[indexProd!].value.beersCollect?.filter{
-                            $0.nameBeer == allBears[index].nameBeer
-                        }.first?.nameBeer)
-
-                        if (oldNameBeer == allBears[index].nameBeer)
-                        {
-                            indexBeer = indexBeer+1
-                            oldNameBeer = allBears[index].nameBeer
-                            
-                        }else{
-                            indexBeer = 2
-                        }
-                        
-                        
-                        
-                    }
-                }
-            }
-        }
-        
-     
-        resultDict = sortWithKeys(resultDict)
-        
-        var numberIterator = resultDict.makeIterator()
-        print(resultDict.count)
-        while let num = numberIterator.next(){
-            print(self.producersNamed.count)
-            print(self.producersNamed.endIndex)
-            print("DUPLICATION")
-            print(num.key)
-            if (num.key == numberIterator.next()?.key)
-            {
-                print("-------------DUPLICATE PRODUCER --------------")
-                let index = self.producersNamed.index(forKey: num.key)
-                self.producersNamed = switchKey(self.producersNamed,fromKey: num.key, toKey: num.key + "_02")
-            }
-        }
-        
-        
+   
+   
         
         self.producers.removeAll()
-        //=================================================================================
-       /*
-        var uniqueValues = Set<String>()
-        var resultDict =  [Producer]()
-        print(self.producers.count)
-        resultDict = self.producers
-        self.producers.removeAll()
-        var allBears:[Beer] = []
 
-        
-        self.producersNamed.forEach {(index,value) in
-            
-            allBears+=value.beersCollect!
-            
-        }
-         allBears = allBears.sorted(by: { $0.nameBeer < $1.nameBeer})
-        var indexBeer = 2
-        var oldNameBeer = allBears[0].nameBeer
-        print("aaaaaaaaaaaaaaaaaa")
-        allBears.forEach{ print($0.nameBeer)}
-        print(allBears.count)
-        
-        for (index, bear) in allBears.enumerated() {
-            if !(index==allBears.count-1){
-                
-                
-                var nameBeerCurrent = String(bear.nameBeer)
-                print("ssssssssssssss")
-                print(allBears[index].nameBeer)
-                var nameBeerNext = allBears[index+1].nameBeer
-                print(allBears[index+1].nameBeer)
-                nameBeerCurrent = allBears[index].nameBeer
-                print(nameBeerNext==nameBeerCurrent)
-                if (nameBeerNext.elementsEqual(nameBeerCurrent))
-                {
-                    print("okkkkkk")
-                    if (allBears[index].capBeer == allBears[index+1].capBeer && allBears[index].expDateBeer == allBears[index+1].expDateBeer && allBears[index].nationalityBeer == allBears[index+1].nationalityBeer && allBears[index].rateBeer == allBears[index+1].rateBeer){
-                        print("the same beer exist !!!!")
-                        let indexProd = self.producersNamed.index(forKey: allBears[index].nameBeer)
-                        
-                         self.producersNamed[indexProd!].value.beersCollect?.filter{
-                            $0.nameBeer == allBears[index].nameBeer
-                        }.first?.change(p_nameBeer:allBears[index].nameBeer+"_"+String(index))
-                        
-                        print("------------------")
-                        
-                        print(self.producersNamed[indexProd!].value.beersCollect?.filter{
-                            $0.nameBeer == allBears[index].nameBeer
-                        }.first?.nameBeer)
-
-                        if (oldNameBeer == allBears[index].nameBeer)
-                        {
-                            indexBeer = indexBeer+1
-                            oldNameBeer = allBears[index].nameBeer
-                            
-                        }else{
-                            indexBeer = 2
-                        }
-                        
-                        
-                        
-                    }
-                }
-            }
-        }
-        
-     
-        resultDict = sortWithKeys(resultDict)
-        
-        var numberIterator = resultDict.makeIterator()
-        print(resultDict.count)
-        while let num = numberIterator.next(){
-            print(self.producersNamed.count)
-            print(self.producersNamed.endIndex)
-            print("DUPLICATION")
-            print(num.key)
-            if (num.key == numberIterator.next()?.key)
-            {
-                print("-------------DUPLICATE PRODUCER --------------")
-                let index = self.producersNamed.index(forKey: num.key)
-                self.producersNamed = switchKey(self.producersNamed,fromKey: num.key, toKey: num.key + "_02")
-            }
-        }
-        */
-   //=================================================================================
         /*
         //ERROR DUPICAMIENTO
         self.producers.removeAll()
@@ -288,62 +125,31 @@ public class Model : NSObject, NSCoding{
         print(producers[0].nameProducer)§ˇˇ§ˇˇ
         print(producers[0].beersCollect?[].nameBeer)
         */
-        producers.forEach{$0.beersCollect?.sort(by: {($0.nameBeer) < ($1.nameBeer)})}
+        print("9999")
+        let p = Producer()
+        p.nameProducer = "Greg producer"
+        producersNamed[p.nameProducer] = p
+        producersNamed.forEach{$0.value.beersCollect?.sort(by:  {($0.nameBeer) > ($1.nameBeer)})}
+       
+        producersNamed.sorted(by: {$0.value.nameProducer > $1.value.nameProducer})
+        producersNamed.forEach{print($0.value.nameProducer)}
         print("****************************************************************")
 
         print(producersNamed)
         print(producersNamed.forEach{$0.value.beersCollect?.forEach{print("                        BEERS IN producersNAmed --> \($0.nameBeer)")}})
        
         print(producersNamed.first?.value.beersCollect?.count)
+        
   
+ 
+        
         print(producers.count)
         print("****************************************************************")
+        //print(producers)
         
     }//end init model
     
-    /**
- 
- 
- 
- func importImgOnline(_ file:String, _ folder:String) -> Void {
-     print("#SALTO A IMPORT FROM CSV BEERS")
-     //http://maxus.fis.usal.es/HOTHOUSE/daa/2020beer/fotos/
-     var documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-     var path = documentDirectory[0].appendingPathComponent("img.png")
-     print(FileManager.default.fileExists(atPath: path.path))
-     if !(FileManager.default.fileExists(atPath: path.path)) {
-         let urlStrings = "http://maxus.fis.usal.es/HOTHOUSE/daa/2020beer/fotos/lagallolocajunio21.png"
-     
-         /*var documentDirectory = Bundle.main.resourceURL
-         var path = documentDirectory?.appendingPathComponent("save.csv")
-         print(path)*/
-         print(path)
-         if let fileUrl = URL(string: urlStrings){
-             URLSession.shared.downloadTask(with: fileUrl){
-                 (tempFileUrl,response,error) in
-                 if let fileTempFileUrl = tempFileUrl {
-                     do {
-                     
-                         
-                         try FileManager.default.moveItem(at: fileTempFileUrl, to: path)
-                         if (FileManager.default.fileExists(atPath: path.path)) {                            print("PICTURE EXIST !!!")
-                         }
-                         else
-                         {
-                             print("PICTURE not EXIST !!!")                            }
-                 }
-                     catch {
-                         print(error)
-                     }
-                 }
-             }.resume()
-         }
-         
-     } else {
-         print("PICTURE ALREADY EXIST !!!!!")
-     }
- }
- */
+   
     
 
     func importBeersFromCsvOnline(_ file:String, _ folder:String) -> Bool{
