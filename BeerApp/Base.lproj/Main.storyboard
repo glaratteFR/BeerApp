@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="p1c-EU-amU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="p1c-EU-amU">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,12 +34,21 @@
                                         <action selector="delBeerAct:" destination="p1c-EU-amU" eventType="touchUpInside" id="nMi-S9-S4t"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fV-R4-LT5">
+                                    <rect key="frame" x="219" y="15" width="95" height="30"/>
+                                    <state key="normal" title="Add Producer"/>
+                                    <connections>
+                                        <action selector="addProdAct:" destination="p1c-EU-amU" eventType="touchUpInside" id="8Dw-PS-5Vq"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
+                                <constraint firstItem="hv3-fO-caq" firstAttribute="leading" secondItem="1fV-R4-LT5" secondAttribute="trailing" constant="28" id="2WH-sv-nE8"/>
                                 <constraint firstItem="oke-gM-ZUl" firstAttribute="leading" secondItem="jXJ-Ff-EK9" secondAttribute="leading" constant="8" id="3k4-7Q-7SV"/>
                                 <constraint firstAttribute="trailing" secondItem="hv3-fO-caq" secondAttribute="trailing" constant="8" id="482-6p-76i"/>
                                 <constraint firstItem="oke-gM-ZUl" firstAttribute="top" secondItem="jXJ-Ff-EK9" secondAttribute="top" constant="6" id="CAN-C0-01u"/>
+                                <constraint firstItem="1fV-R4-LT5" firstAttribute="top" secondItem="jXJ-Ff-EK9" secondAttribute="top" constant="15" id="IIm-Vx-zxP"/>
                                 <constraint firstItem="hv3-fO-caq" firstAttribute="top" secondItem="jXJ-Ff-EK9" secondAttribute="top" constant="6" id="TzX-bS-19J"/>
                                 <constraint firstAttribute="bottom" secondItem="oke-gM-ZUl" secondAttribute="bottom" constant="8" id="ckA-rW-Adw"/>
                                 <constraint firstItem="hv3-fO-caq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oke-gM-ZUl" secondAttribute="trailing" constant="8" symbolic="YES" id="iy5-QT-caj"/>
@@ -63,6 +72,7 @@
                     </tableView>
                     <connections>
                         <outlet property="addBeerButt" destination="hv3-fO-caq" id="wyy-TA-X4N"/>
+                        <outlet property="addProdButt" destination="1fV-R4-LT5" id="8n8-aw-rYI"/>
                         <outlet property="delBeerButt" destination="oke-gM-ZUl" id="6kj-nc-OZ0"/>
                         <segue destination="DPV-TB-jrF" kind="show" identifier="segueToBeer" id="zl3-fn-P2f"/>
                         <segue destination="mYT-ms-eo9" kind="show" identifier="segueToProducer" id="f8I-nh-7oh"/>
@@ -70,7 +80,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="frG-bw-zA9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1578" y="117"/>
+            <point key="canvasLocation" x="-1033" y="114"/>
         </scene>
         <!--Producer View Controller-->
         <scene sceneID="5YJ-a9-Mdg">

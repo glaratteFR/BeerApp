@@ -23,6 +23,8 @@ class ProducerViewController: UIViewController, UINavigationControllerDelegate, 
     
     
     let imgPicker = UIImagePickerController()
+    var aModel: Model?
+    var aAction: String?
     var name: String?
     var producerImage: UIImage!
     var number: String?
@@ -58,17 +60,31 @@ class ProducerViewController: UIViewController, UINavigationControllerDelegate, 
         
         aProducer?.nameProducer = self.name!
         aProducer?.logoProducer = self.producerImage
-   
         
         if(allCorrect){
+            print(self.aAction)
+            if self.aAction == "addProducer"
+            {
+                print("ADD PRODUCER !!!!!")
+                aProducer = Producer(nameProducer: self.name!, logoProducer: self.producerImage)
+                aModel!.producersNamed[aProducer!.nameProducer] = aProducer
+                aModel!.producers.removeAll()
+                print("azeerrttttttttttttttt")
+                print(aModel?.producersNamed.forEach{
+                    print($0.value.nameProducer)
+                })
+                aModel!.producers = aModel!.producersNamed.map { (name, producer) in
+                    return producer
+                }
+                performSegue(withIdentifier: "unwindSegueFromProducerView", sender: self)//posible error
+            }else{
             
             print("UNWIND")
             print(allCorrect)
             
             performSegue(withIdentifier: "unwindSegueFromProducerView", sender: self)//posible error
-            
+                }
         }
-
         
         
     }
