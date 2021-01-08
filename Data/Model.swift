@@ -105,7 +105,9 @@ public class Model : NSObject, NSCoding{
            // print(producersNamed.first?.value.beersCollect?[].nameBeer)
             print(producersNamed.first?.value.beersCollect?.count)
             print("#######################################################")
-
+            let p = Producer()
+            p.nameProducer = "Anna producer"
+            producersNamed[p.nameProducer] = p
         }
    
    
@@ -126,9 +128,6 @@ public class Model : NSObject, NSCoding{
         print(producers[0].beersCollect?[].nameBeer)
         */
         print("9999")
-        let p = Producer()
-        p.nameProducer = "Anna producer"
-        producersNamed[p.nameProducer] = p
         producersNamed.forEach{$0.value.beersCollect?.sort(by:  {($0.nameBeer) > ($1.nameBeer)})}
        
         producersNamed.sorted(by: {$0.value.nameProducer > $1.value.nameProducer})
@@ -392,10 +391,12 @@ public class Model : NSObject, NSCoding{
             print("the file \(url.path) could not be read because \(error.localizedDescription)")
             return false
         }
+        print("HEre")
         do{
+            print("HEre 2")
             x = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(d)
             producers = x as! [Producer]
-
+           
             self.producers.forEach{self.producersNamed.updateValue($0, forKey: $0.nameProducer);print($0.nameProducer)}
            // print(producersNamed["Cervezas Segovia S.L."]?.beersCollect![1].nameBeer as Any)
             //****************************************************************************
@@ -405,11 +406,13 @@ public class Model : NSObject, NSCoding{
             return false
 
         }
+        
       
         print("≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠")
 
         print(producersNamed)
         print(producersNamed.forEach{$0.value.beersCollect?.forEach{print("                        BEERS IN producersNAmed --> \($0.nameBeer)")}})
+        print(producersNamed.forEach{$0.value.beersCollect?.forEach{print("                        BEERS  Duplicated --> \($0.duplicate)")}})
        
         print(producersNamed.first?.value.beersCollect?.count)
   

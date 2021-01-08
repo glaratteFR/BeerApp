@@ -390,12 +390,14 @@ func duplicateBeers(_ producers:[Producer], _ viewController:UIViewController) -
                     var duplica = false
                     var countDuplu = 0
                     
-                    let producersE:[Producer] = producers.filter{$0.nameProducer == allBears[index].producerBeer}
-                        
-                    for (indexProducer, producer) in producersE.enumerated() {
+                    let producersDupli:[Producer] = producers.filter{$0.nameProducer == allBears[index].producerBeer}
+                    let indexsProducerDupli = producers.enumerated().filter({$0.element.nameProducer == allBears[index].producerBeer}).map({$0.offset})
+                    
+                    
+                    for (var indexProducer, producer) in producersDupli.enumerated() {
                         if producer.beersCollect != nil
                         {
-                            
+                            indexProducer = indexsProducerDupli[indexProducer]
 
                         let bears:[Beer] = producer.beersCollect!.filter{$0.nameBeer == allBears[index].nameBeer}
                         print("efgddgdfgdftyertertdfg")
@@ -406,10 +408,15 @@ func duplicateBeers(_ producers:[Producer], _ viewController:UIViewController) -
                         {
                             
                             let indexsBeer = producer.beersCollect?.enumerated().filter({$0.element.nameBeer == allBears[index].nameBeer}).map({$0.offset})
+                            print("dipppp")
+                            print(producers[indexProducer].beersCollect?.count)
+                            print(producer.beersCollect?.count)
                             
-                            producers[indexProducer].beersCollect?[indexsBeer![0]].duplicate += 1
+                            var tempInteger = Int((producers[indexProducer].beersCollect?[indexsBeer![0]].duplicate)!)
+                            tempInteger! += 1
+                            producers[indexProducer].beersCollect?[indexsBeer![0]].duplicate  = String(tempInteger!)
                         
-                            producers[indexProducer].beersCollect![indexsBeer![0]].nameBeer = producers[indexProducer].beersCollect![indexsBeer![0]].nameBeer + "_" + String(producers[indexProducer].beersCollect![(indexsBeer?[0])!].duplicate)
+                            producers[indexProducer].beersCollect![indexsBeer![0]].nameBeer = producers[indexProducer].beersCollect![indexsBeer![0]].nameBeer + "_" + producers[indexProducer].beersCollect![(indexsBeer?[0])!].duplicate
                             print(producers[indexProducer].beersCollect![indexsBeer![0]].nameBeer)
                             print(producers[indexProducer].beersCollect![indexsBeer![0]].duplicate)
                             
@@ -417,13 +424,15 @@ func duplicateBeers(_ producers:[Producer], _ viewController:UIViewController) -
                             
                             if (allBears.enumerated().filter({$0.element.nameBeer == producers[indexProducer].beersCollect![indexsBeer![0]].nameBeer }).map({$0.offset}).count == 2)
                             {
-                                producers[indexProducer].beersCollect?[indexsBeer![0]].duplicate += 1
+                                var tempInteger = Int ((producers[indexProducer].beersCollect?[indexsBeer![0]].duplicate)! )
+                                tempInteger! += 1
+                                producers[indexProducer].beersCollect?[indexsBeer![0]].duplicate = String(tempInteger!)
                             
-                                producers[indexProducer].beersCollect![indexsBeer![0]].nameBeer = allBears[index].nameBeer + "_" + String(producers[indexProducer].beersCollect![(indexsBeer?[0])!].duplicate)
+                                producers[indexProducer].beersCollect![indexsBeer![0]].nameBeer = allBears[index].nameBeer + "_" + producers[indexProducer].beersCollect![(indexsBeer?[0])!].duplicate
                                 
                             }
                             
-                            if (producers[indexProducer].beersCollect?[indexsBeer![0]].duplicate == 3)
+                            if (producers[indexProducer].beersCollect?[indexsBeer![0]].duplicate == "3")
                                 {
                                     
                                     print("REMOVEEEEEE")
@@ -485,17 +494,21 @@ func duplicateProducers(_ producers:[Producer], _ viewController:UIViewControlle
                 print(producers)
                 if (producersDuplic.count == 2)
                 {
-                    producers[index].duplicate += 1
-                    producers[index].nameProducer = producer.nameProducer + "_" + String(producer.duplicate)
+                    var tempInteger = Int(producers[index].duplicate)
+                    tempInteger! += 1
+                    producers[index].duplicate = String(tempInteger!)
+                    producers[index].nameProducer = producer.nameProducer + "_" + producer.duplicate
                     
                 }
                if producers.filter{$0.nameProducer == producers[index].nameProducer}.count == 2
                 {
-                    producers[index].duplicate += 1
-                    producers[index].nameProducer = producer.nameProducer + "_" + String(producer.duplicate)
+                var tempInteger = Int(producers[index].duplicate)
+                tempInteger! += 1
+                producers[index].duplicate = String(tempInteger!)
+                producers[index].nameProducer = producer.nameProducer + "_" + producer.duplicate
                     
                 }
-                if (producers[index].duplicate == 3)
+                if (producers[index].duplicate == "3")
                     {
                         
                         print("REMOVEEEEEE")

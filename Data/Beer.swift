@@ -32,7 +32,7 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
     var IBUBeer : String
     var volBeer : String
     var pictureBeer : UIImage? = nil
-    var duplicate : Int
+    var duplicate : String
     
     override public init() {
         self.nameBeer = "Unkonwn"
@@ -47,7 +47,7 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
         self.volBeer = "Unkonwn"
         self.pictureBeer = unknownImage
 
-        self.duplicate = 1
+        self.duplicate = "1"
 
         var noBlancName = self.nameBeer.replacingOccurrences(of: "\\s*",
                                                 with: "$1",
@@ -73,7 +73,7 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
          IBUBeer : String,
          volBeer : String,
          pictureBeer : UIImage?,
-         duplicate :Int) {
+         duplicate :String) {
         self.nameBeer = nameBeer
         self.typeBeer = typeBeer
         self.producerBeer = producerBeer
@@ -85,7 +85,7 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
         self.IBUBeer = IBUBeer
         self.volBeer = volBeer
         self.pictureBeer = pictureBeer
-        self.duplicate = 1
+        self.duplicate = "1"
     }
     
     init?(_ record: String, _ del: String) {
@@ -200,7 +200,7 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
         self.IBUBeer = tempIbuBeer
         self.volBeer = tempVolBeer
         self.pictureBeer = tempMarkImage
-        self.duplicate = tempDuplicate
+        self.duplicate = String (tempDuplicate)
         
     }
     
@@ -243,7 +243,7 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
         self.IBUBeer = aDecoder.decodeObject(forKey: "IBUBeer") as! String
         self.volBeer = aDecoder.decodeObject(forKey: "volBeer") as! String
         self.pictureBeer = aDecoder.decodeObject(forKey: "pictureBeer") as! UIImage?
-        self.duplicate = aDecoder.decodeObject(forKey: "duplicate") as! Int
+        self.duplicate = aDecoder.decodeObject(forKey: "duplicate") as! String
         
     }
     
