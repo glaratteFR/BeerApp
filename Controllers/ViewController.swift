@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UITableViewController {
 
+    @IBOutlet weak var addProdButt: UIButton!
     
     @IBOutlet weak var addBeerButt: UIButton!
     @IBOutlet weak var delBeerButt: UIButton!
@@ -116,6 +117,12 @@ class ViewController: UITableViewController {
            
        }
        
+    @IBAction func addProdAct(_ sender: Any) {
+        performSegue(withIdentifier: "segueToProducer", sender: "addProducer")
+        
+    }
+    
+    
        @IBAction func delBeerAct(_ sender: Any){
         let p = Producer()
         p.nameProducer = "Jorge el cervezas"
@@ -327,7 +334,21 @@ class ViewController: UITableViewController {
         switch segue.identifier! {
         case "segueToProducer":
             let destController = segue.destination as! ProducerViewController
-            destController.aProducer = sender as? Producer
+            
+            if sender as? String == "addProducer"
+            {
+                let destController = segue.destination as! ProducerViewController
+                destController.aModel = model
+                destController.aAction = (sender as? String)!
+                
+            }
+            else
+            {
+                let destController = segue.destination as! ProducerViewController
+                destController.aProducer = sender as? Producer
+                
+            }
+            
         
         case "segueToBeer":
             let destController = segue.destination as! BeerViewController
