@@ -20,14 +20,11 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
     
     @IBOutlet weak var typeSegment: UISegmentedControl!
     
-   
-    // @IBOutlet weak var producerText: UITextField!
     @IBOutlet weak var nationalityText: UITextField!
     @IBOutlet weak var capText: UITextField!
     @IBOutlet weak var expDText: UITextField!
     @IBOutlet weak var rateText: UITextField!
-    //idText
- 
+
     @IBOutlet weak var idText: UILabel!
     @IBOutlet weak var ibuText: UITextField!
     @IBOutlet weak var volDText: UITextField!
@@ -39,7 +36,7 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         
     }
     
-    var aModel: Model? //Acceso a los datos
+    var aModel: Model?
     var aBeer : Beer?
     
     var name: String?
@@ -64,7 +61,7 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         super.viewDidLoad()
         producerSelector.dataSource = self
         producerSelector.delegate = self
-        listMakersNames = aModel?.producers.map{$0.nameProducer}//populate list with names
+        listMakersNames = aModel?.producers.map{$0.nameProducer}
         self.name = aBeer?.nameBeer
         self.type = aBeer?.typeBeer
         self.producer = aBeer?.producerBeer
@@ -82,8 +79,6 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         if (FileManager.default.fileExists(atPath: path.path)) {
             self.beerImage = UIImage(contentsOfFile: path.path)
         }else{
-            print("La foto no existe... Ponemos default")
-            print(path.path)
             self.beerImage = UIImage(data:(aBeer?.pictureBeer)!)
             
         }
@@ -95,8 +90,6 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
     }
     override func viewWillAppear(_ animated: Bool) {
         //Allows data to be modified
-        print("ESTOY EN BEER")
-        print(self.name)
         nameText.text = self.name
         
         
@@ -132,7 +125,6 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
     }
     
     @IBAction func acceptAcceptAndReturn(_ sender: Any){
-        print("CLIKED ACCEPT AND RETURN")
         var allCorrect : Bool = true
  
         self.name = self.nameText.text
@@ -173,12 +165,7 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         
         //get producer name from picker
         self.producer = aModel?.producers[producerSelector.selectedRow(inComponent: 0)].nameProducer
-        print("**********------**************-")
-        print(producer)
-        
-        
-        
-        
+
         aBeer?.typeBeer = self.type!
         
         aBeer?.nationalityBeer = self.nationality!
@@ -194,16 +181,8 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         //aBeer?.picture
         
         if self.producer != aBeer?.producerBeer{
-            print("Moving to new producer")
-            //remove from original producer
-            print(aModel?.producersNamed.count)
-            print(aModel?.producersNamed.forEach{print($0.value.nameProducer)})
-            print("----------------------------")
-            print(aModel?.producersNamed.forEach{$0.value.beersCollect?.forEach{print($0.nameBeer)}})
-            
             
             let ogProducer = aModel?.producersNamed[(aBeer?.producerBeer)!]
-            print("OGproducer \(ogProducer?.nameProducer)")
             let indexBeerList = ogProducer?.beersCollect?.firstIndex(of: aBeer!)
             ogProducer?.beersCollect?.remove(at: indexBeerList!)
             
@@ -220,31 +199,15 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
             aModel?.producersNamed[self.producer!]?.beersCollect?.append(aBeer!)
             
             
-            
-            
-            print(aModel?.producersNamed[self.producer!]?.nameProducer)
-            print(aBeer?.nameBeer)
-           print("===========")
-            
-           // print(aModel?.producersNamed)
-            
-            print("66521545454548488484848484884848")
-            print(aModel?.producersNamed[self.producer!]?.nameProducer)
-            print(aModel?.producersNamed[self.producer!]?.beersCollect?.count)
+
+  
             aModel?.producersNamed["Ana producer"]?.beersCollect?.forEach{print($0.nameBeer)}
             aModel!.producers.removeAll()
             aModel!.producers = aModel!.producersNamed.map { (name, producer) in
                 return producer
             }
-            print("=============///////////==========")
-            print(aModel!.producers.forEach{$0.beersCollect?.forEach{print($0.nameBeer)}})
-
             
         }
-       // print("UNWIND")
-        print(type)
-       // performSegue(withIdentifier: "unwindSegueFromBeerView", sender: self)//posible error
-        //recal ID if necesary
         if (self.name != aBeer?.nameBeer) || (self.expD != aBeer?.expDateBeer) {
             aBeer?.nameBeer = self.name!
             aBeer?.expDateBeer = self.expD!
@@ -277,9 +240,6 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         }
 
         if(allCorrect){
-            
-            print("UNWIND")
-            print(allCorrect)
             
             performSegue(withIdentifier: "unwindSegueFromBeerView", sender: self)//posible error
             
@@ -366,8 +326,6 @@ extension BeerViewController : UIPickerViewDataSource{
            
             
         }else{
-            //expected number
-            print("This is taken care of UI")
             return true
         }
     }

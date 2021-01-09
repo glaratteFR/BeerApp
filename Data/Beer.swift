@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-let pathToUnknownImage  = Bundle.main.url(forResource: "def", withExtension: "jpg")!//Magier place holder jorge?¿
+let pathToUnknownImage  = Bundle.main.url(forResource: "def", withExtension: "jpg")!
 let unknownImage = UIImage(contentsOfFile: pathToUnknownImage.path)
 
 
@@ -167,11 +167,9 @@ public class Beer : NSObject, NSCoding, NSSecureCoding, Codable{
         var tempMarkImage : UIImage?
         if
 
-            //let bits = splitIntoNameAndExtension(total: tempMark),//maxus
-            let bits = splitIntoNameAndExtension(total: tempPicture),//maxus
-            bits.count == 2,//¿?
+            let bits = splitIntoNameAndExtension(total: tempPicture),
+            bits.count == 2,
            
-            //goes for pic
             let pathToMark = Bundle.main.url(forResource: bits[0],withExtension: bits[1], subdirectory: "beerApp-fotos")
              
         {   tempMarkImage = UIImage(contentsOfFile: pathToMark.path)
@@ -181,7 +179,6 @@ public class Beer : NSObject, NSCoding, NSSecureCoding, Codable{
                 
             {tempMarkImage = UIImage(contentsOfFile: pathToMark.path)}else{
                 return nil}
-            //return nil }
 
         }
         
@@ -260,12 +257,6 @@ public class Beer : NSObject, NSCoding, NSSecureCoding, Codable{
         
     }
     
-    
-   
-    /*
-     public override var descrition: String{}
-     
-     */
     
     
     

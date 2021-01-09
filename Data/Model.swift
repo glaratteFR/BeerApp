@@ -315,49 +315,22 @@ public class Model : NSObject, NSCoding{
         }
 
         do{
-            print("HEre 2")
-            try! print(JSONDecoder().decode([Producer].self,from: d))
-            
-            /*x = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(d)*/
             producers = try JSONDecoder().decode([Producer].self,from: d)
            
-            self.producers.forEach{self.producersNamed.updateValue($0, forKey: $0.nameProducer);print($0.nameProducer)}
-           // print(producersNamed["Cervezas Segovia S.L."]?.beersCollect![1].nameBeer as Any)
-            //****************************************************************************
+            self.producers.forEach{self.producersNamed.updateValue($0, forKey: $0.nameProducer);}
         }catch{
             
             print("infor  in data could not be parsed because \(error.localizedDescription)")
             return false
 
         }
-        
-      
-        print("≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠")
 
-        print(producersNamed)
-        print(producersNamed.forEach{$0.value.beersCollect?.forEach{print("                        BEERS IN producersNAmed --> \($0.nameBeer)")}})
-        print(producersNamed.forEach{$0.value.beersCollect?.forEach{print("                        BEERS  Duplicated --> \($0.duplicate)")}})
-       
-        print(producersNamed.first?.value.beersCollect?.count)
-  
-        print(producers.count)
-        print("≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠")
         return true
     }
     
     
     public func writeProducersInfosToDocuments(_ file: String, folder:String)->Bool{
         
-        print("#SALTO A WRITEPRODUCERSINFOTODOCUMENTS")
-        print("≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠")
-
-        print(producersNamed)
-        print(producersNamed.forEach{$0.value.beersCollect?.forEach{print("                        BEERS IN producersNAmed --> \($0.nameBeer)")}})
-       
-        print(producersNamed.first?.value.beersCollect?.count)
-  
-        print(producers.count)
-        print("≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠≠")
 
         let documentsFolderURL = documentsURL().appendingPathComponent(folder)//maxus
         let documentsFolderPath = documentsFolderURL.path
@@ -367,7 +340,6 @@ public class Model : NSObject, NSCoding{
         //Folder Not existant
         if !dfm.fileExists(atPath: documentsFolderPath){
             do{
-                print("No existe")
                 try dfm.createDirectory(at: documentsFolderURL, withIntermediateDirectories: true, attributes: nil)
                 
             }catch{
@@ -378,8 +350,6 @@ public class Model : NSObject, NSCoding{
             
         }
         
-        //escritura info de los producers
-        print("#SALTO A escritura producers")
         var data:Data!
         do{
             data = try! JSONEncoder().encode(producers)
@@ -403,7 +373,6 @@ public class Model : NSObject, NSCoding{
     }
     
     func importImgOnline(_ beer: Beer) -> Void {
-        print("#SALTO A IMPORT FROM CSV BEERS")
         //lagallolocajunio21.png
         //http://maxus.fis.usal.es/HOTHOUSE/daa/2020beer/fotos/
         var documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -417,20 +386,12 @@ public class Model : NSObject, NSCoding{
                                                       options: [.regularExpression])
         var nameOfImage = "\(noBlancName)\(noBlancDate).png"
         nameOfImage = nameOfImage.lowercased()
-        print("NAME OF IMAGE")
-        print(nameOfImage)
         
         let path = documentDirectory[0].appendingPathComponent(nameOfImage)
-        print(FileManager.default.fileExists(atPath: path.path))
         if !(FileManager.default.fileExists(atPath: path.path)) {
             var urlStrings = "http://maxus.fis.usal.es/HOTHOUSE/daa/2020beer/fotos/"
             urlStrings = "\(urlStrings)\(nameOfImage)"
-            print("URL === \(urlStrings)")
             
-            /*var documentDirectory = Bundle.main.resourceURL
-            var path = documentDirectory?.appendingPathComponent("save.csv")
-            print(path)*/
-            print(path)
             if let fileUrl = URL(string: urlStrings){
                 URLSession.shared.downloadTask(with: fileUrl){
                     (tempFileUrl,response,error) in
@@ -439,7 +400,9 @@ public class Model : NSObject, NSCoding{
                         
                             
                             try FileManager.default.moveItem(at: fileTempFileUrl, to: path)
-                            if (FileManager.default.fileExists(atPath: path.path)) {                            print("PICTURE EXIST !!!");print(path.path)
+                            if (FileManager.default.fileExists(atPath: path.path)) {
+                                print("PICTURE EXIST !!!");
+                                print(path.path)
                             }
                             else
                             {
