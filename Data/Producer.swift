@@ -27,7 +27,7 @@ public class Producer : NSObject, NSCoding, NSSecureCoding, Codable{
     
     init(nameProducer:String, logoProducer:UIImage? = nil) {
         self.nameProducer = nameProducer
-        self.logoProducer = logoProducer?.jpegData(compressionQuality: 1)
+        self.logoProducer = logoProducer?.pngData()
         self.duplicate = "1"
         self.beersCollect = [Beer]()
     }
@@ -90,7 +90,7 @@ public class Producer : NSObject, NSCoding, NSSecureCoding, Codable{
         }
         print("#ACABAMOS CON IMAGEN")
         self.nameProducer = tempNameProducer
-        self.logoProducer = tempMarkImage?.jpegData(compressionQuality: 1)
+        self.logoProducer = tempMarkImage?.pngData()
         self.duplicate = "1"
         print("#nameProducer  --> \(self.nameProducer) ")
 

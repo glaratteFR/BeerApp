@@ -188,7 +188,7 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         aBeer?.IDBeer = self.id!
         aBeer?.IBUBeer = self.ibu!
         aBeer?.volBeer = self.volD!
-        aBeer?.pictureBeer = self.beerImage.jpegData(compressionQuality: 1)
+        aBeer?.pictureBeer = self.beerImage.pngData()
         
         //¿?¿
         //aBeer?.picture

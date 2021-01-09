@@ -60,7 +60,7 @@ public class Beer : NSObject, NSCoding, NSSecureCoding, Codable{
         self.IDBeer = "Unkonwn"
         self.IBUBeer = "Unkonwn"
         self.volBeer = "Unkonwn"
-        self.pictureBeer = unknownImage?.jpegData(compressionQuality: 1)
+        self.pictureBeer = unknownImage?.pngData()
 
         self.duplicate = "1"
 
@@ -99,7 +99,7 @@ public class Beer : NSObject, NSCoding, NSSecureCoding, Codable{
         self.IDBeer = IDBeer
         self.IBUBeer = IBUBeer
         self.volBeer = volBeer
-        self.pictureBeer = pictureBeer?.jpegData(compressionQuality: 1)
+        self.pictureBeer = pictureBeer?.pngData()
         self.duplicate = "1"
     }
     
@@ -214,7 +214,7 @@ public class Beer : NSObject, NSCoding, NSSecureCoding, Codable{
         self.IDBeer = tempIdBeer
         self.IBUBeer = tempIbuBeer
         self.volBeer = tempVolBeer
-        self.pictureBeer = tempMarkImage?.jpegData(compressionQuality: 1)
+        self.pictureBeer = tempMarkImage?.pngData()
         self.duplicate = String (tempDuplicate)
         
     }

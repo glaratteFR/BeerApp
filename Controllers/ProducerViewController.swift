@@ -73,7 +73,7 @@ class ProducerViewController: UIViewController, UINavigationControllerDelegate, 
         }
         else
         {
-            aProducer?.logoProducer = self.producerImage.jpegData(compressionQuality: 1)
+            aProducer?.logoProducer = self.producerImage.pngData()
             
         }
         
@@ -126,7 +126,7 @@ extension ProducerViewController : UIImagePickerControllerDelegate{
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let newPic = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        aProducer?.logoProducer = newPic.jpegData(compressionQuality: 1)
+        aProducer?.logoProducer = newPic.pngData()
         self.imageOfProducer.image = newPic
         self.imageOfProducer.setNeedsDisplay()
         dismiss(animated: true, completion: nil)
