@@ -54,7 +54,7 @@ public class Model : NSObject, NSCoding{
         let URL_OF_FOLDER_IN_DOCUMENTS =
             DOCS_URL.appendingPathComponent(NAME_OF_FOLDER_IN_DOCUMENTS)
         
-        let URL_OF_PRODUCERS_BINARY_FILE = URL_OF_FOLDER_IN_DOCUMENTS.appendingPathComponent(NAME_OF_PRODUCERS_FILE_IN_DOCUMENTS).appendingPathExtension("bin")
+        let URL_OF_PRODUCERS_BINARY_FILE = URL_OF_FOLDER_IN_DOCUMENTS.appendingPathComponent(NAME_OF_PRODUCERS_FILE_IN_DOCUMENTS).appendingPathExtension("txt")
         
         producers = [Producer]()
         allBeers = [Beer]()
@@ -385,6 +385,7 @@ public class Model : NSObject, NSCoding{
         var x:Any?
         print("SALTO A READPRODUCERS INFO FROM DOC")
         do{
+            print(url.absoluteString)
             d = try Data(contentsOf: url)
             
         }catch{
@@ -394,8 +395,10 @@ public class Model : NSObject, NSCoding{
         print("HEre")
         do{
             print("HEre 2")
-            x = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(d)
-            producers = x as! [Producer]
+            try! print(JSONDecoder().decode([Producer].self,from: d))
+            
+            /*x = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(d)*/
+            producers = try JSONDecoder().decode([Producer].self,from: d)
            
             self.producers.forEach{self.producersNamed.updateValue($0, forKey: $0.nameProducer);print($0.nameProducer)}
            // print(producersNamed["Cervezas Segovia S.L."]?.beersCollect![1].nameBeer as Any)
@@ -438,7 +441,7 @@ public class Model : NSObject, NSCoding{
         let documentsFolderURL = documentsURL().appendingPathComponent(folder)//maxus
         let documentsFolderPath = documentsFolderURL.path
         var urlsOfFile = documentsFolderURL.appendingPathComponent(file)
-        urlsOfFile.appendPathExtension("json")
+        urlsOfFile.appendPathExtension("txt")
         print("Doc Path --> \(documentsFolderPath)")
         //Folder Not existant
         if !dfm.fileExists(atPath: documentsFolderPath){
@@ -458,8 +461,8 @@ public class Model : NSObject, NSCoding{
         print("#SALTO A escritura producers")
         var data:Data!
         do{
-            
-            data = try JSONSerialization.data(withJSONObject: producers, options: .fragmentsAllowed)
+            data = try! JSONEncoder().encode(producers)
+
         }catch{
             print("Could Not serialize producers: \(error.localizedDescription)")
             return false
