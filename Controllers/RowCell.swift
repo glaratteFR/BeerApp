@@ -2,7 +2,7 @@
 //  RowCell.swift
 //  BeerApp
 //
-//  Created by Jorge Pérez Ramos on 29/12/20.
+//  Created by Grégoire LARATTE on 29/12/20.
 //
 
 import Foundation

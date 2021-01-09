@@ -2,7 +2,7 @@
 //  BeerViewController.swift
 //  BeerApp
 //
-//  Created by Jorge Pérez Ramos on 27/12/20.
+//  Created by Grégoire LARATTE on 27/12/20.
 //
 
 

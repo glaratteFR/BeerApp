@@ -2,7 +2,7 @@
 //  ProducerViewController.swift
 //  BeerApp
 //
-//  Created by Jorge Pérez Ramos on 28/12/20.
+//  Created by Grégoire LARATTE on 28/12/20.
 //
 
 import Foundation
@@ -79,7 +79,7 @@ class ProducerViewController: UIViewController, UINavigationControllerDelegate, 
         
         
         if(allCorrect){
-            print(self.aAction)
+
             if self.aAction == "addProducer"
             {
                 print("ADD PRODUCER !!!!!")

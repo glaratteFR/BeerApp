@@ -2,7 +2,7 @@
 //  Model.swift
 //  BeerApp
 //
-//  Created by Jorge Pérez Ramos on 27/12/20.
+//  Created by Jorge Pérez Ramoe on 27/12/20.
 //
 
 import Foundation
@@ -33,16 +33,11 @@ public class Model : NSObject, NSCoding{
     }
     
     func switchKey(_ myDict: Dictionary<String,Producer>,fromKey: String, toKey: String) -> Dictionary<String,Producer>{
-        print(toKey)
         var dict = myDict
         if var entry = dict.removeValue(forKey: fromKey)
         {
             dict[toKey] = entry
         }
-        print(dict[toKey])
-        
-        
-        
         return dict
     }
 
@@ -65,15 +60,13 @@ public class Model : NSObject, NSCoding{
         
         
         //COMIENZO DE LECTURA
-        print("INTENTO DE CARGA DE BINARIO")
         readBinProducers = readProducersInfosFromDocuments(url: URL_OF_PRODUCERS_BINARY_FILE) //Intento de lectura de archivo binario La app ya fue arrancada
         //First boot readBinProducers = false
         
         
         if !readBinProducers{//if first boot
-            print("TryToDownload")
-    
-                print("Downloading...")
+
+                print("Downloading")
                 importBeersFromCsvOnline("defaultbeer.csv","BeerApp/Supporting_Files/beerApp-data/")
                
            
@@ -88,23 +81,12 @@ public class Model : NSObject, NSCoding{
             
             
             
-            print("#Read producers --> \(importProducers)")
-            print("#Read beers --> \(importBeers)")
             assert(importProducers && importBeers)
      
-            allBeers.forEach{importImgOnline($0);print("DOwnloading for \($0.nameBeer)")}
+            allBeers.forEach{importImgOnline($0);}
             producers.forEach{ $0.beersCollect = [Beer]()}
-            allBeers.forEach{producersNamed[$0.producerBeer]?.beersCollect?.append($0)}// we asig each beer to its porducer
-            print("#######################################################")
-            print("MODEL")
-            
-
-            
-            print(producersNamed)
-            print(producersNamed.forEach{$0.value.beersCollect?.forEach{print("                        BEERS IN producersNAmed --> \($0.nameBeer)")}})
-           // print(producersNamed.first?.value.beersCollect?[].nameBeer)
-            print(producersNamed.first?.value.beersCollect?.count)
-            print("#######################################################")
+            allBeers.forEach{producersNamed[$0.producerBeer]?.beersCollect?.append($0)}
+    
             let p = Producer()
             p.nameProducer = "Anna producer"
             producersNamed[p.nameProducer] = p
@@ -113,38 +95,9 @@ public class Model : NSObject, NSCoding{
    
         
         self.producers.removeAll()
-
-        /*
-        //ERROR DUPICAMIENTO
-        self.producers.removeAll()
-        self.producersNamed.forEach{self.producers.append($0.value); index = index+1}
-        allBeers.forEach{producersNamed[$0.producerBeer]?.beersCollect?.append($0)}
-        
-        */
-        /*
-        print("********************")
-        print(producers.count)
-        print(producers[0].nameProducer)§ˇˇ§ˇˇ
-        print(producers[0].beersCollect?[].nameBeer)
-        */
-        print("9999")
         producersNamed.forEach{$0.value.beersCollect?.sort(by:  {($0.nameBeer) > ($1.nameBeer)})}
        
         producersNamed.sorted(by: {$0.value.nameProducer > $1.value.nameProducer})
-        producersNamed.forEach{print($0.value.nameProducer)}
-        print("****************************************************************")
-
-        print(producersNamed)
-        print(producersNamed.forEach{$0.value.beersCollect?.forEach{print("                        BEERS IN producersNAmed --> \($0.nameBeer)")}})
-       
-        print(producersNamed.first?.value.beersCollect?.count)
-        
-  
- 
-        
-        print(producers.count)
-        print("****************************************************************")
-        //print(producers)
         
     }//end init model
     
@@ -153,34 +106,22 @@ public class Model : NSObject, NSCoding{
 
     func importBeersFromCsvOnline(_ file:String, _ folder:String) -> Bool{
 
-        print("#HHHHHHHHHHHHHHRS")
 
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 
         let path = documentDirectory[0].appendingPathComponent("save.csv")
 
-        print(FileManager.default.fileExists(atPath: path.path))
-
         if !(FileManager.default.fileExists(atPath: path.path)) {
 
             let urlStrings = "http://maxus.fis.usal.es/HOTHOUSE/daa/2020beer/defaultbeer.csv"
 
-        
 
-            /*var documentDirectory = Bundle.main.resourceURL
-
-            var path = documentDirectory?.appendingPathComponent("save.csv")
-
-            print(path)*/
-
-            print(path)
-            print("KKKKKKKKKKKKK")
+    
             if let fileUrl = URL(string: urlStrings){
 
                 URLSession.shared.downloadTask(with: fileUrl){
 
                     (tempFileUrl,response,error) in
-                    print("GGGGGGGGGGGGG")
                     if let fileTempFileUrl = tempFileUrl {
 
                         do {
@@ -215,8 +156,7 @@ public class Model : NSObject, NSCoding{
            
             
         } else {
-            
-            print("le fichier existe déjà")
+
             
             return false
         }
@@ -256,12 +196,12 @@ public class Model : NSObject, NSCoding{
     
     func importBeersFromCsv(_ file:String, folder:String)->Bool{
 
-        print("#SALTO A IMPORT FROM CSV BEERS")
+      
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 
         let path = documentDirectory[0].appendingPathComponent("save.csv")
         while  !(FileManager.default.fileExists(atPath: path.path)){
-            print("Waiting for file..")
+    
             sleep(UInt32(1))
         }
         //let path = Bundle.main.path(forResource: "defaultbeer", ofType: "csv")
@@ -271,10 +211,8 @@ public class Model : NSObject, NSCoding{
             //let lines = bundleReadAllLinesFromFile(file,inFolder: folder, withExtension: "csv"),
             !line.isEmpty
             else {
-            print("#Problem  --> \(file)  +  \(folder)")
             return false
         }
-        print("#BEERS LEIDAS")
         var lines :[String]? = line.components(separatedBy: "\n")
         if lines?.last == ""{
             lines?.removeLast()
@@ -283,9 +221,7 @@ public class Model : NSObject, NSCoding{
         let importedBeers = lines!.compactMap{Beer($0, "\t") }
         
         if !importedBeers.isEmpty{
-            print("#BEERS CONSTRUIDAS")
-            self.allBeers = importedBeers//siguiente mal¿
-            print("#IMPORTED BEERS  --> \(importedBeers) ")
+            self.allBeers = importedBeers
             return true
             
         }else{
@@ -320,22 +256,11 @@ public class Model : NSObject, NSCoding{
     }
     
     
-    //Jorge
     func importProducersFromCsv(_ file:String, folder:String)->Bool{
-       
-        /*let filePath = Bundle.main.path(forResource: "defaultbeer", ofType: "csv")
-        print("#BUNDLE  --> \(filePath) ")
-       let textContent = try! String(contentsOfFile: filePath!,
-                                  encoding: String.Encoding.utf8)
-       print("#text  --> \(textContent) ")*/
-       
-
-        print("#SALTO A IMPORT FROM PRODUCERS CSV")
         let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
 
         let path = documentDirectory[0].appendingPathComponent("save.csv")
         while  !(FileManager.default.fileExists(atPath: path.path)){
-            print("Waiting for file..")
             sleep(UInt32(1))
         }
         //let path = Bundle.main.path(forResource: "defaultbeer", ofType: "csv")
@@ -350,21 +275,19 @@ public class Model : NSObject, NSCoding{
             
             !line.isEmpty
             else {
-            print("#Problem  --> \(file)  +  \(folder)")
+            print("Problem  \(file)  +  \(folder)")
             return false
         }
         
     
         //parse by tab
         var lines :[String]? = line.components(separatedBy: "\n")
-        print("#FILE  --> \(String(describing: lines)) ")
+        print("FILE \(String(describing: lines)) ")
         if lines?.last == ""{
             lines?.removeLast()
             
         }
         let imortedProducers = lines!.compactMap{Producer(record: $0, delimiter: "\t") }//Pasa cada linea al constructor y puebla el nombre del producer y la foto
-        print("#SALTO A IMPORT FROM CSV POST READ ALL LINES")
-        print("#IMPORTED PRODUCERS  --> \(imortedProducers) ")
         if !imortedProducers.isEmpty{
             
             self.producers = imortedProducers
@@ -383,16 +306,14 @@ public class Model : NSObject, NSCoding{
     func readProducersInfosFromDocuments(url: URL)->Bool{
         var d:Data!
         var x:Any?
-        print("SALTO A READPRODUCERS INFO FROM DOC")
         do{
-            print(url.absoluteString)
             d = try Data(contentsOf: url)
             
         }catch{
             print("the file \(url.path) could not be read because \(error.localizedDescription)")
             return false
         }
-        print("HEre")
+
         do{
             print("HEre 2")
             try! print(JSONDecoder().decode([Producer].self,from: d))

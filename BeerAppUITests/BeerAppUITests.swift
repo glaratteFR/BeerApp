@@ -2,7 +2,7 @@
 //  BeerAppUITests.swift
 //  BeerAppUITests
 //
-//  Created by Jorge Pérez Ramos on 26/12/20.
+//  Created by Grégoire LARATTE on 26/12/20.
 //
 
 import XCTest

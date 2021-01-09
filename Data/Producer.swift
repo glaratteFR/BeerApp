@@ -2,7 +2,7 @@
 //  Producer.swift
 //  BeerApp
 //
-//  Created by Jorge Pérez Ramos on 27/12/20.
+//  Created by Grégoire LARATTE on 27/12/20.
 //
 
 import Foundation
@@ -46,15 +46,12 @@ public class Producer : NSObject, NSCoding, NSSecureCoding, Codable{
         let tokens = record.components(separatedBy: del)//separar linia por delimitador
         let dfm = FileManager.default
         self.beersCollect = [Beer]()
-        print("#tempNameProducer  --> \(tokens) ")
         let  tempNameProducer = tokens[2]//get name producer
         guard
             tokens.count == 11,//11¿
             
             !tempNameProducer.isEmpty
         else {
-            print("#Problem with tokens --> \(tokens.count)")
-            print("#Problem with  --> \(tokens[0])")
             return nil }
 
     
@@ -63,7 +60,6 @@ public class Producer : NSObject, NSCoding, NSSecureCoding, Codable{
         let trimed = namePicProducerSpaced.replacingOccurrences(of: "\\s*",
                                                 with: "$1",
                                                 options: [.regularExpression])
-        print("#EMPEZAMOS CON IMAGEN")
         var tempMarkImage : UIImage?
         if
 
@@ -74,8 +70,10 @@ public class Producer : NSObject, NSCoding, NSSecureCoding, Codable{
             dfm.fileExists(atPath: pathToMark.path)
              
         {   tempMarkImage = UIImage(contentsOfFile: pathToMark.path)
-            print("Assigned specific photo")}else    {
-            print("#Problem with picture --> \(trimed.lowercased())")
+            
+        }else
+        
+        {
             if
                 let pathToMark = Bundle.main.url(forResource:"defaultPic",withExtension: "png"),
                 dfm.fileExists(atPath: pathToMark.path)
@@ -83,16 +81,13 @@ public class Producer : NSObject, NSCoding, NSSecureCoding, Codable{
             {tempMarkImage = UIImage(contentsOfFile: pathToMark.path)
                 
             }else{
-                print("                                             #PROBLEMA  ")
                 return nil}
             //return nil }
 
         }
-        print("#ACABAMOS CON IMAGEN")
         self.nameProducer = tempNameProducer
         self.logoProducer = tempMarkImage?.pngData()
         self.duplicate = "1"
-        print("#nameProducer  --> \(self.nameProducer) ")
 
     }
     
