@@ -406,7 +406,7 @@ public class Model : NSObject, NSCoding{
                             }
                             else
                             {
-                                print("PICTURE not EXIST !!!")
+                                print("PICTURE NOT EXIST !!!")
                          
                             }
                     }
