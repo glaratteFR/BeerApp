@@ -223,7 +223,7 @@ class ViewController: UITableViewController {
         let cell = Bundle.main.loadNibNamed("TableViewCell", owner: self, options: nil)?.first as! TableViewCell
         cell.mainLabel.text = b?.nameBeer
         if let pic = b?.pictureBeer{
-            cell.mainPhoto.image = pic
+            cell.mainPhoto.image = UIImage(data: pic)
             print("Hay imagen");print(pic)
                 
             }

@@ -12,13 +12,28 @@ let pathToUnknownImage  = Bundle.main.url(forResource: "def", withExtension: "jp
 let unknownImage = UIImage(contentsOfFile: pathToUnknownImage.path)
 
 
-public class Beer : NSObject, NSCoding, NSSecureCoding{
+public class Beer : NSObject, NSCoding, NSSecureCoding, Codable{
     
     public static var supportsSecureCoding: Bool = true
     
     public func change(p_nameBeer:String)
     {
         self.nameBeer=p_nameBeer
+    }
+    
+    public enum Coding:CodingKey {
+        case nameBeer
+        case typeBeer
+        case producerBeer
+        case nationalityBeer
+        case capBeer
+        case expDateBeer
+        case rateBeer
+        case IDBeer
+        case IBUBeer
+        case volBeer
+        case pictureBeer
+        case duplicate
     }
     
     var nameBeer : String
@@ -31,7 +46,7 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
     var IDBeer : String
     var IBUBeer : String
     var volBeer : String
-    var pictureBeer : UIImage? = nil
+    var pictureBeer : Data? = nil
     var duplicate : String
     
     override public init() {
@@ -45,7 +60,7 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
         self.IDBeer = "Unkonwn"
         self.IBUBeer = "Unkonwn"
         self.volBeer = "Unkonwn"
-        self.pictureBeer = unknownImage
+        self.pictureBeer = unknownImage?.jpegData(compressionQuality: 1)
 
         self.duplicate = "1"
 
@@ -84,7 +99,7 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
         self.IDBeer = IDBeer
         self.IBUBeer = IBUBeer
         self.volBeer = volBeer
-        self.pictureBeer = pictureBeer
+        self.pictureBeer = pictureBeer?.jpegData(compressionQuality: 1)
         self.duplicate = "1"
     }
     
@@ -199,7 +214,7 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
         self.IDBeer = tempIdBeer
         self.IBUBeer = tempIbuBeer
         self.volBeer = tempVolBeer
-        self.pictureBeer = tempMarkImage
+        self.pictureBeer = tempMarkImage?.jpegData(compressionQuality: 1)
         self.duplicate = String (tempDuplicate)
         
     }
@@ -227,6 +242,21 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
         
     }
  
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Coding.self)
+        self.IBUBeer = try container.decodeIfPresent(String.self, forKey: .IBUBeer)!
+        self.IDBeer = try container.decodeIfPresent(String.self, forKey: .IDBeer)!
+        self.capBeer = try container.decodeIfPresent(String.self, forKey: .capBeer)!
+        self.duplicate = try container.decodeIfPresent(String.self, forKey: .duplicate)!
+        self.expDateBeer = try container.decodeIfPresent(String.self, forKey: .expDateBeer)!
+        self.nameBeer = try container.decodeIfPresent(String.self, forKey: .nameBeer)!
+        self.nationalityBeer = try container.decodeIfPresent(String.self, forKey: .nationalityBeer)!
+        self.pictureBeer = try container.decodeIfPresent(Data.self, forKey: .pictureBeer)!
+        self.producerBeer = try container.decodeIfPresent(String.self, forKey: .producerBeer)!
+        self.rateBeer = try container.decodeIfPresent(String.self, forKey: .rateBeer)!
+        self.typeBeer = try container.decodeIfPresent(String.self, forKey: .typeBeer)!
+        self.volBeer = try container.decodeIfPresent(String.self, forKey: .nameBeer)!
+    }
     
     
     public required init?(coder aDecoder: NSCoder) {
@@ -242,7 +272,7 @@ public class Beer : NSObject, NSCoding, NSSecureCoding{
         self.IDBeer = aDecoder.decodeObject(forKey: "IDBeer") as! String
         self.IBUBeer = aDecoder.decodeObject(forKey: "IBUBeer") as! String
         self.volBeer = aDecoder.decodeObject(forKey: "volBeer") as! String
-        self.pictureBeer = aDecoder.decodeObject(forKey: "pictureBeer") as! UIImage?
+        self.pictureBeer = aDecoder.decodeObject(forKey: "pictureBeer") as! Data?
         self.duplicate = aDecoder.decodeObject(forKey: "duplicate") as! String
         
     }

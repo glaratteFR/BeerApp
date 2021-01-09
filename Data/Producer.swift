@@ -8,19 +8,26 @@
 import Foundation
 import UIKit
 
-public class Producer : NSObject, NSCoding, NSSecureCoding{
+public class Producer : NSObject, NSCoding, NSSecureCoding, Codable{
 
     public static var supportsSecureCoding: Bool = true
     
     
     var nameProducer : String
     var duplicate : String
-    var logoProducer : UIImage?
+    var logoProducer : Data?
     var beersCollect : [Beer]?
+    
+    public enum Keys: String,CodingKey {
+        case nameProducer
+        case duplicate
+        case logoProducer
+        case beersCollect
+    }
     
     init(nameProducer:String, logoProducer:UIImage? = nil) {
         self.nameProducer = nameProducer
-        self.logoProducer = logoProducer
+        self.logoProducer = logoProducer?.jpegData(compressionQuality: 1)
         self.duplicate = "1"
         self.beersCollect = [Beer]()
     }
@@ -83,10 +90,18 @@ public class Producer : NSObject, NSCoding, NSSecureCoding{
         }
         print("#ACABAMOS CON IMAGEN")
         self.nameProducer = tempNameProducer
-        self.logoProducer = tempMarkImage
+        self.logoProducer = tempMarkImage?.jpegData(compressionQuality: 1)
         self.duplicate = "1"
         print("#nameProducer  --> \(self.nameProducer) ")
 
+    }
+    
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Keys.self)
+        self.beersCollect = try container.decodeIfPresent([Beer].self, forKey: .beersCollect)
+        self.duplicate = try container.decodeIfPresent(String.self, forKey: .duplicate)!
+        self.logoProducer = try container.decodeIfPresent(Data.self, forKey: .logoProducer)
+        self.nameProducer = try container.decodeIfPresent(String.self, forKey: .nameProducer)!
     }
     
     
@@ -133,7 +148,7 @@ public class Producer : NSObject, NSCoding, NSSecureCoding{
     
     public required init?(coder decoder: NSCoder) {
         self.nameProducer = decoder.decodeObject(forKey: "nameProducer") as! String
-        self.logoProducer = decoder.decodeObject(forKey: "logoProducer") as! UIImage?
+        self.logoProducer = decoder.decodeObject(forKey: "logoProducer") as! Data?
         self.beersCollect = decoder.decodeObject(forKey: "beersCollect") as! [Beer]?
         self.duplicate = decoder.decodeObject(forKey: "duplicate") as! String
     }

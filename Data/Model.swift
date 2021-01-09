@@ -438,7 +438,7 @@ public class Model : NSObject, NSCoding{
         let documentsFolderURL = documentsURL().appendingPathComponent(folder)//maxus
         let documentsFolderPath = documentsFolderURL.path
         var urlsOfFile = documentsFolderURL.appendingPathComponent(file)
-        urlsOfFile.appendPathExtension("bin")
+        urlsOfFile.appendPathExtension("json")
         print("Doc Path --> \(documentsFolderPath)")
         //Folder Not existant
         if !dfm.fileExists(atPath: documentsFolderPath){
@@ -459,7 +459,7 @@ public class Model : NSObject, NSCoding{
         var data:Data!
         do{
             
-            data = try NSKeyedArchiver.archivedData(withRootObject: producers, requiringSecureCoding: true)
+            data = try JSONSerialization.data(withJSONObject: producers, options: .fragmentsAllowed)
         }catch{
             print("Could Not serialize producers: \(error.localizedDescription)")
             return false
