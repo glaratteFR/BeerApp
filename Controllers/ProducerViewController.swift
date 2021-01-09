@@ -144,7 +144,6 @@ extension ProducerViewController : UIImagePickerControllerDelegate{
            
             
         }else{
-            print("This is taken care of UI")
             return true
         }
     }

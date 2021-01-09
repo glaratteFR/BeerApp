@@ -2,7 +2,7 @@
 //  Model.swift
 //  BeerApp
 //
-//  Created by Jorge Pérez Ramoe on 27/12/20.
+//  Created by Grégoire LARATTE on 27/12/20.
 //
 
 import Foundation
@@ -14,8 +14,8 @@ public class Model : NSObject, NSCoding{
     let NAME_OF_BEER_FILE_IN_BUNDLE = "data-of-beers"
     let NAME_OF_PRODUCER_FILE_IN_BUNDLE = "data-of-producers"
     
-    let NAME_OF_FOLDER_IN_DOCUMENTS = "Supporting Files"//supportingfiles? carpeta contenedorta //Supporting Files //DataOfBeerApp
-    let NAME_OF_PRODUCERS_FILE_IN_DOCUMENTS = "FileOfProducers"// archivo binario
+    let NAME_OF_FOLDER_IN_DOCUMENTS = "Supporting Files"
+    let NAME_OF_PRODUCERS_FILE_IN_DOCUMENTS = "FileOfProducers"
 
     
     public var producers:[Producer]
@@ -54,17 +54,15 @@ public class Model : NSObject, NSCoding{
         producers = [Producer]()
         allBeers = [Beer]()
         super.init()
-        var readBinProducers = false//existen archivos de un arranque anterior?
+        var readBinProducers = false
         var importProducers = false
         var importBeers = false
         
-        
-        //COMIENZO DE LECTURA
-        readBinProducers = readProducersInfosFromDocuments(url: URL_OF_PRODUCERS_BINARY_FILE) //Intento de lectura de archivo binario La app ya fue arrancada
-        //First boot readBinProducers = false
+   
+        readBinProducers = readProducersInfosFromDocuments(url: URL_OF_PRODUCERS_BINARY_FILE)
         
         
-        if !readBinProducers{//if first boot
+        if !readBinProducers{
 
                 print("Downloading")
                 importBeersFromCsvOnline("defaultbeer.csv","BeerApp/Supporting_Files/beerApp-data/")
@@ -99,7 +97,7 @@ public class Model : NSObject, NSCoding{
        
         producersNamed.sorted(by: {$0.value.nameProducer > $1.value.nameProducer})
         
-    }//end init model
+    }
     
    
     
@@ -185,7 +183,7 @@ public class Model : NSObject, NSCoding{
         
         if !importedBeers.isEmpty{
             
-            self.allBeers = importedBeers//siguiente mal¿
+            self.allBeers = importedBeers
             return true
             
         }else{
@@ -204,11 +202,10 @@ public class Model : NSObject, NSCoding{
     
             sleep(UInt32(1))
         }
-        //let path = Bundle.main.path(forResource: "defaultbeer", ofType: "csv")
-        
+
         let line = try! String(contentsOf: path, encoding: String.Encoding.utf8)
         guard
-            //let lines = bundleReadAllLinesFromFile(file,inFolder: folder, withExtension: "csv"),
+     
             !line.isEmpty
             else {
             return false
@@ -234,13 +231,11 @@ public class Model : NSObject, NSCoding{
         
        
         guard
-            //Read file and parse by /n
             let lines = bundleReadAllLinesFromFile(file,inFolder: folder, withExtension: "txt"),
             !lines.isEmpty
             else {
             return false
         }
-        //parse by tab
         let imortedProducers = lines.compactMap{Producer(record: $0, delimiter: "\t") }
         
         if !imortedProducers.isEmpty{
@@ -263,15 +258,12 @@ public class Model : NSObject, NSCoding{
         while  !(FileManager.default.fileExists(atPath: path.path)){
             sleep(UInt32(1))
         }
-        //let path = Bundle.main.path(forResource: "defaultbeer", ofType: "csv")
-        
+
         let line = try! String(contentsOf: path, encoding: String.Encoding.utf8)
-       // let path = Bundle.main.path(forResource: "defaultbeer", ofType: "csv")
-       
+
         guard
-            //Read file and parse by /n
-            //let lines = bundleReadAllLinesFromFile("defaultbeer",inFolder: "Supporting Files", withExtension: "csv"),
-            
+ 
+    
             
             !line.isEmpty
             else {
@@ -366,14 +358,10 @@ public class Model : NSObject, NSCoding{
             return false
             
         }
-        /*
-        debug posibility
-         */
         return true
     }
     
     func importImgOnline(_ beer: Beer) -> Void {
-        //lagallolocajunio21.png
         //http://maxus.fis.usal.es/HOTHOUSE/daa/2020beer/fotos/
         var documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         
@@ -439,7 +427,6 @@ public class Model : NSObject, NSCoding{
     }
     
     public required init?(coder decoder: NSCoder) {
-        //maybe instead of porducers is producersNamed
         self.producers = decoder.decodeObject(forKey: "producers") as! [Producer]
         self.allBeers  = decoder.decodeObject(forKey: "allBeers") as! [Beer]
     }

@@ -89,12 +89,7 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
  
     }
     override func viewWillAppear(_ animated: Bool) {
-        //Allows data to be modified
         nameText.text = self.name
-        
-        
-       // typeText.text = self.type
-        //producerText.text = self.producer
         switch self.type
         {
             case "cane":
@@ -118,10 +113,6 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         ibuText.text = self.ibu
         volDText.text = self.volD
         beerImageFrame.image = self.beerImage
-/*
-        let producerNumber = listMakersNames?.firstIndex(of: self.name!)//¿??
-        producerSelector.selectRow(producerNumber!, inComponent: 0, animated: true)
-    */
     }
     
     @IBAction func acceptAcceptAndReturn(_ sender: Any){
@@ -132,9 +123,6 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
             self.nameText.textColor = .red
             allCorrect = false
         }
-//        self.type = self.typeText.text
-        
-        //self.producer = self.producerText.text
         
         self.nationality = self.nationalityText.text
         if !checkType(self.nationalityText.text!, "word")  {
@@ -160,10 +148,6 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         default:
             break;
         }
-        
-        //image
-        
-        //get producer name from picker
         self.producer = aModel?.producers[producerSelector.selectedRow(inComponent: 0)].nameProducer
 
         aBeer?.typeBeer = self.type!
@@ -177,9 +161,6 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         aBeer?.volBeer = self.volD!
         aBeer?.pictureBeer = self.beerImage.pngData()
         
-        //¿?¿
-        //aBeer?.picture
-        
         if self.producer != aBeer?.producerBeer{
             
             let ogProducer = aModel?.producersNamed[(aBeer?.producerBeer)!]
@@ -187,15 +168,7 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
             ogProducer?.beersCollect?.remove(at: indexBeerList!)
             
             aBeer?.producerBeer = self.producer!
-            //add to the new producer list
-           // aBeer?.producerBeer = self.name!
-            
-           // aModel?.producersNamed[self.producer!]?.beersCollect?.append(aBeer!)
-          
-            
-            
-            
-            
+ 
             aModel?.producersNamed[self.producer!]?.beersCollect?.append(aBeer!)
             
             
@@ -241,29 +214,12 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
 
         if(allCorrect){
             
-            performSegue(withIdentifier: "unwindSegueFromBeerView", sender: self)//posible error
+            performSegue(withIdentifier: "unwindSegueFromBeerView", sender: self)
             
         }
         
         
     }
-    //camera if posible
-    /*
-    @IBAction func tapGestureAction(gesture: UITapGestureRecognizer){
-        
-        if !UIImagePickerController.isSourceTypeAvailable(.camera){
-        notifyUser(self, alertTitle: "The camera is unavailable", alertMessage: "The camera cant be run in the simulator", runOnOK: {_ in})
-            return
-        }
-        imgPicker.allowsEditing = false
-        imgPicker.sourceType = UIImagePickerController.SourceType.camera
-        imgPicker.cameraCaptureMode = .photo
-        imgPicker.delegate = self
-        present(imgPicker, animated: true, completion: nil)
-        
-        
-    }*/
-    
     @objc func tapGestureAction(gesture: UITapGestureRecognizer){
   
         if !UIImagePickerController.isSourceTypeAvailable(.camera){
@@ -279,11 +235,9 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         
     }
 
-}//end beerViewController
+}
 
 extension BeerViewController : UIPickerViewDataSource{
-    
-    // number of rows = the number of producers
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
@@ -294,7 +248,6 @@ extension BeerViewController : UIPickerViewDataSource{
         }
         return numberRows
     }
-    //??
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
