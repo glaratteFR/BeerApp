@@ -50,7 +50,7 @@ class ViewController: UITableViewController {
                notifyUser(self, alertTitle: "IO Error", alertMessage: "Error When Writting Producers", runOnOK: {_ in})
                
            }else{
-               print("Prod Saved Correctly")
+               print("Producer Saved Correctly")
                
            }
             
@@ -93,13 +93,7 @@ class ViewController: UITableViewController {
     
     
        @IBAction func delBeerAct(_ sender: Any){
-        let p = Producer()
-        p.nameProducer = "Jorge el cervezas"
-        print("Salto a creación de header")
-        
-  
-    
-        model.producers.append(p)
+
         tableView.headerView(forSection: model.producers.count - 1)
         tableView.reloadData()
         
@@ -130,9 +124,6 @@ class ViewController: UITableViewController {
 
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Hello from new function"
-    }
     
     //The producer affected by deletion or addition
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath){

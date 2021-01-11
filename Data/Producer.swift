@@ -62,7 +62,7 @@ public class Producer : NSObject, NSCoding, NSSecureCoding, Codable{
         var tempMarkImage : UIImage?
         if
 
-            let pathToMark = Bundle.main.url(forResource: trimed.lowercased(),withExtension: "png", subdirectory: "beerApp-fotos"),
+            let pathToMark = Bundle.main.url(forResource: trimed.lowercased(),withExtension: "jpg", subdirectory: "beerApp-fotos"),
             dfm.fileExists(atPath: pathToMark.path)
              
         {   tempMarkImage = UIImage(contentsOfFile: pathToMark.path)
@@ -71,7 +71,7 @@ public class Producer : NSObject, NSCoding, NSSecureCoding, Codable{
         
         {
             if
-                let pathToMark = Bundle.main.url(forResource:"defaultPic",withExtension: "png"),
+                let pathToMark = Bundle.main.url(forResource:"defaultPic",withExtension: "jpg"),
                 dfm.fileExists(atPath: pathToMark.path)
                 
             {tempMarkImage = UIImage(contentsOfFile: pathToMark.path)

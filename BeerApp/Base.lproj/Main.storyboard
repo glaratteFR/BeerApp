@@ -21,22 +21,22 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hv3-fO-caq">
-                                    <rect key="frame" x="342" y="6" width="64" height="46"/>
-                                    <state key="normal" title="Add Beer"/>
+                                    <rect key="frame" x="343" y="6" width="63" height="46"/>
+                                    <state key="normal" title="Add beer"/>
                                     <connections>
                                         <action selector="addBeerAct:" destination="p1c-EU-amU" eventType="touchUpInside" id="r2U-3A-Io1"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oke-gM-ZUl">
-                                    <rect key="frame" x="8" y="6" width="91" height="46"/>
-                                    <state key="normal" title="Remove Beer"/>
+                                    <rect key="frame" x="8" y="6" width="90" height="46"/>
+                                    <state key="normal" title="Remove beer"/>
                                     <connections>
                                         <action selector="delBeerAct:" destination="p1c-EU-amU" eventType="touchUpInside" id="nMi-S9-S4t"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fV-R4-LT5">
-                                    <rect key="frame" x="219" y="15" width="95" height="30"/>
-                                    <state key="normal" title="Add Producer"/>
+                                    <rect key="frame" x="160" y="15" width="94" height="30"/>
+                                    <state key="normal" title="Add producer"/>
                                     <connections>
                                         <action selector="addProdAct:" destination="p1c-EU-amU" eventType="touchUpInside" id="8Dw-PS-5Vq"/>
                                     </connections>
@@ -44,12 +44,14 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstItem="hv3-fO-caq" firstAttribute="leading" secondItem="1fV-R4-LT5" secondAttribute="trailing" constant="28" id="2WH-sv-nE8"/>
+                                <constraint firstItem="1fV-R4-LT5" firstAttribute="centerX" secondItem="jXJ-Ff-EK9" secondAttribute="centerX" id="0s6-oH-JST"/>
+                                <constraint firstItem="hv3-fO-caq" firstAttribute="leading" relation="lessThanOrEqual" secondItem="1fV-R4-LT5" secondAttribute="trailing" constant="89" id="2WH-sv-nE8"/>
                                 <constraint firstItem="oke-gM-ZUl" firstAttribute="leading" secondItem="jXJ-Ff-EK9" secondAttribute="leading" constant="8" id="3k4-7Q-7SV"/>
                                 <constraint firstAttribute="trailing" secondItem="hv3-fO-caq" secondAttribute="trailing" constant="8" id="482-6p-76i"/>
                                 <constraint firstItem="oke-gM-ZUl" firstAttribute="top" secondItem="jXJ-Ff-EK9" secondAttribute="top" constant="6" id="CAN-C0-01u"/>
                                 <constraint firstItem="1fV-R4-LT5" firstAttribute="top" secondItem="jXJ-Ff-EK9" secondAttribute="top" constant="15" id="IIm-Vx-zxP"/>
                                 <constraint firstItem="hv3-fO-caq" firstAttribute="top" secondItem="jXJ-Ff-EK9" secondAttribute="top" constant="6" id="TzX-bS-19J"/>
+                                <constraint firstItem="1fV-R4-LT5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oke-gM-ZUl" secondAttribute="trailing" constant="30" id="aE2-NH-6H7"/>
                                 <constraint firstAttribute="bottom" secondItem="oke-gM-ZUl" secondAttribute="bottom" constant="8" id="ckA-rW-Adw"/>
                                 <constraint firstItem="hv3-fO-caq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oke-gM-ZUl" secondAttribute="trailing" constant="8" symbolic="YES" id="iy5-QT-caj"/>
                                 <constraint firstAttribute="bottom" secondItem="hv3-fO-caq" secondAttribute="bottom" constant="8" id="ouD-NW-Du1"/>

@@ -28,11 +28,11 @@
 		63935D97259B5297007D87DB /* RowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D96259B5297007D87DB /* RowCell.swift */; };
 		63935D9C259B5381007D87DB /* TableSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D9B259B5381007D87DB /* TableSectionHeader.swift */; };
 		63935DB2259B6A0D007D87DB /* def.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63935DB1259B6A0D007D87DB /* def.jpg */; };
-		63935DE9259CB3D5007D87DB /* defaultPic.png in Resources */ = {isa = PBXBuildFile; fileRef = 63935DE8259CB3D5007D87DB /* defaultPic.png */; };
 		63935E11259EF091007D87DB /* MyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935E10259EF091007D87DB /* MyCustomCell.swift */; };
 		63935E17259EFD78007D87DB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935E15259EFD78007D87DB /* TableViewCell.swift */; };
 		63935E18259EFD78007D87DB /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63935E16259EFD78007D87DB /* TableViewCell.xib */; };
 		A343DE8F25A3881700D2B2A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A343DE8E25A3881700D2B2A0 /* Assets.xcassets */; };
+		A3BF993925ACB5C90098E1A8 /* defaultPic.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A3BF993825ACB5C90098E1A8 /* defaultPic.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,17 +55,17 @@
 /* Begin PBXFileReference section */
 		635BEB6A25A340A400F09FF0 /* TableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
 		635BEB6B25A340A400F09FF0 /* TableViewHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewHeader.xib; sourceTree = "<group>"; };
-		63935CB42597533B007D87DB /* BeerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		63935CB42597533B007D87DB /* BeerApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63935CB72597533B007D87DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63935CB92597533B007D87DB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		63935CBB2597533B007D87DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		63935CBE2597533B007D87DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63935CC32597533C007D87DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63935CC52597533C007D87DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63935CCA2597533C007D87DB /* BeerAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeerAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63935CCA2597533C007D87DB /* BeerApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeerApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63935CCE2597533C007D87DB /* BeerAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerAppTests.swift; sourceTree = "<group>"; };
 		63935CD02597533C007D87DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63935CD52597533C007D87DB /* BeerAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeerAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		63935CD52597533C007D87DB /* BeerApplicationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeerApplicationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		63935CD92597533C007D87DB /* BeerAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeerAppUITests.swift; sourceTree = "<group>"; };
 		63935CDB2597533C007D87DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63935D6725976DAA007D87DB /* TableSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableSectionHeader.xib; sourceTree = "<group>"; };
@@ -80,11 +80,11 @@
 		63935D96259B5297007D87DB /* RowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowCell.swift; sourceTree = "<group>"; };
 		63935D9B259B5381007D87DB /* TableSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionHeader.swift; sourceTree = "<group>"; };
 		63935DB1259B6A0D007D87DB /* def.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = def.jpg; sourceTree = "<group>"; };
-		63935DE8259CB3D5007D87DB /* defaultPic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = defaultPic.png; sourceTree = "<group>"; };
 		63935E10259EF091007D87DB /* MyCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomCell.swift; sourceTree = "<group>"; };
 		63935E15259EFD78007D87DB /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		63935E16259EFD78007D87DB /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
-		A343DE8E25A3881700D2B2A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A343DE8E25A3881700D2B2A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Downloads/AppIcons/Assets.xcassets; sourceTree = "<group>"; };
+		A3BF993825ACB5C90098E1A8 /* defaultPic.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = defaultPic.jpg; path = ../../../../Downloads/defaultPic.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,9 +129,9 @@
 		63935CB52597533B007D87DB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				63935CB42597533B007D87DB /* BeerApp.app */,
-				63935CCA2597533C007D87DB /* BeerAppTests.xctest */,
-				63935CD52597533C007D87DB /* BeerAppUITests.xctest */,
+				63935CB42597533B007D87DB /* BeerApplication.app */,
+				63935CCA2597533C007D87DB /* BeerApplicationTests.xctest */,
+				63935CD52597533C007D87DB /* BeerApplicationUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -217,7 +217,7 @@
 		63935DA4259B60D6007D87DB /* beerApp-fotos */ = {
 			isa = PBXGroup;
 			children = (
-				63935DE8259CB3D5007D87DB /* defaultPic.png */,
+				A3BF993825ACB5C90098E1A8 /* defaultPic.jpg */,
 				63935DB1259B6A0D007D87DB /* def.jpg */,
 			);
 			path = "beerApp-fotos";
@@ -233,9 +233,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		63935CB32597533B007D87DB /* BeerApp */ = {
+		63935CB32597533B007D87DB /* BeerApplication */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 63935CDE2597533C007D87DB /* Build configuration list for PBXNativeTarget "BeerApp" */;
+			buildConfigurationList = 63935CDE2597533C007D87DB /* Build configuration list for PBXNativeTarget "BeerApplication" */;
 			buildPhases = (
 				63935CB02597533B007D87DB /* Sources */,
 				63935CB12597533B007D87DB /* Frameworks */,
@@ -245,14 +245,14 @@
 			);
 			dependencies = (
 			);
-			name = BeerApp;
+			name = BeerApplication;
 			productName = BeerApp;
-			productReference = 63935CB42597533B007D87DB /* BeerApp.app */;
+			productReference = 63935CB42597533B007D87DB /* BeerApplication.app */;
 			productType = "com.apple.product-type.application";
 		};
-		63935CC92597533C007D87DB /* BeerAppTests */ = {
+		63935CC92597533C007D87DB /* BeerApplicationTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 63935CE12597533C007D87DB /* Build configuration list for PBXNativeTarget "BeerAppTests" */;
+			buildConfigurationList = 63935CE12597533C007D87DB /* Build configuration list for PBXNativeTarget "BeerApplicationTests" */;
 			buildPhases = (
 				63935CC62597533C007D87DB /* Sources */,
 				63935CC72597533C007D87DB /* Frameworks */,
@@ -263,14 +263,14 @@
 			dependencies = (
 				63935CCC2597533C007D87DB /* PBXTargetDependency */,
 			);
-			name = BeerAppTests;
+			name = BeerApplicationTests;
 			productName = BeerAppTests;
-			productReference = 63935CCA2597533C007D87DB /* BeerAppTests.xctest */;
+			productReference = 63935CCA2597533C007D87DB /* BeerApplicationTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		63935CD42597533C007D87DB /* BeerAppUITests */ = {
+		63935CD42597533C007D87DB /* BeerApplicationUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 63935CE42597533C007D87DB /* Build configuration list for PBXNativeTarget "BeerAppUITests" */;
+			buildConfigurationList = 63935CE42597533C007D87DB /* Build configuration list for PBXNativeTarget "BeerApplicationUITests" */;
 			buildPhases = (
 				63935CD12597533C007D87DB /* Sources */,
 				63935CD22597533C007D87DB /* Frameworks */,
@@ -281,9 +281,9 @@
 			dependencies = (
 				63935CD72597533C007D87DB /* PBXTargetDependency */,
 			);
-			name = BeerAppUITests;
+			name = BeerApplicationUITests;
 			productName = BeerAppUITests;
-			productReference = 63935CD52597533C007D87DB /* BeerAppUITests.xctest */;
+			productReference = 63935CD52597533C007D87DB /* BeerApplicationUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -308,7 +308,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 63935CAF2597533B007D87DB /* Build configuration list for PBXProject "BeerApp" */;
+			buildConfigurationList = 63935CAF2597533B007D87DB /* Build configuration list for PBXProject "BeerApplication" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -321,9 +321,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				63935CB32597533B007D87DB /* BeerApp */,
-				63935CC92597533C007D87DB /* BeerAppTests */,
-				63935CD42597533C007D87DB /* BeerAppUITests */,
+				63935CB32597533B007D87DB /* BeerApplication */,
+				63935CC92597533C007D87DB /* BeerApplicationTests */,
+				63935CD42597533C007D87DB /* BeerApplicationUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -334,11 +334,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				63935D6825976DAA007D87DB /* TableSectionHeader.xib in Resources */,
-				63935DE9259CB3D5007D87DB /* defaultPic.png in Resources */,
 				63935CC42597533C007D87DB /* LaunchScreen.storyboard in Resources */,
 				635BEB6D25A340A400F09FF0 /* TableViewHeader.xib in Resources */,
 				63935E18259EFD78007D87DB /* TableViewCell.xib in Resources */,
 				63935DB2259B6A0D007D87DB /* def.jpg in Resources */,
+				A3BF993925ACB5C90098E1A8 /* defaultPic.jpg in Resources */,
 				A343DE8F25A3881700D2B2A0 /* Assets.xcassets in Resources */,
 				63935CBF2597533B007D87DB /* Main.storyboard in Resources */,
 			);
@@ -405,12 +405,12 @@
 /* Begin PBXTargetDependency section */
 		63935CCC2597533C007D87DB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 63935CB32597533B007D87DB /* BeerApp */;
+			target = 63935CB32597533B007D87DB /* BeerApplication */;
 			targetProxy = 63935CCB2597533C007D87DB /* PBXContainerItemProxy */;
 		};
 		63935CD72597533C007D87DB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 63935CB32597533B007D87DB /* BeerApp */;
+			target = 63935CB32597533B007D87DB /* BeerApplication */;
 			targetProxy = 63935CD62597533C007D87DB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -471,6 +471,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 69RSQF3B7A;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -533,6 +534,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 69RSQF3B7A;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -606,7 +608,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeerApp.app/BeerApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeerApplication.app/BeerApplication";
 			};
 			name = Debug;
 		};
@@ -627,7 +629,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeerApp.app/BeerApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeerApplication.app/BeerApplication";
 			};
 			name = Release;
 		};
@@ -672,7 +674,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		63935CAF2597533B007D87DB /* Build configuration list for PBXProject "BeerApp" */ = {
+		63935CAF2597533B007D87DB /* Build configuration list for PBXProject "BeerApplication" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63935CDC2597533C007D87DB /* Debug */,
@@ -681,7 +683,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		63935CDE2597533C007D87DB /* Build configuration list for PBXNativeTarget "BeerApp" */ = {
+		63935CDE2597533C007D87DB /* Build configuration list for PBXNativeTarget "BeerApplication" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63935CDF2597533C007D87DB /* Debug */,
@@ -690,7 +692,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		63935CE12597533C007D87DB /* Build configuration list for PBXNativeTarget "BeerAppTests" */ = {
+		63935CE12597533C007D87DB /* Build configuration list for PBXNativeTarget "BeerApplicationTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63935CE22597533C007D87DB /* Debug */,
@@ -699,7 +701,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		63935CE42597533C007D87DB /* Build configuration list for PBXNativeTarget "BeerAppUITests" */ = {
+		63935CE42597533C007D87DB /* Build configuration list for PBXNativeTarget "BeerApplicationUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63935CE52597533C007D87DB /* Debug */,

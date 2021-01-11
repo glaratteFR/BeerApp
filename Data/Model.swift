@@ -85,9 +85,6 @@ public class Model : NSObject, NSCoding{
             producers.forEach{ $0.beersCollect = [Beer]()}
             allBeers.forEach{producersNamed[$0.producerBeer]?.beersCollect?.append($0)}
     
-            let p = Producer()
-            p.nameProducer = "Anna producer"
-            producersNamed[p.nameProducer] = p
         }
    
    
