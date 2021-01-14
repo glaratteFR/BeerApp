@@ -21,6 +21,7 @@ public class Model : NSObject, NSCoding{
     public var producers:[Producer]
     public var allBeers:[Beer]
     var producersNamed = [String:Producer]()
+    var alert:Bool = false
     private let dfm = FileManager.default
     
     func sortWithKeys(_ dict:[String:Producer]) -> [String:Producer]{
@@ -90,9 +91,9 @@ public class Model : NSObject, NSCoding{
    
         
         self.producers.removeAll()
-        producersNamed.forEach{$0.value.beersCollect?.sort(by:  {($0.nameBeer) > ($1.nameBeer)})}
+        producersNamed.forEach{$0.value.beersCollect?.sort(by:  {($0.nameBeer) < ($1.nameBeer)})}
        
-        producersNamed.sorted(by: {$0.value.nameProducer > $1.value.nameProducer})
+        producersNamed.sorted(by: {$0.value.nameProducer < $1.value.nameProducer})
         
     }
     
@@ -321,12 +322,11 @@ public class Model : NSObject, NSCoding{
     public func writeProducersInfosToDocuments(_ file: String, folder:String)->Bool{
         
 
-        let documentsFolderURL = documentsURL().appendingPathComponent(folder)//maxus
+        let documentsFolderURL = documentsURL().appendingPathComponent(folder)
         let documentsFolderPath = documentsFolderURL.path
         var urlsOfFile = documentsFolderURL.appendingPathComponent(file)
         urlsOfFile.appendPathExtension("txt")
         print("Doc Path --> \(documentsFolderPath)")
-        //Folder Not existant
         if !dfm.fileExists(atPath: documentsFolderPath){
             do{
                 try dfm.createDirectory(at: documentsFolderURL, withIntermediateDirectories: true, attributes: nil)
@@ -405,10 +405,6 @@ public class Model : NSObject, NSCoding{
         } else {
             
             
-
-            print("PICTURE ALREADY EXIST !!!!!")
-   
-          
         }
         
 

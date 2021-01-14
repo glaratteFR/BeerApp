@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-let pathToUnknownImage  = Bundle.main.url(forResource: "def", withExtension: "jpg")!
+let pathToUnknownImage  = Bundle.main.url(forResource: "default", withExtension: "jpg")!
 let unknownImage = UIImage(contentsOfFile: pathToUnknownImage.path)
 
 
@@ -50,21 +50,21 @@ public class Beer : NSObject, NSCoding, NSSecureCoding, Codable{
     var duplicate : String
     
     override public init() {
-        self.nameBeer = "Unkonwn"
-        self.typeBeer = "Unkonwn"
-        self.producerBeer = "Unkonwn"
-        self.nationalityBeer = "Unkonwn"
-        self.capBeer = "Unkonwn"
-        self.expDateBeer = "January 1"
-        self.rateBeer = "Unkonwn"
-        self.IDBeer = "Unkonwn"
-        self.IBUBeer = "Unkonwn"
+        self.nameBeer = "Unknown"
+        self.typeBeer = "Unknown"
+        self.producerBeer = "Unknown"
+        self.nationalityBeer = "Unknown"
+        self.capBeer = "Unknown"
+        self.expDateBeer = "February 23 2020"
+        self.rateBeer = "Unknown"
+        self.IDBeer = "Unknown"
+        self.IBUBeer = "Unknown"
         self.volBeer = "Unkonwn"
         self.pictureBeer = unknownImage?.pngData()
 
         self.duplicate = "1"
 
-        var noBlancName = self.nameBeer.replacingOccurrences(of: "\\s*",
+        let noBlancName = self.nameBeer.replacingOccurrences(of: "\\s*",
                                                 with: "$1",
                                                 options: [.regularExpression])
         
@@ -175,7 +175,7 @@ public class Beer : NSObject, NSCoding, NSSecureCoding, Codable{
         {   tempMarkImage = UIImage(contentsOfFile: pathToMark.path)
             }else    {
             if
-                let pathToMark = Bundle.main.url(forResource:"def",withExtension: "jpg")
+                let pathToMark = Bundle.main.url(forResource:"default",withExtension: "jpg")
                 
             {tempMarkImage = UIImage(contentsOfFile: pathToMark.path)}else{
                 return nil}

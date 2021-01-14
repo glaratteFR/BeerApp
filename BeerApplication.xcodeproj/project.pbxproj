@@ -27,7 +27,7 @@
 		63935D922599FE6B007D87DB /* ProducerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D912599FE6B007D87DB /* ProducerViewController.swift */; };
 		63935D97259B5297007D87DB /* RowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D96259B5297007D87DB /* RowCell.swift */; };
 		63935D9C259B5381007D87DB /* TableSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935D9B259B5381007D87DB /* TableSectionHeader.swift */; };
-		63935DB2259B6A0D007D87DB /* def.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63935DB1259B6A0D007D87DB /* def.jpg */; };
+		63935DB2259B6A0D007D87DB /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 63935DB1259B6A0D007D87DB /* default.jpg */; };
 		63935E11259EF091007D87DB /* MyCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935E10259EF091007D87DB /* MyCustomCell.swift */; };
 		63935E17259EFD78007D87DB /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935E15259EFD78007D87DB /* TableViewCell.swift */; };
 		63935E18259EFD78007D87DB /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63935E16259EFD78007D87DB /* TableViewCell.xib */; };
@@ -79,7 +79,7 @@
 		63935D912599FE6B007D87DB /* ProducerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProducerViewController.swift; sourceTree = "<group>"; };
 		63935D96259B5297007D87DB /* RowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowCell.swift; sourceTree = "<group>"; };
 		63935D9B259B5381007D87DB /* TableSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionHeader.swift; sourceTree = "<group>"; };
-		63935DB1259B6A0D007D87DB /* def.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = def.jpg; sourceTree = "<group>"; };
+		63935DB1259B6A0D007D87DB /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = "<group>"; };
 		63935E10259EF091007D87DB /* MyCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomCell.swift; sourceTree = "<group>"; };
 		63935E15259EFD78007D87DB /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		63935E16259EFD78007D87DB /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
@@ -218,7 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				A3BF993825ACB5C90098E1A8 /* defaultPic.jpg */,
-				63935DB1259B6A0D007D87DB /* def.jpg */,
+				63935DB1259B6A0D007D87DB /* default.jpg */,
 			);
 			path = "beerApp-fotos";
 			sourceTree = "<group>";
@@ -337,7 +337,7 @@
 				63935CC42597533C007D87DB /* LaunchScreen.storyboard in Resources */,
 				635BEB6D25A340A400F09FF0 /* TableViewHeader.xib in Resources */,
 				63935E18259EFD78007D87DB /* TableViewCell.xib in Resources */,
-				63935DB2259B6A0D007D87DB /* def.jpg in Resources */,
+				63935DB2259B6A0D007D87DB /* default.jpg in Resources */,
 				A3BF993925ACB5C90098E1A8 /* defaultPic.jpg in Resources */,
 				A343DE8F25A3881700D2B2A0 /* Assets.xcassets in Resources */,
 				63935CBF2597533B007D87DB /* Main.storyboard in Resources */,

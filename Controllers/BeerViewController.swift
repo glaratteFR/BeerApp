@@ -171,10 +171,6 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
  
             aModel?.producersNamed[self.producer!]?.beersCollect?.append(aBeer!)
             
-            
-
-  
-            aModel?.producersNamed["Ana producer"]?.beersCollect?.forEach{print($0.nameBeer)}
             aModel!.producers.removeAll()
             aModel!.producers = aModel!.producersNamed.map { (name, producer) in
                 return producer
@@ -184,14 +180,14 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
         if (self.name != aBeer?.nameBeer) || (self.expD != aBeer?.expDateBeer) {
             aBeer?.nameBeer = self.name!
             aBeer?.expDateBeer = self.expD!
-            var noBlancName = aBeer?.nameBeer.replacingOccurrences(of: "\\s*",
+            let noBlancName = aBeer?.nameBeer.replacingOccurrences(of: "\\s*",
                                                     with: "$1",
                                                     options: [.regularExpression])
             
             let noBlancDate = aBeer?.expDateBeer.replacingOccurrences(of: "\\s*",
                                                           with: "$1",
                                                           options: [.regularExpression])
-            var nameOfImage = "\(noBlancName!)\(noBlancDate!)"
+            let nameOfImage = "\(noBlancName!)\(noBlancDate!)"
             let oldId = aBeer?.IDBeer
             aBeer?.IDBeer = nameOfImage
             let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -208,8 +204,6 @@ class BeerViewController: UIViewController, UINavigationControllerDelegate, UIGe
                 print("ERROR in Rename  to: \(path.path) from \(oldPath.path)")
                 
             }
-        }else  {
-            print("It wasnt necesary to reCalc the iD")
         }
 
         if(allCorrect){
@@ -268,17 +262,7 @@ extension BeerViewController : UIPickerViewDataSource{
                     return false
                 
         }
-        if expected == "word"{
-            let phone = introduced.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "")
-            if !phone.isEmpty  {
-                notifyUser(self, alertTitle: "Type of Input Incorrect", alertMessage: "\(introduced): Wasn't cant take numbers. Please correct it to save", runOnOK: {_ in})
-                    return false
-                }
-                return true
-            
-           
-            
-        }else{
+        else{
             return true
         }
     }

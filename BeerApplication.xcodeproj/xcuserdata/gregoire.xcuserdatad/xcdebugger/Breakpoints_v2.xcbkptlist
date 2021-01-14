@@ -52,5 +52,128 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8A4D7762-FE4D-4F64-B8E9-41B652693910"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Controllers/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "8A4D7762-FE4D-4F64-B8E9-41B652693910 - 1780cb4a39b32240"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BeerApplication.ViewController.addProdButt.getter : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "BeerApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gregoire/Documents/BeerApp/Controllers/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "88">
+               </Location>
+               <Location
+                  uuid = "8A4D7762-FE4D-4F64-B8E9-41B652693910 - 6b6d6332bf09d24c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BeerApplication.ViewController.addProdButt.setter : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "BeerApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gregoire/Documents/BeerApp/Controllers/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "155">
+               </Location>
+               <Location
+                  uuid = "8A4D7762-FE4D-4F64-B8E9-41B652693910 - 28bc017fb359c4ec"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BeerApplication.ViewController.addProdButt.modify : Swift.Optional&lt;__C.UIButton&gt;"
+                  moduleName = "BeerApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gregoire/Documents/BeerApp/Controllers/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "59">
+               </Location>
+               <Location
+                  uuid = "8A4D7762-FE4D-4F64-B8E9-41B652693910 - c7b23f3b6bb29115"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BeerApplication.ViewController.addProdButt.modify : Swift.Optional&lt;__C.UIButton&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "BeerApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gregoire/Documents/BeerApp/Controllers/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "8A4D7762-FE4D-4F64-B8E9-41B652693910 - 720614262f1b69fa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BeerApplication.ViewController.init(style: __C.UITableViewStyle) -&gt; BeerApplication.ViewController"
+                  moduleName = "BeerApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gregoire/Documents/BeerApp/Controllers/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "215">
+               </Location>
+               <Location
+                  uuid = "8A4D7762-FE4D-4F64-B8E9-41B652693910 - ff2406bce0ec28e8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BeerApplication.ViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; BeerApplication.ViewController"
+                  moduleName = "BeerApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gregoire/Documents/BeerApp/Controllers/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "328">
+               </Location>
+               <Location
+                  uuid = "8A4D7762-FE4D-4F64-B8E9-41B652693910 - b1c35619720d1aef"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BeerApplication.ViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;BeerApplication.ViewController&gt;"
+                  moduleName = "BeerApplication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/gregoire/Documents/BeerApp/Controllers/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "269">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

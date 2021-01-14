@@ -28,9 +28,11 @@ class ProducerViewController: UIViewController, UINavigationControllerDelegate, 
     var name: String?
     var producerImage: UIImage!
     var number: String?
+    var alert: Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         nameOfProducer.backgroundColor = UIColor.lightGray
         nameOfProducer.textColor = UIColor.blue
         
@@ -61,7 +63,7 @@ class ProducerViewController: UIViewController, UINavigationControllerDelegate, 
         self.name = self.nameOfProducer.text
         self.number = self.numberOfBeers.text
         self.producerImage = self.imageOfProducer.image
-        
+        self.alert = false
         aProducer?.nameProducer = self.name!
         if (self.producerImage == nil)
         {
@@ -80,10 +82,16 @@ class ProducerViewController: UIViewController, UINavigationControllerDelegate, 
             if self.aAction == "addProducer"
             {
                 aProducer = Producer(nameProducer: self.name!, logoProducer: self.producerImage)
-                aModel!.producersNamed[aProducer!.nameProducer] = aProducer
-                aModel!.producers.removeAll()
-                aModel!.producers = aModel!.producersNamed.map { (name, producer) in
-                    return producer
+                if (aModel!.producersNamed[aProducer!.nameProducer] == nil) {
+                    aModel!.producersNamed[aProducer!.nameProducer] = aProducer
+                    aModel!.producers.removeAll()
+                    aModel!.producers = aModel!.producersNamed.map { (name, producer) in
+                        return producer
+                    }                }
+                else
+                {
+                    aModel!.alert = true
+                
                 }
                 performSegue(withIdentifier: "unwindSegueFromProducerView", sender: self)
             }else{
